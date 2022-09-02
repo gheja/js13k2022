@@ -1,9 +1,12 @@
 class Input
 {
-	_keyValues = Array();
-	_keysWerePressed = Array();
+	keysPressed: Array<boolean> = Array();
+	keysWerePressed: Array<boolean> = Array();
+	keyboardUsedTick: number = 0;
+	psGamepadUsedTick: number = 0;
+	xboxGamepadUsedTick: number = 0;
 	
-	_validKeys = [ "w", "a", "s", "d", "z", "q", " ", "x", "c", "arrowup", "arrowleft", "arrowdown", "arrowright" ];
+	validKeys = [ "w", "a", "s", "d", "z", "q", " ", "x", "c", "arrowup", "arrowleft", "arrowdown", "arrowright" ];
 
 	constructor()
 	{
@@ -14,25 +17,27 @@ class Input
 	{
 		let a = event.key.toLowerCase();
 	
-		if (this._validKeys.indexOf(a) === -1 || (event.type != "keydown" && event.type != "keyup") || event.repeat)
+		if (this.validKeys.indexOf(a) === -1 || (event.type != "keydown" && event.type != "keyup") || event.repeat)
 		{
 			return;
 		}
 	
-		this._keyValues[a] = (event.type == "keydown") ? 1 : 0;
+		this.keysPressed[a] = (event.type == "keydown");
 
 		if (event.type == "keydown")
 		{
-			this._keysWerePressed[a] = true;
+			this.keysWerePressed[a] = true;
 		}
-	
+
+		this.keyboardUsedTick = _game.ticks;
+
 		event.preventDefault();
 	}
 	
 	clearPressedKeys()
 	{
-		this._validKeys.forEach(element => {
-			this._keysWerePressed[element] = false;
+		this.validKeys.forEach(element => {
+			this.keysWerePressed[element] = false;
 		});
 	}
 
@@ -44,27 +49,46 @@ class Input
 		let direction: number;
 
 		// keyboard input (wasd, zqsd)
-		x += (_input._keyValues["arrowleft"]  || _input._keyValues["a"] || _input._keyValues["q"]) ? -1 : 0;
-		x += (_input._keyValues["arrowright"] || _input._keyValues["d"]							) ? +1 : 0;
-		y += (_input._keyValues["arrowup"]	|| _input._keyValues["w"] || _input._keyValues["z"]) ? -1 : 0;
-		y += (_input._keyValues["arrowdown"]  || _input._keyValues["s"]							) ? +1 : 0;
+		x += (_input.keysPressed["arrowleft"]  || _input.keysPressed["a"] || _input.keysPressed["q"]) ? -1 : 0;
+		x += (_input.keysPressed["arrowright"] || _input.keysPressed["d"]							) ? +1 : 0;
+		y += (_input.keysPressed["arrowup"]	|| _input.keysPressed["w"] || _input.keysPressed["z"]) ? -1 : 0;
+		y += (_input.keysPressed["arrowdown"]  || _input.keysPressed["s"]							) ? +1 : 0;
 
-		// TODO: gamepad input
+		// gamepad
+		let a = navigator.getGamepads()
+		if (a.length > 0 && a[0])
+		{
+			if (round2(a[0].axes[0]) || round2(a[0].axes[1]) || a[0].buttons[0].pressed || a[0].buttons[1].pressed)
+			{
+				if (a[0].id.match(/xbox|x-box|xinput|45e/i))
+				{
+					this.xboxGamepadUsedTick = _game.ticks;
+				}
+				else
+				{
+					this.psGamepadUsedTick = _game.ticks;
+				}
+
+				x += a[0].axes[0];
+				y += a[0].axes[1];
+			}
+
+		}
+
 
 		// clamp to the valid range
 		x = clamp(-1, 1, x);
 		y = clamp(-1, 1, y);
 
 		// handle dead zones
-		if (Math.abs(x) < 0.5)
+		if (round2(x) == 0 && round2(y) == 0)
 		{
 			x = 0;
-		}
-
-		if (Math.abs(y) < 0.5)
-		{
 			y = 0;
 		}
+
+		// x = round2(x);
+		// y = round2(y);
 
 		// ...
 		speed = clamp(0, 1, Math.abs(x) + Math.abs(y));
@@ -75,8 +99,8 @@ class Input
 
 	start()
 	{
-		this._validKeys.forEach(element => {
-			this._keyValues[element] = false;
+		this.validKeys.forEach(element => {
+			this.keysPressed[element] = false;
 		});
 
 		this.clearPressedKeys();

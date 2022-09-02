@@ -19,6 +19,25 @@ class Game
 
 		this.playerObject.velocity.x = lerp(this.playerObject.velocity.x, Math.cos(a.direction) * a.speed * this.maxSpeed, 0.3);
 		this.playerObject.velocity.y = lerp(this.playerObject.velocity.y, Math.sin(a.direction) * a.speed * this.maxSpeed, 0.3);
+
+		if (_input.xboxGamepadUsedTick > _input.keyboardUsedTick && _input.xboxGamepadUsedTick > _input.psGamepadUsedTick)
+		{
+			document.body.classList.remove('ah');
+			document.body.classList.add('ag');
+			document.body.classList.remove('ak');
+		}
+		else if (_input.psGamepadUsedTick > _input.keyboardUsedTick && _input.psGamepadUsedTick > _input.xboxGamepadUsedTick)
+		{
+			document.body.classList.add('ah');
+			document.body.classList.remove('ag');
+			document.body.classList.remove('ak');
+		}
+		else if (_input.keyboardUsedTick > _input.psGamepadUsedTick && _input.keyboardUsedTick > _input.xboxGamepadUsedTick)
+		{
+			document.body.classList.remove('ah');
+			document.body.classList.remove('ag');
+			document.body.classList.add('ak');
+		}
 	}
 
 	sortObjects()

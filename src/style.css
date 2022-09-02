@@ -162,7 +162,7 @@ body
 	background: #222;
 	border-radius: 0.5rem;
 	border: 0.25rem solid #444;
-	padding: 0.25rem;
+	padding: 0.5rem;
 	bottom: 1em;
 	width: 30vw;
 	left: 35vw;
@@ -203,4 +203,21 @@ body
 	animation: dust1 0.4s;
 	position: absolute;
 	z-index: 600;
+}
+
+.g,
+.h,
+.k
+{
+	display: none;
+	border: 0.2em #333 solid;
+	border-radius: 0.2em;
+	background: #333;
+}
+
+body.ag .g,
+body.ah .h,
+body.ak .k
+{
+	display: inline;
 }

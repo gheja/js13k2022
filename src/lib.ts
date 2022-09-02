@@ -15,7 +15,7 @@ function arrayPick(a: Array<any>)
 
 function round2(x: number)
 {
-	return (Math.abs(x) < 0.2) ? 0 : x;
+	return (Math.abs(x) < 0.3) ? 0 : x;
 }
 
 function clamp(min: number, max: number, x: number)
