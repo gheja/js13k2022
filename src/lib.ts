@@ -13,6 +13,11 @@ function arrayPick(a: Array<any>)
 	return a[Math.floor(Math.random() * a.length)];
 }
 
+function round2(x: number)
+{
+	return (Math.abs(x) < 0.2) ? 0 : x;
+}
+
 function clamp(min: number, max: number, x: number)
 {
 	return Math.min(Math.max(x, min), max);
@@ -76,4 +81,17 @@ function addClass(s: string | HTMLElement, className: string)
 function removeClass(s: string | HTMLElement, className: string)
 {
 	(typeof(s) == "string" ? document.getElementById(s) : s).classList.remove(className);
+}
+
+function newElement(parentNode: HTMLElement, tagName: string, className: string): HTMLElement
+{
+	let a = document.createElement(tagName);
+	a.className = className;
+	parentNode.appendChild(a);
+	return a;
+}
+
+function lerp(a: number, b: number, ratio: number)
+{
+	return a + (b - a) * ratio;
 }

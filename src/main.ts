@@ -1,5 +1,6 @@
 let _game: Game;
 let _input: Input;
+let _divLayer: HTMLElement;
 
 function introStart()
 {
@@ -20,6 +21,7 @@ function introStart()
 
 function init()
 {
+	_divLayer = document.getElementById("d");
 	_game = new Game();
 	_input = new Input();
 	_game.start();
