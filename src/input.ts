@@ -1,12 +1,12 @@
 class Input
 {
 	keysPressed: Array<boolean> = Array();
-	keysWerePressed: Array<boolean> = Array();
+	keysJustPressed: Array<boolean> = Array();
 	keyboardUsedTick: number = 0;
 	psGamepadUsedTick: number = 0;
 	xboxGamepadUsedTick: number = 0;
 	gamepadButtonPressed: Array<boolean> = Array(false, false);
-	gamepadButtonWerePressed: Array<boolean> = Array(false, false);
+	gamepadButtonJustPressed: Array<boolean> = Array(false, false);
 
 	actions: Array<any> = [ null, null ];
 	
@@ -43,7 +43,7 @@ class Input
 
 		if (event.type == "keydown")
 		{
-			this.keysWerePressed[a] = true;
+			this.keysJustPressed[a] = true;
 		}
 
 		this.keyboardUsedTick = _game.ticks;
@@ -54,10 +54,10 @@ class Input
 	clearPressedKeys()
 	{
 		this.validKeys.forEach(element => {
-			this.keysWerePressed[element] = false;
+			this.keysJustPressed[element] = false;
 		});
-		this.gamepadButtonWerePressed[0] = false;
-		this.gamepadButtonWerePressed[1] = false;
+		this.gamepadButtonJustPressed[0] = false;
+		this.gamepadButtonJustPressed[1] = false;
 	}
 
 	getSpeedAndDirection()
@@ -69,9 +69,9 @@ class Input
 
 		// keyboard input (wasd, zqsd)
 		x += (this.keysPressed["arrowleft"]  || this.keysPressed["a"] || this.keysPressed["q"]) ? -1 : 0;
-		x += (this.keysPressed["arrowright"] || this.keysPressed["d"]						   ) ? +1 : 0;
+		x += (this.keysPressed["arrowright"] || this.keysPressed["d"]						 ) ? +1 : 0;
 		y += (this.keysPressed["arrowup"]	|| this.keysPressed["w"] || this.keysPressed["z"]) ? -1 : 0;
-		y += (this.keysPressed["arrowdown"]  || this.keysPressed["s"]						   ) ? +1 : 0;
+		y += (this.keysPressed["arrowdown"]  || this.keysPressed["s"]						 ) ? +1 : 0;
 
 		// gamepad
 		let gamepads = navigator.getGamepads()
@@ -99,7 +99,7 @@ class Input
 				{
 					if (!this.gamepadButtonPressed[i])
 					{
-						this.gamepadButtonWerePressed[i] = true;
+						this.gamepadButtonJustPressed[i] = true;
 					}
 					
 					this.gamepadButtonPressed[i] = true;
@@ -134,12 +134,12 @@ class Input
 
 	handleActions()
 	{
-		if ((this.gamepadButtonWerePressed[0] || this.keysWerePressed[" "]) && this.actions[0])
+		if ((this.gamepadButtonJustPressed[0] || this.keysJustPressed[" "]) && this.actions[0])
 		{
 			this.actions[0].call();
 		}
 
-		if ((this.gamepadButtonWerePressed[1] || this.keysWerePressed["x"]) && this.actions[1])
+		if ((this.gamepadButtonJustPressed[1] || this.keysJustPressed["x"]) && this.actions[1])
 		{
 			this.actions[1].call();
 		}
