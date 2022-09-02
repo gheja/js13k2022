@@ -1,7 +1,7 @@
 html
 {
 	font-family: Arial;
-	font-size: 10pt;
+	font-size: 2.5vh;
 }
 
 body
@@ -92,13 +92,13 @@ body
 .speak
 {
 	opacity: 0;
-	border: 1rem solid #333;
+	border: 0.5rem solid #333;
 	width: 60vw;
 	background: #000c;
 	position: fixed;
 	left: 10vw;
 	color: #fff;
-	font-size: 2rem;
+	font-size: 1rem;
 	transition: opacity 0.15s;
 }
 
@@ -109,8 +109,8 @@ body
 
 .portrait
 {
-	width: 10rem;
-	height: 10rem;
+	width: 5rem;
+	height: 5rem;
 	float: left;
 	background: #333;
 }
@@ -118,7 +118,7 @@ body
 .message
 {
 	float: left;
-	padding: 1rem;
+	padding: 0.5rem;
 }
 
 .name
@@ -153,3 +153,18 @@ body
 {
 	color: #eb2436;
 }
+
+#controls
+{
+	font-size: 1rem;
+	position: fixed;
+	color: #fff;
+	background: #222;
+	border-radius: 0.5rem;
+	border: 0.25rem solid #444;
+	padding: 0.25rem;
+	bottom: 1em;
+	width: 30vw;
+	left: 35vw;
+}
+

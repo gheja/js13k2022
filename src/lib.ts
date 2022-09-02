@@ -67,3 +67,13 @@ function st(n)
 		return n + "th";
 	}
 }
+
+function addClass(s: string | HTMLElement, className: string)
+{
+	(typeof(s) == "string" ? document.getElementById(s) : s).classList.add(className);
+}
+
+function removeClass(s: string | HTMLElement, className: string)
+{
+	(typeof(s) == "string" ? document.getElementById(s) : s).classList.remove(className);
+}
