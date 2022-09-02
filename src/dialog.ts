@@ -12,7 +12,7 @@ function dialogShowLine(obj, line)
 	name.innerHTML = _names[line[0]];
 	text.innerHTML = line[2];
 	
-	window.setTimeout(dialogStep, 1000);
+	_input.registerAction(0, "Continue", dialogStep.bind(null));
 }
 
 function dialogEnd()
@@ -21,6 +21,8 @@ function dialogEnd()
 	removeClass("speak2", "speak-visible");
 	removeClass("bar1", "visible");
 	removeClass("bar2", "visible");
+	_input.deregisterAction(0);
+	_input.deregisterAction(1);
 }
 
 function dialogStep()

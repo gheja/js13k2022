@@ -15,6 +15,7 @@ class Game
 	handleInput()
 	{
 		let a = _input.getSpeedAndDirection();
+		_input.handleActions();
 		_input.clearPressedKeys();
 
 		this.playerObject.velocity.x = lerp(this.playerObject.velocity.x, Math.cos(a.direction) * a.speed * this.maxSpeed, 0.3);
@@ -68,5 +69,7 @@ class Game
 	start()
 	{
 		this.onFrame();
+		_input.deregisterAction(0)
+		_input.deregisterAction(1)
 	}
 }

@@ -154,18 +154,22 @@ body
 	color: #eb2436;
 }
 
-#controls
+#a0,
+#a1
 {
+	background: #3334;
+	padding: 0.5em;
 	font-size: 1rem;
 	position: fixed;
-	color: #fff;
-	background: #222;
-	border-radius: 0.5rem;
-	border: 0.25rem solid #444;
-	padding: 0.5rem;
+	color: #bbb;
 	bottom: 1em;
-	width: 30vw;
-	left: 35vw;
+	width: 20vw;
+	left: 28vw;
+}
+
+#a1
+{
+	left: 52vw;
 }
 
 .obj
@@ -213,6 +217,9 @@ body
 	border: 0.2em #333 solid;
 	border-radius: 0.2em;
 	background: #333;
+	color: #fff;
+	margin-right: 0.2em;
+	font-weight: bold;
 }
 
 body.ag .g,
@@ -220,4 +227,23 @@ body.ah .h,
 body.ak .k
 {
 	display: inline;
+}
+
+.g1
+{
+	background: #0c2;
+	border-color: #0c2;
+}
+.g2
+{
+	background: #c00;
+	border-color: #c00;
+}
+.h1
+{
+	color: #9ae;
+}
+.h2
+{
+	color: #f66;
 }
