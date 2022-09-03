@@ -3,6 +3,10 @@ let _input: Input;
 let _divLayer: HTMLElement;
 let _sprites: HTMLImageElement;
 
+let _padX = 0;
+let _padY = 0;
+let _zoom = 4;
+
 function introStart()
 {
 	addClass(getObject("bar1"), "visible");

@@ -104,11 +104,11 @@ function lerp(a: number, b: number, ratio: number)
 function getSprite(x: number, y: number, width: number, height: number)
 {
 	let canvas = document.createElement("canvas");
-	canvas.width = width * 4;
-	canvas.height = height * 4;
+	canvas.width = _z(width);
+	canvas.height = _z(height);
 	let ctx = canvas.getContext("2d");
 	ctx.imageSmoothingEnabled = false;
-	ctx.drawImage(_sprites, x, y, width, height, 0, 0, width * 4, height * 4);
+	ctx.drawImage(_sprites, x, y, width, height, 0, 0, _z(width), _z(height));
 	return canvas.toDataURL();
 }
 
@@ -117,8 +117,23 @@ function newSpriteDomObject(parentNode: HTMLElement, x: number, y: number, width
 	let obj = document.createElement("div");
 	obj.style.position = "absolute";
 	obj.style.background = "url(" + getSprite(x, y, width, height) + ") no-repeat";
-	obj.style.width = (width * 4) + "px";
-	obj.style.height = (height * 4) + "px";
+	obj.style.width = _z(width) + "px";
+	obj.style.height = _z(height) + "px";
 	parentNode.appendChild(obj);
 	return obj;
+}
+
+function _z(a: number)
+{
+	return a * _zoom;
+}
+
+function _x(x: number)
+{
+	return (x + _padX) * _zoom;
+}
+
+function _y(y: number)
+{
+	return (y + _padY) * _zoom;
 }

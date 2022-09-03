@@ -2,7 +2,7 @@ class Game
 {
 	ticks: number;
 	time: number;
-	maxSpeed: number = 200;
+	maxSpeed: number = 50;
 	playerObject: GameObjectPlayer;
 	paused: boolean = false;
 	objects: Array<GameObject>;

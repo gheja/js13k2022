@@ -28,7 +28,7 @@ class GameObject
 	update()
 	{
 		this.updateSprite();
-		this.domObject.style.left = this.position.x + "px";
-		this.domObject.style.top = this.position.y + "px";
+		this.domObject.style.left = _x(this.position.x) + "px";
+		this.domObject.style.top = _y(this.position.y) + "px";
 	}
 }
