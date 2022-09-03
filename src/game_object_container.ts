@@ -4,7 +4,7 @@ class GameObjectContainer extends GameObject
 
     constructor(position: Vec2D)
     {
-        super("", position);
+        super(position);
         this.domObject2 = newSpriteDomObject(this.domObject, 0, 18, 10, 10);
     }
 }

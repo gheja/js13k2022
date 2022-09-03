@@ -176,17 +176,10 @@ body
 	left: 52vw;
 }
 
-.obj
+.o
 {
 	position: absolute;
-}
-
-.obj-player
-{
-	width: 40px;
-	height: 72px;
 	transition: transform 0.1s;
-	z-index: 666;
 }
 
 .player-body-front

@@ -3,10 +3,11 @@ class GameObject
 	position: Vec2D;
 	velocity: Vec2D;
 	domObject: HTMLElement;
+	interactable: boolean = false;
 
-	constructor(className: string, position: Vec2D)
+	constructor(position: Vec2D)
 	{
-		this.domObject = newElement(_divLayer, "div", "obj obj-" + className);
+		this.domObject = newElement(_divLayer, "div", "o");
 		this.position = new Vec2D();
 		this.position.copyFrom(position);
 		this.velocity = new Vec2D();

@@ -10,8 +10,10 @@ class GameObjectPlayer extends GameObject
 	
 	constructor(position: Vec2D)
 	{
-		super("player", position)
+		super(position);
 
+		this.domObject.style.width = (10 * 4) + "px";
+		this.domObject.style.height = (18 * 4) + "px";
 		this.domObjectBodyFront = newSpriteDomObject(this.domObject, 10, 0, 10, 18)
 		this.domObjectBodyBack = newSpriteDomObject(this.domObject, 20, 0, 10, 18)
 	}
