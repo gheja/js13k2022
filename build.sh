@@ -1,6 +1,6 @@
 #!/bin/bash
 
-name="js13k2021"
+name="js13k2022"
 tmp=`readlink -f "$0"`
 dir=`dirname $tmp`
 source_dir="${dir}/src"
@@ -211,7 +211,7 @@ cat index.min.html | sed \
 _title "Creating ZIP files..."
 
 try zip -9 ${zip_prefix}.zip index.html
-try zip -9 ${zip_prefix}_twemoji.zip index.html twemoji.ttf
+# try zip -9 ${zip_prefix}_twemoji.zip index.html twemoji.ttf
 
 size2_html=`get_size index.min.html`
 size2_javascript=`get_size min.js`
