@@ -73,14 +73,14 @@ function st(n)
 	}
 }
 
-function addClass(s: string | HTMLElement, className: string)
+function addClass(obj: HTMLElement, className: string)
 {
-	(typeof(s) == "string" ? document.getElementById(s) : s).classList.add(className);
+	obj.classList.add(className);
 }
 
-function removeClass(s: string | HTMLElement, className: string)
+function removeClass(obj: HTMLElement, className: string)
 {
-	(typeof(s) == "string" ? document.getElementById(s) : s).classList.remove(className);
+	obj.classList.remove(className);
 }
 
 function newElement(parentNode: HTMLElement, tagName: string, className: string): HTMLElement
@@ -91,7 +91,34 @@ function newElement(parentNode: HTMLElement, tagName: string, className: string)
 	return a;
 }
 
+function getObject(name: string)
+{
+	return document.getElementById(name);
+}
+
 function lerp(a: number, b: number, ratio: number)
 {
 	return a + (b - a) * ratio;
+}
+
+function getSprite(x: number, y: number, width: number, height: number)
+{
+	let canvas = document.createElement("canvas");
+	canvas.width = width * 4;
+	canvas.height = height * 4;
+	let ctx = canvas.getContext("2d");
+	ctx.imageSmoothingEnabled = false;
+	ctx.drawImage(_sprites, x, y, width, height, 0, 0, width * 4, height * 4);
+	return canvas.toDataURL();
+}
+
+function newSpriteDomObject(parentNode: HTMLElement, x: number, y: number, width: number, height: number)
+{
+	let obj = document.createElement("div");
+	obj.style.position = "absolute";
+	obj.style.background = "url(" + getSprite(x, y, width, height) + ") no-repeat";
+	obj.style.width = (width * 4) + "px";
+	obj.style.height = (height * 4) + "px";
+	parentNode.appendChild(obj);
+	return obj;
 }

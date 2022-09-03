@@ -17,12 +17,14 @@ function dialogShowLine(obj, line)
 
 function dialogEnd()
 {
-	removeClass("speak1", "speak-visible");
-	removeClass("speak2", "speak-visible");
-	removeClass("bar1", "visible");
-	removeClass("bar2", "visible");
+	removeClass(getObject("speak1"), "speak-visible");
+	removeClass(getObject("speak2"), "speak-visible");
+	removeClass(getObject("bar1"), "visible");
+	removeClass(getObject("bar2"), "visible");
+
 	_input.deregisterAction(0);
 	_input.deregisterAction(1);
+	_game.unpause();
 }
 
 function dialogStep()
@@ -30,11 +32,11 @@ function dialogStep()
 	if (_dialogIndex >= _dialog.length)
 	{
 		dialogEnd();
-		return
+		return;
 	}
 	
 	let line = _dialog[_dialogIndex];
-	let obj = document.getElementById("speak" + line[1]);
+	let obj = getObject("speak" + line[1]);
 	
 	removeClass(obj, "speak-visible");
 	window.setTimeout(dialogShowLine.bind(this, obj, line), 200);
@@ -46,6 +48,7 @@ function dialogStart(dialog)
 {
 	_dialog = dialog;
 	_dialogIndex = 0;
+	_game.pause();
 	
 	dialogStep();
 }

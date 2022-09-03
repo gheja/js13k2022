@@ -1,6 +1,7 @@
 class GameObjectPlayer extends GameObject
 {
-	domObjectBody: HTMLElement;
+	domObjectBodyFront: HTMLElement;
+	domObjectBodyBack: HTMLElement;
 	domObjectEyes: HTMLElement;
 	domObjectHands: HTMLElement;
 	domObjectGrabBox: HTMLElement;
@@ -10,7 +11,9 @@ class GameObjectPlayer extends GameObject
 	constructor(position: Vec2D)
 	{
 		super("player", position)
-		this.domObjectBody = newElement(this.domObject, "div", "")
+
+		this.domObjectBodyFront = newSpriteDomObject(this.domObject, 10, 0, 10, 18)
+		this.domObjectBodyBack = newSpriteDomObject(this.domObject, 10, 0, 20, 18)
 	}
 
 	updateSprite()
@@ -21,11 +24,13 @@ class GameObjectPlayer extends GameObject
 
 		if ((this.velocity.y < -2) && moving)
 		{
-			this.domObjectBody.className = "player-body-back";
+			this.domObjectBodyFront.style.display = "none";
+			this.domObjectBodyBack.style.display = "block";
 		}
 		else
 		{
-			this.domObjectBody.className = "player-body-front";
+			this.domObjectBodyFront.style.display = "block";
+			this.domObjectBodyBack.style.display = "none";
 		}
 
 		if (_game.ticks % 20 == 0)

@@ -4,6 +4,7 @@ class Game
 	time: number;
 	maxSpeed: number = 200;
 	playerObject: GameObjectPlayer;
+	paused: boolean = false;
 
 	constructor()
 	{
@@ -43,7 +44,7 @@ class Game
 
 	sortObjects()
 	{
-		_divLayer.querySelectorAll("div").forEach((element: HTMLElement) => {
+		(_divLayer.querySelectorAll("div") as any as Array<HTMLElement>).forEach((element: HTMLElement) => {
 			element.style.zIndex = Math.floor(element.offsetTop).toString();
 		})
 	}
@@ -59,11 +60,24 @@ class Game
 		this.time += 1000/60;
 
 		this.handleInput();
-		this.playerObject.moveAndSlide(1000/60);
-		this.playerObject.update();
-		// this.sortObjects();
+		if (!this.paused)
+		{
+			this.playerObject.moveAndSlide(1000/60);
+			this.playerObject.update();
+			// this.sortObjects();
+		}
 
 		window.requestAnimationFrame(this.onFrame.bind(this));
+	}
+
+	pause()
+	{
+		this.paused = true;
+	}
+
+	unpause()
+	{
+		this.paused = false;
 	}
 
 	start()

@@ -1,11 +1,12 @@
 let _game: Game;
 let _input: Input;
 let _divLayer: HTMLElement;
+let _sprites: HTMLImageElement;
 
 function introStart()
 {
-	addClass("bar1", "visible");
-	addClass("bar2", "visible");
+	addClass(getObject("bar1"), "visible");
+	addClass(getObject("bar2"), "visible");
 	
 	dialogStart([
 		[ 2, 2, "*ring-ring*" ],
@@ -19,14 +20,21 @@ function introStart()
 	]);
 }
 
-function init()
+function onSpritesLoaded()
 {
-	_divLayer = document.getElementById("d");
 	_game = new Game();
 	_input = new Input();
 	_game.start();
 	_input.start();
 	window.setTimeout(introStart, 1000);
+}
+
+function init()
+{
+	_sprites = new Image();
+	_sprites.addEventListener("load", onSpritesLoaded);
+	_sprites.src = GFX_SPRITES;
+	_divLayer = getObject("d");
 }
 
 window.addEventListener("load", init);
