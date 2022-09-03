@@ -25,11 +25,11 @@ class GameObjectPlayer extends GameObject
 		if ((this.velocity.y < -2) && moving)
 		{
 			this.domObjectBodyFront.style.display = "none";
-			this.domObjectBodyBack.style.display = "block";
+			this.domObjectBodyBack.style.display = "";
 		}
 		else
 		{
-			this.domObjectBodyFront.style.display = "block";
+			this.domObjectBodyFront.style.display = "";
 			this.domObjectBodyBack.style.display = "none";
 		}
 
