@@ -60,8 +60,9 @@ body
 
 @keyframes dust2
 {
-  0% { opacity: 1; transform: scale(0.5); }
-  100% { opacity: 0; transform: scale(2); }
+	0% { opacity: 0.2; }
+	30% { opacity: 1; }
+	100% { opacity: 0; margin-top: 8px; }
 }
 
 
