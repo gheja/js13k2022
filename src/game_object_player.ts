@@ -13,7 +13,7 @@ class GameObjectPlayer extends GameObject
 		super("player", position)
 
 		this.domObjectBodyFront = newSpriteDomObject(this.domObject, 10, 0, 10, 18)
-		this.domObjectBodyBack = newSpriteDomObject(this.domObject, 10, 0, 20, 18)
+		this.domObjectBodyBack = newSpriteDomObject(this.domObject, 20, 0, 10, 18)
 	}
 
 	updateSprite()
