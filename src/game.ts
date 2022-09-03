@@ -5,10 +5,13 @@ class Game
 	maxSpeed: number = 200;
 	playerObject: GameObjectPlayer;
 	paused: boolean = false;
+	objects: Array<GameObject>;
 
 	constructor()
 	{
+		this.objects = [];
 		this.playerObject = new GameObjectPlayer(new Vec2D(100, 100));
+		this.objects.push(new GameObjectContainer(new Vec2D(180, 100)));
 		this.ticks = 0;
 		this.time = 0;
 	}
@@ -64,6 +67,7 @@ class Game
 		{
 			this.playerObject.moveAndSlide(1000/60);
 			this.playerObject.update();
+			this.objects[0].update();
 			// this.sortObjects();
 		}
 
