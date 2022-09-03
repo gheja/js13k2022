@@ -108,7 +108,7 @@ echo "travis_fold:start:npm"
 
 try npm install typescript-closure-compiler google-closure-compiler
 
-echo "travis_fold:start:npm"
+echo "travis_fold:end:npm"
 
 export PATH="${target_dir}/stage1/node_modules/.bin:${PATH}"
 
@@ -238,8 +238,8 @@ mkdir -p "${min_dir}"
 
 cd ${min_dir}
 
-cp ${final_dir}/${zip_prefix}_twemoji.zip ./
-unzip ${zip_prefix}_twemoji.zip
+# cp ${final_dir}/${zip_prefix}_twemoji.zip ./
+# unzip ${zip_prefix}_twemoji.zip
 
 
 _title "Some stats"
