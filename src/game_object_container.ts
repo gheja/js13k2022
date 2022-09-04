@@ -4,6 +4,7 @@ class GameObjectContainer extends GameObject
     domObjectFire: HTMLElement;
     animationFrame: number;
     isOnFire: boolean = false;
+    cookedForTicks: number;
 
     constructor(position: Vec2D)
     {
