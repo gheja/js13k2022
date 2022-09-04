@@ -12,8 +12,7 @@ class Game
 
 	constructor()
 	{
-		this.objects = [];
-		this.playerObject = new GameObjectPlayer(new Vec2D(0, 0));
+		this.objects = [new GameObjectPlayer(new Vec2D(0, 0))];
 
 		this.objects.push(new GameObjectContainer(new Vec2D(0, 0)));
 		this.objects.push(new GameObjectSlot(new Vec2D(50, 50)));
@@ -28,6 +27,8 @@ class Game
 
 		this.ticks = 0;
 		this.time = 0;
+
+		this.playerObject = (this.objects[0] as GameObjectPlayer);
 
 		(this.objects[1] as GameObjectContainer).isOnFire = true;
 	}
@@ -147,9 +148,7 @@ class Game
 		this.handleInput();
 		if (!this.paused)
 		{
-			this.playerObject.moveAndSlide(delta);
-			this.playerObject.update();
-			this.objects.forEach(element => element.update());
+			this.objects.forEach((element) => { element.update(); element.moveAndSlide(delta); });
 			// this.sortObjects();
 
 			// TODO: check this alignment
