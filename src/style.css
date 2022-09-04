@@ -9,6 +9,11 @@ body
 	background: #150f1d;
 }
 
+*
+{
+	image-rendering: pixelated;
+}
+
 #c
 {
 	width: 640px;

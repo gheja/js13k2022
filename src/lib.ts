@@ -107,7 +107,7 @@ function getSprite(x: number, y: number, width: number, height: number)
 	canvas.width = _z(width);
 	canvas.height = _z(height);
 	let ctx = canvas.getContext("2d");
-	// ctx.imageSmoothingEnabled = false;
+	ctx.imageSmoothingEnabled = false;
 	ctx.drawImage(_sprites, x, y, width, height, 0, 0, _z(width), _z(height));
 	return canvas.toDataURL();
 }
