@@ -32,7 +32,7 @@ function onSpritesLoaded()
 	_input = new Input();
 	_game.start();
 	_input.start();
-	// window.setTimeout(introStart, 1000);
+	window.setTimeout(introStart, 1000);
 }
 
 function init()
