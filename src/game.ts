@@ -9,6 +9,7 @@ class Game
 	grabbedObject: GameObject;
 	nearestGrabSlot: GameObjectSlot;
 	nearestDropSlot: GameObjectSlot;
+	_lastDescription: string = "";
 
 	constructor()
 	{
@@ -72,6 +73,51 @@ class Game
 	tick()
 	{
 
+	}
+
+	updateDescription()
+	{
+		let description: string = "";
+
+		if (this.grabbedObject)
+		{
+			description += this.grabbedObject.getDescription();
+		}
+
+		// TODO: optimize this
+		if (this.nearestDropSlot)
+		{
+			description += "Drop target:<br/>";
+			if (this.nearestDropSlot.occupiedBy)
+			{
+				description += this.nearestDropSlot.occupiedBy.getDescription();
+			}
+			else
+			{
+				description += this.nearestDropSlot.getDescription();
+			}
+		}
+		else if (this.nearestGrabSlot)
+		{
+			description += "In front of you:<br/>";
+			if (this.nearestGrabSlot.occupiedBy)
+			{
+				description += this.nearestGrabSlot.occupiedBy.getDescription();
+			}
+			else
+			{
+				description += this.nearestGrabSlot.getDescription();
+			}
+		}
+
+		// the browser might modify this after setting so save the latest value
+		// to prevent updating every frame
+		if (this._lastDescription != description)
+		{
+			getObject("description").style.display = (description == "" ? "none" : "");
+			getObject("description").innerHTML = description;
+			this._lastDescription = description;
+		}
 	}
 
 	updateGrabDropTargets()
@@ -159,6 +205,7 @@ class Game
 
 			this.updateGrabDropTargets();
 			this.updateActions();
+			this.updateDescription();
 		}
 
 		window.requestAnimationFrame(this.onFrame.bind(this));

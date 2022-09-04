@@ -8,6 +8,8 @@ class GameObject
 	width: number;
 	height: number;
 	highlighted: boolean = false;
+	name: string = "(unknown)";
+	description: string = "(need to fill this)";
 
 	constructor(position: Vec2D, width: number, height: number)
 	{
@@ -20,6 +22,11 @@ class GameObject
 
 		this.width = width;
 		this.height = height;
+	}
+
+	getDescription()
+	{
+		return "<b>" + this.name + "</b><br/>" + this.description + "<br/>";
 	}
 
 	moveAndSlide(delta: number)

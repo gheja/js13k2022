@@ -164,14 +164,29 @@ body
 }
 
 #a0,
-#a1
+#a1,
+#description
 {
 	background: #1119;
 	padding: 0.5em;
 	font-size: 1rem;
 	position: fixed;
 	color: #bbb;
-	bottom: 1em;
+}
+
+#description
+{
+	font-size: 0.75rem;
+	left: 20vw;
+	right: 20vw;
+	/* bottom: 4.25rem; */
+	top: 1rem;
+}
+
+#a0,
+#a1
+{
+	bottom: 1rem;
 	width: 20vw;
 	left: 28vw;
 }
