@@ -11,6 +11,18 @@ class GameObjectContainer extends GameObject
         this.domObject2 = newSpriteDomObject(this.domObject, 0, 18, 10, 10);
         this.domObjectFire = newSpriteDomObject(this.domObject, 0, 0, 10, 10);
         this.animationFrame = Math.floor(Math.random() * 5000);
+        this.reset();
+    }
+
+    reset()
+    {
+        this.childObjects = [];
+        this.cookedForTicks = 0;
+    }
+
+    onGrabbed()
+    {
+        this.isOnFire = false;
     }
 
     updateSprite()

@@ -45,8 +45,14 @@ class GameObject
     giveToPlayer()
     {
         _game.grabbedObject = this.childObjects[0];
+		this.childObjects[0].onGrabbed();
         this.childObjects.pop();
     }
+
+	onGrabbed()
+	{
+
+	}
 
 	getDescription()
 	{
