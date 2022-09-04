@@ -166,7 +166,7 @@ body
 #a0,
 #a1
 {
-	background: #3334;
+	background: #1119;
 	padding: 0.5em;
 	font-size: 1rem;
 	position: fixed;
@@ -184,9 +184,14 @@ body
 #d
 {
 	position: absolute;
-	transform-style: preserve-3d;
 	width: 200px;
 	height: 120px;
+}
+
+#d,
+#d *
+{
+	transform-style: preserve-3d;
 }
 
 .floor

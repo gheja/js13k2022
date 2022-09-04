@@ -18,7 +18,7 @@ class GameObjectPlayer extends GameObject
 		this.domObjectBodyFront = newSpriteDomObject(this.domObject, 10, 0, 10, 18)
 		this.domObjectBodyBack = newSpriteDomObject(this.domObject, 20, 0, 10, 18)
 		this.domObjectShadow = newSpriteDomObject(this.domObject, 40, 18, 10, 10)
-		this.domObjectShadow.style.transform = "translateY(" + _z(12) + "px) rotateX(75deg)";
+		this.domObjectShadow.style.transform = "translateY(" + _z(12) + "px) rotateX(90deg)";
 		this.domObjectShadow.style.opacity = "0.5";
 	}
 

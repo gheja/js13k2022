@@ -143,7 +143,7 @@ class Game
 		this.ticks += 1;
 		this.time += delta;
 
-		let scale = window.innerHeight / 1080;
+		let scale = (window.innerHeight / 1080) * 1.2;
 
 		this.handleInput();
 		if (!this.paused)
@@ -152,7 +152,7 @@ class Game
 			// this.sortObjects();
 
 			// TODO: check this alignment
-			_divLayer.style.transform = "scale(" + scale + ") perspective(800px) translateY(150px)";
+			_divLayer.style.transform = "scale(" + scale + ") perspective(800px) translateY(200px)";
 			_divLayer.style.left = (window.innerWidth / 2 - _z(_floorWidth) / 2) + "px";
 
 			_divLayer.style.transformOrigin = (_floorWidth * 0.5 + this.playerObject.position.x) + "px " + (this.playerObject.position.y * 0.5) + "px";
