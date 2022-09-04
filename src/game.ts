@@ -13,18 +13,22 @@ class Game
 
 	constructor()
 	{
-		this.objects = [new GameObjectPlayer(new Vec2D(0, 0))];
+		this.objects = [new GameObjectPlayer(new Vec2D(100, 20))];
 
 		this.objects.push(new GameObjectContainer(new Vec2D(0, 0)));
 		this.objects.push(new GameObjectSlot(new Vec2D(50, 50)));
 		(this.objects[this.objects.length - 1] as GameObjectSlot).catch(this.objects[this.objects.length - 2]);
 
-		this.objects.push(new GameObjectContainer(new Vec2D(0, 50)));
+		this.objects.push(new GameObjectContainer(new Vec2D(0, 0)));
 		this.objects.push(new GameObjectSlot(new Vec2D(100, 50)));
 		(this.objects[this.objects.length - 1] as GameObjectSlot).catch(this.objects[this.objects.length - 2]);
 
 		this.objects.push(new GameObjectSlot(new Vec2D(150, 50)));
 		this.objects.push(new GameObjectSlot(new Vec2D(150, 100)));
+
+		this.objects.push(new GameObjectMeat(new Vec2D(0, 0)));
+		this.objects.push(new GameObjectSlot(new Vec2D(20, 20)));
+		(this.objects[this.objects.length - 1] as GameObjectSlot).catch(this.objects[this.objects.length - 2]);
 
 		this.ticks = 0;
 		this.time = 0;
