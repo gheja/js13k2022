@@ -92,9 +92,9 @@ class Game
 		if (this.nearestDropSlot)
 		{
 			description += "Drop target:<br/>";
-			if (this.nearestDropSlot.occupiedBy)
+			if (this.nearestDropSlot.childObjects.length != 0)
 			{
-				description += this.nearestDropSlot.occupiedBy.getDescription();
+				description += this.nearestDropSlot.childObjects[0].getDescription();
 			}
 			else
 			{
@@ -104,9 +104,9 @@ class Game
 		else if (this.nearestGrabSlot)
 		{
 			description += "In front of you:<br/>";
-			if (this.nearestGrabSlot.occupiedBy)
+			if (this.nearestGrabSlot.childObjects.length != 0)
 			{
-				description += this.nearestGrabSlot.occupiedBy.getDescription();
+				description += this.nearestGrabSlot.childObjects[0].getDescription();
 			}
 			else
 			{
@@ -141,7 +141,7 @@ class Game
 			{
 				b = dist2d(a.position, this.playerObject.position);
 
-				if (a.occupiedBy)
+				if (a.childObjects.length != 0)
 				{
 					if (b < grabDistanceMin)
 					{
@@ -169,9 +169,9 @@ class Game
 		{
 			this.nearestGrabSlot = grabSlot;
 			this.nearestGrabSlot.highlighted = true;
-			if (this.nearestGrabSlot.occupiedBy)
+			if (this.nearestGrabSlot.childObjects.length != 0)
 			{
-				this.nearestGrabSlot.occupiedBy.highlighted = true;
+				this.nearestGrabSlot.childObjects[0].highlighted = true;
 			}
 		}
 
@@ -179,9 +179,9 @@ class Game
 		{
 			this.nearestDropSlot = dropSlot;
 			this.nearestDropSlot.highlighted = true;
-			if (this.nearestDropSlot.occupiedBy)
+			if (this.nearestDropSlot.childObjects.length != 0)
 			{
-				this.nearestDropSlot.occupiedBy.highlighted = true;
+				this.nearestDropSlot.childObjects[0].highlighted = true;
 			}
 		}
 	}

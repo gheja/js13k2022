@@ -1,7 +1,6 @@
 class GameObjectSlot extends GameObject
 {
     domObject2: HTMLElement;
-    occupiedBy: GameObject = null;
 
     constructor(position: Vec2D)
     {
@@ -12,18 +11,18 @@ class GameObjectSlot extends GameObject
 
     catch(obj: GameObject)
     {
-        this.occupiedBy = obj;
+        this.childObjects.push(obj);
         obj.position.copyFrom(this.position);
     }
 
     giveToPlayer()
     {
-        _game.grabbedObject = this.occupiedBy;
-        this.occupiedBy = null;
+        _game.grabbedObject = this.childObjects[0];
+        this.childObjects.pop();
     }
 
     updateSprite()
     {
-        this.domObject.style.display = (!this.occupiedBy ? "" : "none");
+        this.domObject.style.display = (this.childObjects.length != 0 ? "none" : "");
     }
 }

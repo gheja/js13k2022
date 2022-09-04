@@ -10,6 +10,7 @@ class GameObject
 	highlighted: boolean = false;
 	name: string;
 	description: string;
+	childObjects: Array<GameObject> = [];
 
 	constructor(position: Vec2D, width: number, height: number, name: string, description: string)
 	{
