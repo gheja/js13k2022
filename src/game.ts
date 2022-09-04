@@ -6,19 +6,29 @@ class Game
 	playerObject: GameObjectPlayer;
 	paused: boolean = false;
 	objects: Array<GameObject>;
+	grabbedObject: GameObject;
+	nearestGrabSlot: GameObjectSlot;
+	nearestDropSlot: GameObjectSlot;
 
 	constructor()
 	{
 		this.objects = [];
 		this.playerObject = new GameObjectPlayer(new Vec2D(0, 0));
+
 		this.objects.push(new GameObjectContainer(new Vec2D(0, 0)));
-		this.objects.push(new GameObjectContainer(new Vec2D(0, 50)));
 		this.objects.push(new GameObjectSlot(new Vec2D(50, 50)));
+		(this.objects[this.objects.length - 1] as GameObjectSlot).catch(this.objects[this.objects.length - 2]);
+
+		this.objects.push(new GameObjectContainer(new Vec2D(0, 50)));
 		this.objects.push(new GameObjectSlot(new Vec2D(100, 50)));
+		(this.objects[this.objects.length - 1] as GameObjectSlot).catch(this.objects[this.objects.length - 2]);
+
+		this.objects.push(new GameObjectSlot(new Vec2D(150, 50)));
+		this.objects.push(new GameObjectSlot(new Vec2D(150, 100)));
+
 		this.ticks = 0;
 		this.time = 0;
 
-		this.objects[0].grabbed = true;
 		(this.objects[1] as GameObjectContainer).isOnFire = true;
 	}
 
@@ -63,6 +73,68 @@ class Game
 
 	}
 
+	updateGrabDropTargets()
+	{
+		let a: GameObject;
+		let b: number;
+		let grabSlot: GameObjectSlot;
+		let grabDistanceMin: number = 9999;
+		let dropSlot: GameObjectSlot;
+		let dropDistanceMin: number = 9999;
+
+		for (a of this.objects)
+		{
+			a.highlighted = false;
+
+			if (a instanceof GameObjectSlot)
+			{
+				b = dist2d(a.position, this.playerObject.position);
+
+				if (a.occupiedBy)
+				{
+					if (b < grabDistanceMin)
+					{
+						grabDistanceMin = b;
+						grabSlot = a;
+					}
+				}
+				else
+				{
+					if (b < dropDistanceMin)
+					{
+						dropDistanceMin = b;
+						dropSlot = a;
+					}
+				}
+			}
+		}
+
+		this.nearestGrabSlot = null;
+		this.nearestDropSlot = null;
+
+		// TODO: only highlight when interactable
+
+		if (grabDistanceMin <= MAX_GRAB_DISTANCE)
+		{
+			this.nearestGrabSlot = grabSlot;
+			this.nearestGrabSlot.highlighted = true;
+			if (this.nearestGrabSlot.occupiedBy)
+			{
+				this.nearestGrabSlot.occupiedBy.highlighted = true;
+			}
+		}
+
+		if (dropDistanceMin <= MAX_DROP_DISTANCE)
+		{
+			this.nearestDropSlot = dropSlot;
+			this.nearestDropSlot.highlighted = true;
+			if (this.nearestDropSlot.occupiedBy)
+			{
+				this.nearestDropSlot.occupiedBy.highlighted = true;
+			}
+		}
+	}
+
 	onFrame()
 	{
 		let delta = 1000/60;
@@ -85,6 +157,9 @@ class Game
 			_divLayer.style.left = (window.innerWidth / 2 - _z(_floorWidth) / 2) + "px";
 
 			_divLayer.style.transformOrigin = (_floorWidth * 0.5 + this.playerObject.position.x) + "px " + (this.playerObject.position.y * 0.5) + "px";
+
+			this.updateGrabDropTargets();
+			this.updateActions();
 		}
 
 		window.requestAnimationFrame(this.onFrame.bind(this));
@@ -92,31 +167,27 @@ class Game
 
 	onDropGrabbedObject()
 	{
-		let a: GameObject, b: GameObject;
-
-		for (a of this.objects)
-		{
-			if (a instanceof GameObjectSlot && dist2d(a.position, this.playerObject.position) < 15 && a.objectInSlot === null)
-			{
-				for (b of this.objects)
-				{
-					if (b.grabbed)
-					{
-						b.position.copyFrom(a.position);
-						a.objectInSlot = b;
-						b.grabbed = false;
-					}
-				}
-				break;
-			}
-		}
+		this.nearestDropSlot.catch(this.grabbedObject)
+		this.grabbedObject = null;
 	}
 
-	popUpActions()
+	onGrabObject()
+	{
+		this.nearestGrabSlot.giveToPlayer();
+	}
+
+	updateActions()
 	{
 		_input.deregisterAction(0);
 		_input.deregisterAction(1);
-		_input.registerAction(0, 'Drop', this.onDropGrabbedObject.bind(this));
+		if (this.grabbedObject && this.nearestDropSlot)
+		{
+			_input.registerAction(0, 'Drop', this.onDropGrabbedObject.bind(this));
+		}
+		else if (!this.grabbedObject && this.nearestGrabSlot)
+		{
+			_input.registerAction(0, 'Grab', this.onGrabObject.bind(this));
+		}
 	}
 
 	pause()
@@ -126,7 +197,6 @@ class Game
 
 	unpause()
 	{
-		this.popUpActions();
 		this.paused = false;
 	}
 

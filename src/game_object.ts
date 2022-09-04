@@ -7,8 +7,7 @@ class GameObject
 	domTransformExtra: string = "";
 	width: number;
 	height: number;
-	grabbable: boolean = false;
-	grabbed: boolean = false;
+	highlighted: boolean = false;
 
 	constructor(position: Vec2D, width: number, height: number)
 	{
@@ -35,11 +34,26 @@ class GameObject
 
 	}
 
+	updateHighlight()
+	{
+        if (_game.ticks % 20 < 10)
+        {
+            if (this.highlighted)
+            {
+		        this.domObject.style.opacity = "0.5";
+            }
+        }
+        else
+        {
+		    this.domObject.style.opacity = "1";
+        }
+	}
+
 	update()
 	{
 		let grabbed2 = 0;
 
-		if (this.grabbed)
+		if (_game.grabbedObject == this)
 		{
 			this.position.copyFrom(_game.playerObject.position);
 			this.position.y += 0.2;
@@ -47,6 +61,7 @@ class GameObject
 		}
 
 		this.updateSprite();
+		this.updateHighlight();
 		this.domObject.style.transform = "translateX(" + _z(this.position.x) + "px) translateY(" + _z(_floorHeight / 2 - this.height - grabbed2) + "px) translateZ(" + _z(this.position.y) + "px) " + this.domTransformExtra;
 	}
 }
