@@ -167,12 +167,17 @@ class Game
 
 	onDropGrabbedObject()
 	{
+		_assert(this.grabbedObject);
+		_assert(this.nearestDropSlot);
+		
 		this.nearestDropSlot.catch(this.grabbedObject)
 		this.grabbedObject = null;
 	}
 
 	onGrabObject()
 	{
+		_assert(this.nearestGrabSlot);
+		
 		this.nearestGrabSlot.giveToPlayer();
 	}
 

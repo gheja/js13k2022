@@ -137,3 +137,18 @@ function _y(y: number)
 {
 	return (y + _padY) * _zoom;
 }
+
+// This is for debugging. In the final build it will be an empty function and
+// will be removed by tscc or Google Closure Compiler.
+function _assert(condition: any)
+{
+	if (!IS_PROD_BUILD)
+	{
+		if (!(condition as boolean))
+		{
+			document.body.style.background = "#f00";
+			document.title = "*** Assert failed, check console! ***";
+			throw new Error("Assert failed!");
+		}
+	}
+}

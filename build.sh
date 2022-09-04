@@ -134,6 +134,7 @@ _title "Compiling TypeScript to JavaScript..."
 echo "travis_fold:start:tscc"
 
 cat $files_typescript > merged.ts
+sed -r -i 's/^(const IS_PROD_BUILD).*/\1 = true;/g' merged.ts
 try tscc merged.ts
 
 echo "travis_fold:end:tscc"
