@@ -13,11 +13,13 @@ class Game
 		this.playerObject = new GameObjectPlayer(new Vec2D(0, 0));
 		this.objects.push(new GameObjectContainer(new Vec2D(0, 0)));
 		this.objects.push(new GameObjectContainer(new Vec2D(0, 50)));
-		this.objects.push(new GameObjectContainer(new Vec2D(0, 100)));
-		this.objects.push(new GameObjectContainer(new Vec2D(0, 150)));
-		this.objects.push(new GameObjectContainer(new Vec2D(0, 200)));
+		this.objects.push(new GameObjectSlot(new Vec2D(50, 50)));
+		this.objects.push(new GameObjectSlot(new Vec2D(100, 50)));
 		this.ticks = 0;
 		this.time = 0;
+
+		this.objects[0].grabbed = true;
+		(this.objects[1] as GameObjectContainer).isOnFire = true;
 	}
 
 	handleInput()
@@ -88,6 +90,35 @@ class Game
 		window.requestAnimationFrame(this.onFrame.bind(this));
 	}
 
+	onDropGrabbedObject()
+	{
+		let a: GameObject, b: GameObject;
+
+		for (a of this.objects)
+		{
+			if (a instanceof GameObjectSlot && dist2d(a.position, this.playerObject.position) < 15 && a.objectInSlot === null)
+			{
+				for (b of this.objects)
+				{
+					if (b.grabbed)
+					{
+						b.position.copyFrom(a.position);
+						a.objectInSlot = b;
+						b.grabbed = false;
+					}
+				}
+				break;
+			}
+		}
+	}
+
+	popUpActions()
+	{
+		_input.deregisterAction(0);
+		_input.deregisterAction(1);
+		_input.registerAction(0, 'Drop', this.onDropGrabbedObject.bind(this));
+	}
+
 	pause()
 	{
 		this.paused = true;
@@ -95,6 +126,7 @@ class Game
 
 	unpause()
 	{
+		this.popUpActions();
 		this.paused = false;
 	}
 

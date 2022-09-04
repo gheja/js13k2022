@@ -7,6 +7,8 @@ class GameObject
 	domTransformExtra: string = "";
 	width: number;
 	height: number;
+	grabbable: boolean = false;
+	grabbed: boolean = false;
 
 	constructor(position: Vec2D, width: number, height: number)
 	{
@@ -35,7 +37,16 @@ class GameObject
 
 	update()
 	{
+		let grabbed2 = 0;
+
+		if (this.grabbed)
+		{
+			this.position.copyFrom(_game.playerObject.position);
+			this.position.y += 0.2;
+			grabbed2 = 5;
+		}
+
 		this.updateSprite();
-		this.domObject.style.transform = "translateX(" + _z(this.position.x) + "px) translateY(" + _z(_floorHeight / 2 - this.height) + "px) translateZ(" + _z(this.position.y) + "px) " + this.domTransformExtra;
+		this.domObject.style.transform = "translateX(" + _z(this.position.x) + "px) translateY(" + _z(_floorHeight / 2 - this.height - grabbed2) + "px) translateZ(" + _z(this.position.y) + "px) " + this.domTransformExtra;
 	}
 }
