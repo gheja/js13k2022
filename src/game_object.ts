@@ -8,10 +8,10 @@ class GameObject
 	width: number;
 	height: number;
 	highlighted: boolean = false;
-	name: string = "(unknown)";
-	description: string = "(need to fill this)";
+	name: string;
+	description: string;
 
-	constructor(position: Vec2D, width: number, height: number)
+	constructor(position: Vec2D, width: number, height: number, name: string, description: string)
 	{
 		this.domObject = newElement(_divLayer, "div", "o");
 		this.domObject.style.width = width + "px";
@@ -19,6 +19,8 @@ class GameObject
 		this.position = new Vec2D();
 		this.position.copyFrom(position);
 		this.velocity = new Vec2D();
+		this.name = name;
+		this.description = description;
 
 		this.width = width;
 		this.height = height;

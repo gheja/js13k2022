@@ -11,7 +11,7 @@ class GameObjectPlayer extends GameObject
 	
 	constructor(position: Vec2D)
 	{
-		super(position, 10, 18);
+		super(position, 10, 18, "", "");
 
 		this.domObject.style.width = _z(10) + "px";
 		this.domObject.style.height = _z(18) + "px";
