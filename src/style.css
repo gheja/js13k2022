@@ -178,10 +178,9 @@ body
 
 #d
 {
-	position: fixed;
-	left: 30vw;
+	position: absolute;
 	transform-style: preserve-3d;
-	transform: scale(1) perspective(800px) translateY(150px) rotateX(-20deg);
+/*	transform: scale(1) perspective(800px) translateY(150px); */
 	width: 200px;
 	height: 120px;
 	background: #0005;
@@ -190,10 +189,10 @@ body
 
 .floor
 {
-	position: fixed;
+	position: absolute;
 	top: 0;
 	left: 0;
-	transform: translateZ(-60px) rotateX(90deg) translateY(120px); /* translateZ(_floorHeight / 2) ... translateY(_floorHeight)  */
+	transform: translateZ(-180px) rotateX(90deg) translateY(360px); /* translateZ(_floorHeight / 2 * _zoom) ... translateY(_floorHeight * _zoom)  */
 	opacity: 0.8;
 }
 

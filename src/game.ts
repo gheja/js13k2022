@@ -73,7 +73,12 @@ class Game
 			this.playerObject.update();
 			this.objects.forEach(element => element.update());
 			// this.sortObjects();
-			_divLayer.style.transformOrigin = this.playerObject.position.x + "px " + (-this.playerObject.position.y * 0.5) + "px";
+
+			// TODO: check this alignment
+			_divLayer.style.transform = "scale(" + scale + ") perspective(800px) translateY(150px)";
+			_divLayer.style.left = (window.innerWidth / 2 - _z(_floorWidth) / 2) + "px";
+
+			_divLayer.style.transformOrigin = (_floorWidth * 0.5 + this.playerObject.position.x) + "px " + (this.playerObject.position.y * 0.5) + "px";
 		}
 
 		window.requestAnimationFrame(this.onFrame.bind(this));

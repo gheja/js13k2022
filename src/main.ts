@@ -3,11 +3,12 @@ let _input: Input;
 let _divLayer: HTMLElement;
 let _floorImage: HTMLImageElement;
 let _floorHeight: number = 120;
+let _floorWidth: number = 200;
 let _sprites: HTMLImageElement;
 
 let _padX = 0;
 let _padY = 0;
-let _zoom = 1;
+let _zoom = 3;
 
 function introStart()
 {
@@ -42,6 +43,8 @@ function init()
 	_floorImage = (newElement(_divLayer, "img", "") as HTMLImageElement);
 	_floorImage.className = "floor";
 	_floorImage.src = GFX_FLOOR;
+	_floorImage.width = _z(200);
+	_floorImage.height = _z(120);
 
 	_sprites = new Image();
 	_sprites.addEventListener("load", onSpritesLoaded);
