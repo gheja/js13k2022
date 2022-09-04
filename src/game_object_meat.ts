@@ -1,4 +1,4 @@
-class GameObjectMeat extends GameObject
+class GameObjectMeat extends GameObjectIngredient
 {
     domObject2: HTMLElement;
 
