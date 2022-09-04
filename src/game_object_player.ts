@@ -5,6 +5,7 @@ class GameObjectPlayer extends GameObject
 	domObjectEyes: HTMLElement;
 	domObjectHands: HTMLElement;
 	domObjectGrabBox: HTMLElement;
+	domObjectShadow: HTMLElement;
 	// speed: number;
 	// direction: number;
 	
@@ -16,6 +17,9 @@ class GameObjectPlayer extends GameObject
 		this.domObject.style.height = _z(18) + "px";
 		this.domObjectBodyFront = newSpriteDomObject(this.domObject, 10, 0, 10, 18)
 		this.domObjectBodyBack = newSpriteDomObject(this.domObject, 20, 0, 10, 18)
+		this.domObjectShadow = newSpriteDomObject(this.domObject, 40, 18, 10, 10)
+		this.domObjectShadow.style.transform = "translateY(" + _z(12) + "px) rotateX(75deg)";
+		this.domObjectShadow.style.opacity = "0.5";
 	}
 
 	updateSprite()
