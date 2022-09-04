@@ -133,7 +133,8 @@ _title "Compiling TypeScript to JavaScript..."
 
 echo "travis_fold:start:tscc"
 
-try tscc $files_typescript
+cat $files_typescript > merged.ts
+try tscc merged.ts
 
 echo "travis_fold:end:tscc"
 
@@ -151,7 +152,7 @@ try google-closure-compiler \
 	--formatting SINGLE_QUOTES \
 	--externs externs.js \
 	--js_output_file min_pretty.js \
-	$files_javascript_3rdparty $files_javascript
+	$files_javascript_3rdparty merged.js
 
 echo "travis_fold:end:closure-compiler-1"
 
