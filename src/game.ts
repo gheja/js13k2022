@@ -146,7 +146,6 @@ class Game
 			b = dist2d(a.position, this.playerObject.position);
 			canDropHere = true;
 			
-			
 			if (this.grabbedObject)
 			{
 				if (a.childObjects.length != 0)
