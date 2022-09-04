@@ -132,30 +132,42 @@ class Game
 		let grabDistanceMin: number = 9999;
 		let dropSlot: GameObjectSlot;
 		let dropDistanceMin: number = 9999;
+		let canDropHere: boolean;
 
 		for (a of this.objects)
 		{
 			a.highlighted = false;
 
-			if (a instanceof GameObjectSlot)
+			if (!(a instanceof GameObjectSlot))
 			{
-				b = dist2d(a.position, this.playerObject.position);
+				continue;
+			}
 
-				if (a.childObjects.length != 0)
+			b = dist2d(a.position, this.playerObject.position);
+			canDropHere = true;
+			
+			if (this.grabbedObject && this.grabbedObject instanceof GameObjectIngredient)
+			{
+				if (a.childObjects.length != 0 && ! (a.childObjects[0] instanceof GameObjectContainer))
 				{
-					if (b < grabDistanceMin)
-					{
-						grabDistanceMin = b;
-						grabSlot = a;
-					}
+					canDropHere = false;
 				}
-				else
+			}
+
+			if (a.childObjects.length != 0 && !this.grabbedObject)
+			{
+				if (b < grabDistanceMin)
 				{
-					if (b < dropDistanceMin)
-					{
-						dropDistanceMin = b;
-						dropSlot = a;
-					}
+					grabDistanceMin = b;
+					grabSlot = a;
+				}
+			}
+			else
+			{
+				if (canDropHere && b < dropDistanceMin)
+				{
+					dropDistanceMin = b;
+					dropSlot = a;
 				}
 			}
 		}
@@ -198,7 +210,7 @@ class Game
 		this.handleInput();
 		if (!this.paused)
 		{
-			this.objects.forEach((element) => { element.update(); element.moveAndSlide(delta); });
+			this.objects.forEach((element) => { element.update(); element.moveAndSlide(delta); element.updateChildObjectsPosition(); });
 			// this.sortObjects();
 
 			// TODO: check this alignment

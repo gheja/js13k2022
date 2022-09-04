@@ -27,6 +27,27 @@ class GameObject
 		this.height = height;
 	}
 
+	catch(obj: GameObject)
+    {
+		// if this already has an object and it is a container then give the
+		// "obj" to that container
+		if (this.childObjects.length != 0 && this.childObjects[0] instanceof GameObjectContainer)
+		{
+			this.childObjects[0].catch(obj);
+		}
+		else
+		{
+			this.childObjects.push(obj);
+			obj.position.copyFrom(this.position);
+		}
+    }
+
+    giveToPlayer()
+    {
+        _game.grabbedObject = this.childObjects[0];
+        this.childObjects.pop();
+    }
+
 	getDescription()
 	{
 		return "<b>" + this.name + "</b><br/>" + this.description + "<br/>";
@@ -37,6 +58,14 @@ class GameObject
 		// hello godot
 		this.position.x += this.velocity.x * (delta/1000);
 		this.position.y += this.velocity.y * (delta/1000);
+	}
+
+	updateChildObjectsPosition()
+	{
+		this.childObjects.forEach(element => {
+			element.position.copyFrom(this.position)
+			element.updateChildObjectsPosition()
+		});
 	}
 
 	updateSprite()

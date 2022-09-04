@@ -9,18 +9,6 @@ class GameObjectSlot extends GameObject
 		this.domObject2.style.transform = "translateY(" + _z(5) + "px) rotateX(90deg)";
     }
 
-    catch(obj: GameObject)
-    {
-        this.childObjects.push(obj);
-        obj.position.copyFrom(this.position);
-    }
-
-    giveToPlayer()
-    {
-        _game.grabbedObject = this.childObjects[0];
-        this.childObjects.pop();
-    }
-
     updateSprite()
     {
         this.domObject.style.display = (this.childObjects.length != 0 ? "none" : "");
