@@ -1,7 +1,7 @@
 class GameObjectSlot extends GameObject
 {
     domObject2: HTMLElement;
-    occupiedBy: GameObject | null = null;
+    occupiedBy: GameObject = null;
 
     constructor(position: Vec2D)
     {
