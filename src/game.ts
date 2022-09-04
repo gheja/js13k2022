@@ -2,7 +2,7 @@ class Game
 {
 	ticks: number;
 	time: number;
-	maxSpeed: number = 50;
+	maxSpeed: number = 100;
 	playerObject: GameObjectPlayer;
 	paused: boolean = false;
 	objects: Array<GameObject>;
@@ -10,8 +10,12 @@ class Game
 	constructor()
 	{
 		this.objects = [];
-		this.playerObject = new GameObjectPlayer(new Vec2D(100, 100));
-		this.objects.push(new GameObjectContainer(new Vec2D(180, 100)));
+		this.playerObject = new GameObjectPlayer(new Vec2D(0, 0));
+		this.objects.push(new GameObjectContainer(new Vec2D(0, 0)));
+		this.objects.push(new GameObjectContainer(new Vec2D(0, 50)));
+		this.objects.push(new GameObjectContainer(new Vec2D(0, 100)));
+		this.objects.push(new GameObjectContainer(new Vec2D(0, 150)));
+		this.objects.push(new GameObjectContainer(new Vec2D(0, 200)));
 		this.ticks = 0;
 		this.time = 0;
 	}
@@ -67,8 +71,9 @@ class Game
 		{
 			this.playerObject.moveAndSlide(1000/60);
 			this.playerObject.update();
-			this.objects[0].update();
+			this.objects.forEach(element => element.update());
 			// this.sortObjects();
+			_divLayer.style.transformOrigin = this.playerObject.position.x + "px " + (-this.playerObject.position.y * 0.5) + "px";
 		}
 
 		window.requestAnimationFrame(this.onFrame.bind(this));

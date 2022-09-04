@@ -4,13 +4,21 @@ class GameObject
 	velocity: Vec2D;
 	domObject: HTMLElement;
 	interactable: boolean = false;
+	domTransformExtra: string = "";
+	width: number;
+	height: number;
 
-	constructor(position: Vec2D)
+	constructor(position: Vec2D, width: number, height: number)
 	{
 		this.domObject = newElement(_divLayer, "div", "o");
+		this.domObject.style.width = width + "px";
+		this.domObject.style.height = height + "px";
 		this.position = new Vec2D();
 		this.position.copyFrom(position);
 		this.velocity = new Vec2D();
+
+		this.width = width;
+		this.height = height;
 	}
 
 	moveAndSlide(delta: number)
@@ -28,7 +36,6 @@ class GameObject
 	update()
 	{
 		this.updateSprite();
-		this.domObject.style.left = _x(this.position.x) + "px";
-		this.domObject.style.top = _y(this.position.y) + "px";
+		this.domObject.style.transform = "translateX(" + this.position.x + "px) translateY(" + (200 - this.height) + "px) translateZ(" + (this.position.y) + "px) " + this.domTransformExtra;
 	}
 }

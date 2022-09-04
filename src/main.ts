@@ -1,11 +1,12 @@
 let _game: Game;
 let _input: Input;
 let _divLayer: HTMLElement;
+let _floorImage: HTMLImageElement;
 let _sprites: HTMLImageElement;
 
 let _padX = 0;
 let _padY = 0;
-let _zoom = 4;
+let _zoom = 1;
 
 function introStart()
 {
@@ -35,10 +36,15 @@ function onSpritesLoaded()
 
 function init()
 {
+	_divLayer = getObject("d");
+
+	_floorImage = (newElement(_divLayer, "img", "") as HTMLImageElement);
+	_floorImage.className = "floor";
+	_floorImage.src = GFX_FLOOR;
+
 	_sprites = new Image();
 	_sprites.addEventListener("load", onSpritesLoaded);
 	_sprites.src = GFX_SPRITES;
-	_divLayer = getObject("d");
 }
 
 window.addEventListener("load", init);

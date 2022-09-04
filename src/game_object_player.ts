@@ -10,7 +10,7 @@ class GameObjectPlayer extends GameObject
 	
 	constructor(position: Vec2D)
 	{
-		super(position);
+		super(position, 10, 18);
 
 		this.domObject.style.width = _z(10) + "px";
 		this.domObject.style.height = _z(18) + "px";
@@ -39,24 +39,24 @@ class GameObjectPlayer extends GameObject
 		{
 			if (moving)
 			{
-				this.domObject.style.transform = "rotate(-10deg)";
-				emitParticle(this.position.x + 3, this.position.y + 14, "dust", 300);
+				this.domTransformExtra = "rotate(-10deg)";
+				emitParticle(this.position.x + 3, this.position.y, "dust", 300);
 			}
 			else
 			{
-				this.domObject.style.transform = "rotate(0deg)";
+				this.domTransformExtra = "rotate(0deg)";
 			}
 		}
 		else if (_game.ticks % 20 == 10)
 		{
 			if (moving)
 			{
-				this.domObject.style.transform = "rotate(10deg)";
-				emitParticle(this.position.x + 7, this.position.y + 14, "dust", 300);
+				this.domTransformExtra = "rotate(10deg)";
+				emitParticle(this.position.x + 7, this.position.y, "dust", 300);
 			}
 			else
 			{
-				this.domObject.style.transform = "rotate(0deg)";
+				this.domTransformExtra = "rotate(0deg)";
 			}
 		}
 	}

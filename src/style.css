@@ -62,7 +62,7 @@ body
 {
 	0% { opacity: 0.2; }
 	30% { opacity: 1; }
-	100% { opacity: 0; margin-top: 8px; }
+	100% { opacity: 0; }
 }
 
 
@@ -174,6 +174,27 @@ body
 #a1
 {
 	left: 52vw;
+}
+
+#d
+{
+	position: fixed;
+	left: 30vw;
+	transform-style: preserve-3d;
+	transform: scale(2) perspective(800px);
+	width: 400px;
+	height: 400px;
+	background: #0005;
+
+}
+
+.floor
+{
+	position: fixed;
+	top: 0;
+	left: 0;
+	transform: translateZ(-200px) rotateX(90deg) translateY(400px);
+	opacity: 0.8;
 }
 
 .o
