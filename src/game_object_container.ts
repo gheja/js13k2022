@@ -7,7 +7,7 @@ class GameObjectContainer extends GameObject
 
     constructor(position: Vec2D)
     {
-        super(position, 10, 10);
+        super(position, 10, 10, "Small pot", "A container to fill with ingredients.");
         this.domObject2 = newSpriteDomObject(this.domObject, 0, 18, 10, 10);
         this.domObjectFire = newSpriteDomObject(this.domObject, 0, 0, 10, 10);
         this.animationFrame = Math.floor(Math.random() * 5000);
