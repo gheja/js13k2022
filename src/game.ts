@@ -63,13 +63,17 @@ class Game
 
 	onFrame()
 	{
+		let delta = 1000/60;
+
 		this.ticks += 1;
-		this.time += 1000/60;
+		this.time += delta;
+
+		let scale = window.innerHeight / 1080;
 
 		this.handleInput();
 		if (!this.paused)
 		{
-			this.playerObject.moveAndSlide(1000/60);
+			this.playerObject.moveAndSlide(delta);
 			this.playerObject.update();
 			this.objects.forEach(element => element.update());
 			// this.sortObjects();
