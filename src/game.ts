@@ -81,7 +81,7 @@ class Game
 
 		if (this.grabbedObject)
 		{
-			description += this.grabbedObject.getDescription();
+			description += this.grabbedObject.getDescription() + "<br/>";
 		}
 
 		// TODO: optimize this
