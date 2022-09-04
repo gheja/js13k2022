@@ -146,11 +146,17 @@ class Game
 			b = dist2d(a.position, this.playerObject.position);
 			canDropHere = true;
 			
-			if (this.grabbedObject && this.grabbedObject instanceof GameObjectIngredient)
+			
+			if (this.grabbedObject)
 			{
-				if (a.childObjects.length != 0 && ! (a.childObjects[0] instanceof GameObjectContainer))
+				if (a.childObjects.length != 0)
 				{
 					canDropHere = false;
+					
+					if (a.childObjects[0] instanceof GameObjectContainer && this.grabbedObject instanceof GameObjectIngredient)
+					{
+						canDropHere = true;
+					}
 				}
 			}
 
