@@ -1,6 +1,7 @@
 let _names = [ "Devil", "Skully", "phone" ];
 let _dialog;
 let _dialogIndex;
+let _dialogTimeout;
 
 function dialogShowLine(obj, line)
 {
@@ -17,6 +18,11 @@ function dialogShowLine(obj, line)
 
 function dialogEnd()
 {
+	if (_dialogTimeout)
+	{
+		window.clearTimeout(_dialogTimeout);
+	}
+	
 	removeClass(getObject("speak1"), "speak-visible");
 	removeClass(getObject("speak2"), "speak-visible");
 	removeClass(getObject("bar1"), "visible");
@@ -39,7 +45,7 @@ function dialogStep()
 	let obj = getObject("speak" + line[1]);
 	
 	removeClass(obj, "speak-visible");
-	window.setTimeout(dialogShowLine.bind(this, obj, line), 200);
+	_dialogTimeout = window.setTimeout(dialogShowLine.bind(this, obj, line), 200);
 	
 	_dialogIndex++;
 }
