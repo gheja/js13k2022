@@ -243,6 +243,11 @@ class Game
 		this.nearestGrabSlot.giveToPlayer();
 	}
 
+	onLightObject()
+	{
+		(this.nearestGrabSlot.childObjects[0] as GameObjectContainer).isOnFire = true;
+	}
+
 	updateActions()
 	{
 		_input.deregisterAction(0);
@@ -254,6 +259,10 @@ class Game
 		else if (!this.grabbedObject && this.nearestGrabSlot)
 		{
 			_input.registerAction(0, 'Grab', this.onGrabObject.bind(this));
+			if (this.nearestGrabSlot.childObjects.length != 0 && this.nearestGrabSlot.childObjects[0] instanceof GameObjectContainer && !(this.nearestGrabSlot.childObjects[0] as GameObjectContainer).isOnFire)
+			{
+				_input.registerAction(1, 'Light it', this.onLightObject.bind(this));
+			}
 		}
 	}
 
