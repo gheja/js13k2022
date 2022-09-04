@@ -2,6 +2,7 @@ let _game: Game;
 let _input: Input;
 let _divLayer: HTMLElement;
 let _floorImage: HTMLImageElement;
+let _floorHeight: number = 120;
 let _sprites: HTMLImageElement;
 
 let _padX = 0;
@@ -31,7 +32,7 @@ function onSpritesLoaded()
 	_input = new Input();
 	_game.start();
 	_input.start();
-	window.setTimeout(introStart, 1000);
+	// window.setTimeout(introStart, 1000);
 }
 
 function init()

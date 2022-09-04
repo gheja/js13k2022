@@ -36,6 +36,6 @@ class GameObject
 	update()
 	{
 		this.updateSprite();
-		this.domObject.style.transform = "translateX(" + this.position.x + "px) translateY(" + (200 - this.height) + "px) translateZ(" + (this.position.y) + "px) " + this.domTransformExtra;
+		this.domObject.style.transform = "translateX(" + this.position.x + "px) translateY(" + (_floorHeight / 2 - this.height) + "px) translateZ(" + (this.position.y) + "px) " + this.domTransformExtra;
 	}
 }
