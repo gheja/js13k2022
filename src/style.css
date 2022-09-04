@@ -6,7 +6,7 @@ html
 
 body
 {
-	background: #150f1d;
+	background: #480c0c;
 }
 
 *
@@ -185,11 +185,8 @@ body
 {
 	position: absolute;
 	transform-style: preserve-3d;
-/*	transform: scale(1) perspective(800px) translateY(150px); */
 	width: 200px;
 	height: 120px;
-	background: #0005;
-
 }
 
 .floor
