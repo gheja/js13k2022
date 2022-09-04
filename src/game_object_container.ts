@@ -3,6 +3,7 @@ class GameObjectContainer extends GameObject
     domObject2: HTMLElement;
     domObjectFire: HTMLElement;
     animationFrame: number;
+    isOnFire: boolean = false;
 
     constructor(position: Vec2D)
     {
@@ -14,11 +15,29 @@ class GameObjectContainer extends GameObject
 
     updateSprite()
     {
+        this.domObjectFire.style.display = (this.isOnFire ? "" : "none");
+        
         if (_game.ticks % 8 == 0)
         {
             this.animationFrame++;
-            let a = [ 10, 20, 30 ];
-            this.domObjectFire.style.background = "url(" + getSprite(a[(this.animationFrame) % 3], 18, 10, 10) + ") no-repeat";
+            let a = [ 10, 20, 10, 30, 20, 10, 30 ];
+            this.domObjectFire.style.background = "url(" + getSprite(a[(this.animationFrame) % 7], 18, 10, 10) + ") no-repeat";
         }
-    }
+
+        // warning
+        /*
+        if (_game.ticks % 20 < 10)
+        {
+            this.domObject.style.filter = "brightness(2)";
+        }
+        else if (_game.ticks % 20 < 20)
+        {
+            this.domObject.style.filter = "brightness(0.8)";
+        }
+        else
+        {
+            this.domObject.style.filter = "";
+        }
+        */
+   }
 }
