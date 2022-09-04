@@ -56,7 +56,20 @@ class GameObject
 
 	getDescription()
 	{
-		return "<b>" + this.name + "</b><br/>" + this.description + "<br/>";
+		let s = "<b>" + this.name + "</b><br/>" + this.description + "<br/>";
+
+		if (this.childObjects.length != 0)
+		{
+			s += "<div class=\"box\">Contains:<br/>";
+
+			this.childObjects.forEach(element => {
+				s += "&nbsp;- " + element.name + "<br/>";
+			});
+
+			s += "</div>";
+		}
+
+		return s;
 	}
 
 	moveAndSlide(delta: number)
