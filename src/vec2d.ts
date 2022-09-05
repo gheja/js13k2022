@@ -37,7 +37,15 @@ class Vec2D
 	{
 		let a;
 		a = Math.abs(this.x) + Math.abs(this.y);
-		this.x /= a;
-		this.y /= a;
+		if (a == 0)
+		{
+			this.x = 1;
+			this.y = 0;
+		}
+		else
+		{
+			this.x /= a;
+			this.y /= a;
+		}
 	}
 }
