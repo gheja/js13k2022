@@ -11,6 +11,7 @@ class GameObject
 	name: string;
 	description: string;
 	childObjects: Array<GameObject> = [];
+	destroyed: boolean = false;
 
 	constructor(position: Vec2D, width: number, height: number, name: string, description: string)
 	{

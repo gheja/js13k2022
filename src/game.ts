@@ -74,6 +74,29 @@ class Game
 
 	}
 
+	destroyObjectRecursively(obj: GameObject)
+	{
+		obj.childObjects.forEach((element: GameObject) => {
+			this.destroyObjectRecursively(element);
+		});
+
+		obj.destroyed = true;
+	}
+
+	cleanupDestroyedObjects()
+	{
+		let i;
+
+		for (i=this.objects.length; i--; i >= 0)
+		{
+			if (this.objects[i].destroyed)
+			{
+				this.objects[i].domObject.parentNode.removeChild(this.objects[i].domObject);
+				this.objects.splice(i, 1);
+			}
+		}
+	}
+
 	updateDescription()
 	{
 		let description: string = "";
@@ -222,6 +245,7 @@ class Game
 			this.updateGrabDropTargets();
 			this.updateActions();
 			this.updateDescription();
+			this.cleanupDestroyedObjects();
 		}
 
 		window.requestAnimationFrame(this.onFrame.bind(this));
