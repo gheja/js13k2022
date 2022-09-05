@@ -14,62 +14,12 @@ body
 	image-rendering: pixelated;
 }
 
-#c
-{
-	width: 640px;
-	height: 400px;
-	margin: auto;
-}
-
-
-#player
-{
-  width: 48px;
-  height: 72px;
-  transition: transform 0.1s;
-  z-index: 1000;
-}
-
-#sprite1
-{
-  width: 48px;
-  height: 72px;
-}
-
-#grabbed
-{
-  position: relative;
-  top: -44px;
-  left: 4px;
-}
-
-#a
-{
-  width: 40px;
-  height: 24px;
-}
-
-.dust
-{
-  width: 16px;
-  height: 16px;
-  animation: dust1 0.4s;
-  position: absolute;
-}
-
-@keyframes dust1
-{
-  0% { opacity: 1; transform: scale(0.5) rotate(-35deg); }
-  100% { opacity: 0; transform: scale(2) rotate(35deg); margin-top: 4px; }
-}
-
 @keyframes dust2
 {
 	0% { opacity: 0.2; }
 	30% { opacity: 1; }
 	100% { opacity: 0; }
 }
-
 
 #bar1,
 #bar2
@@ -222,25 +172,6 @@ body
 {
 	position: absolute;
 	transition: transform 0.1s;
-}
-
-.player-body-front
-{
-	width: 40px;
-	height: 72px;
-}
-
-.player-body-back
-{
-	width: 40px;
-	height: 72px;
-}
-
-.dust
-{
-	width: 16px;
-	height: 16px;
-	animation: dust1 0.4s;
 }
 
 .g,
