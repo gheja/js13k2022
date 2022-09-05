@@ -159,3 +159,13 @@ function _assert(condition: any)
 		}
 	}
 }
+
+function pointInBox(p1: Vec2D, p2: Vec2D, width: number, height: number)
+{
+	if ((p1.x > p2.x - width/2) && (p1.x < p2.x + width/2) && (p1.y > p2.y - height/2) && (p1.y < p2.y + height/2))
+	{
+		return true;
+	}
+
+	return false;
+}
