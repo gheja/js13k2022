@@ -77,7 +77,7 @@ class GameObjectContainer extends GameObject
         {
             this.animationFrame++;
             let a = [ 10, 20, 10, 30, 20, 10, 30 ];
-            this.domObjectFire.style.background = "url(" + getSprite(a[(this.animationFrame) % 7], 18, 10, 10) + ") no-repeat";
+            replaceSpriteDomObject(this.domObjectFire, a[(this.animationFrame) % 7], 18, 10, 10);
         }
 
         // warning
