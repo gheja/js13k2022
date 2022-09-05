@@ -69,7 +69,12 @@ class GameObject
 			s += "</div>";
 		}
 
-		return s;
+		return s + this.getDescriptionExtra();
+	}
+
+	getDescriptionExtra()
+	{
+		return "";
 	}
 
 	moveAndSlide(delta: number)

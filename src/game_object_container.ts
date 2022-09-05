@@ -5,6 +5,7 @@ class GameObjectContainer extends GameObject
     animationFrame: number;
     isOnFire: boolean = false;
     cookedForTicks: number;
+    cookedForTarget: number;
 
     constructor(position: Vec2D)
     {
@@ -17,6 +18,7 @@ class GameObjectContainer extends GameObject
 
     reset()
     {
+        this.cookedForTarget = 1000;
         this.childObjects = [];
         this.cookedForTicks = 0;
     }
@@ -26,9 +28,24 @@ class GameObjectContainer extends GameObject
         this.isOnFire = false;
     }
 
+    getDescriptionExtra()
+    {
+        if (this.cookedForTicks != 0)
+        {
+            return "<div class=\"box\">" + (this.isOnFire ? "Cooking... " : "Cooked to ") + Math.round(this.cookedForTicks / this.cookedForTarget * 100) + "%</div>";
+        }
+
+        return "";
+    }
+
     updateSprite()
     {
         this.domObjectFire.style.display = (this.isOnFire ? "" : "none");
+
+        if (this.isOnFire)
+        {
+            this.cookedForTicks++;
+        }
         
         if (_game.ticks % 8 == 0)
         {
