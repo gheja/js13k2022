@@ -142,6 +142,11 @@ body
 	top: 1rem;
 }
 
+#description b
+{
+	color: fff;
+}
+
 #a0,
 #a1
 {
