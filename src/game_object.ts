@@ -12,6 +12,7 @@ class GameObject
 	description: string;
 	childObjects: Array<GameObject> = [];
 	destroyed: boolean = false;
+	collidable: boolean = false;
 
 	constructor(position: Vec2D, width: number, height: number, name: string, description: string)
 	{
@@ -78,11 +79,53 @@ class GameObject
 		return "";
 	}
 
+	calculateCollision()
+	{
+
+	}
+
 	moveAndSlide(delta: number)
 	{
 		// hello godot
-		this.position.x += this.velocity.x * (delta/1000);
-		this.position.y += this.velocity.y * (delta/1000);
+
+		if (!(this instanceof GameObjectPlayer))
+		{
+			return;
+		}
+
+		let canMove = true;
+		let targetPosition = new Vec2D(0, 0);
+		targetPosition.x = this.position.x + this.velocity.x * (delta/1000);
+		targetPosition.y = this.position.y + this.velocity.y * (delta/1000);
+
+		_game.objects.forEach(element => {
+			if (element.collidable)
+			{
+				if (pointInBox(targetPosition, element.position, 20, 20))
+				{
+					canMove = false;
+				}
+			}
+		});
+
+		if (canMove)
+		{
+			this.position.copyFrom(targetPosition);
+		}
+		else
+		{
+			// a tiny kickback so won't stuck
+			let a:Vec2D = new Vec2D(0, 0);
+			a.copyFrom(targetPosition);
+			a.subtract(this.position)
+			a.normalize();
+
+			this.position.x -= a.x * 0.1;
+			this.position.y -= a.y * 0.1;
+
+			// and stop
+			this.velocity.zero();
+		}
 	}
 
 	updateChildObjectsPosition()
