@@ -228,3 +228,14 @@ body.ak .k
 	margin-top: 0.2rem;
 	border-left: 0.2rem solid #fff4;
 }
+
+.c1
+{
+	position: relative;
+	text-align: center;
+	top: -30px;
+	left: 8px;
+	font-size: 0.75rem;
+	color: #fff;
+	z-index: 50000;
+}
