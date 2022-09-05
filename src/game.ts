@@ -27,6 +27,18 @@ class Game
 		this.objects.push(new GameObjectSlot(new Vec2D(40, 20)));
 		(this.objects[this.objects.length - 1] as GameObjectSlot).setSpawn("pot", 5);
 
+		this.objects.push(new GameObjectSlotTrash(new Vec2D(60, 20)));
+		this.objects.push(new GameObjectSlotChute(new Vec2D(130, 20)));
+
+		this.objects.push(new GameObjectCountertop(new Vec2D(80, 80)));
+		this.objects.push(new GameObjectCountertop(new Vec2D(90, 80)));
+		this.objects.push(new GameObjectCountertop(new Vec2D(100, 80)));
+		this.objects.push(new GameObjectCountertop(new Vec2D(110, 80)));
+		this.objects.push(new GameObjectCountertop(new Vec2D(120, 80)));
+		this.objects.push(new GameObjectCountertop(new Vec2D(110, 90)));
+		this.objects.push(new GameObjectCountertop(new Vec2D(110, 100)));
+		this.objects.push(new GameObjectCountertop(new Vec2D(110, 110)));
+
 		this.ticks = 0;
 		this.time = 0;
 
