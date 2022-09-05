@@ -112,14 +112,21 @@ function getSprite(x: number, y: number, width: number, height: number)
 	return canvas.toDataURL();
 }
 
+function replaceSpriteDomObject(obj: HTMLElement, x: number, y: number, width: number, height: number)
+{
+	obj.style.background = "url(" + getSprite(x, y, width, height) + ") no-repeat";
+	obj.style.width = _z(width) + "px";
+	obj.style.height = _z(height) + "px";
+}
+
 function newSpriteDomObject(parentNode: HTMLElement, x: number, y: number, width: number, height: number)
 {
 	let obj = document.createElement("div");
 	obj.style.position = "absolute";
-	obj.style.background = "url(" + getSprite(x, y, width, height) + ") no-repeat";
-	obj.style.width = _z(width) + "px";
-	obj.style.height = _z(height) + "px";
 	parentNode.appendChild(obj);
+
+	replaceSpriteDomObject(obj, x, y, width, height);
+
 	return obj;
 }
 
