@@ -1,6 +1,6 @@
 html
 {
-	font-family: Arial;
+	font-family: 'bahnschrift condensed', arial;
 	font-size: 2.5vh;
 }
 
@@ -58,6 +58,7 @@ body
 
 .speak
 {
+	font-family: 'bahnschrift', arial;
 	opacity: 0;
 	border: 0.5rem solid #333;
 	width: 60vw;
