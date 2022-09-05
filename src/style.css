@@ -246,3 +246,9 @@ body.ak .k
 	color: #fff;
 	z-index: 50000;
 }
+
+/* box parts */
+.bl { transform: rotateY(-90deg) translateZ(15px); }
+.bt { transform: rotateX(90deg) translateZ(15px); }
+.br { transform: rotateY(90deg) translateZ(15px); }
+.bf { transform: translateZ(15px); }
