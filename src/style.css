@@ -239,8 +239,9 @@ body.ak .k
 {
 	position: relative;
 	text-align: center;
-	top: -30px;
-	left: 8px;
+	top: -25px;
+	left: -35px;
+	width: 100px;
 	font-size: 0.75rem;
 	color: #fff;
 	z-index: 50000;
