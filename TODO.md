@@ -23,3 +23,5 @@
 - [ ] progressbar for cooking
 - [ ] disable text selection
 - [ ] recursive highlight so the meat also blinks
+- [ ] better gamepad dead zone handling (i.e. https://www.smashingmagazine.com/2015/11/gamepad-api-in-web-games/#applying-a-dead-zone )
+- [ ] cursor always arrow
