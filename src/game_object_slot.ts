@@ -37,9 +37,17 @@ class GameObjectSlot extends GameObject
                     {
                         a = new GameObjectMeat(new Vec2D(0, 0));
                     }
+                    else if (this.spawnObjectType == "pan")
+                    {
+                        a = new GameObjectContainerPan(new Vec2D(0, 0));
+                    }
                     else if (this.spawnObjectType == "pot")
                     {
-                        a = new GameObjectContainer(new Vec2D(0, 0));
+                        a = new GameObjectContainerPot(new Vec2D(0, 0));
+                    }
+                    else
+                    {
+                        _exception("Invalid spawnObjectType.");
                     }
                     _game.objects.push(a);
                     this.catch(a);

@@ -5,10 +5,10 @@ class GameObjectContainer extends GameObject
     animationFrame: number;
     isOnFire: boolean = false;
 
-    constructor(position: Vec2D)
+    constructor(position: Vec2D, width: number, height: number, name: string, description: string, spriteX: number, spriteY: number)
     {
-        super(position, 10, 10, "Small pot", "A container to fill with ingredients.");
-        this.domObject2 = newSpriteDomObject(this.domObject, 0, 18, 10, 10);
+        super(position, width, height, name, description);
+        this.domObject2 = newSpriteDomObject(this.domObject, spriteX, spriteY, width, height);
         this.domObjectFire = newSpriteDomObject(this.domObject, 0, 0, 10, 10);
         this.animationFrame = Math.floor(Math.random() * 5000);
         this.reset();

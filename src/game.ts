@@ -55,9 +55,12 @@ class Game
 				(this.objects[this.objects.length - 1] as GameObjectSlot).setSpawn("meat", 2);
 		
 				this.objects.push(new GameObjectSlot(new Vec2D(40, 20)));
-				(this.objects[this.objects.length - 1] as GameObjectSlot).setSpawn("pot", 5);
+				(this.objects[this.objects.length - 1] as GameObjectSlot).setSpawn("pan", 3);
+
+				this.objects.push(new GameObjectSlot(new Vec2D(60, 20)));
+				(this.objects[this.objects.length - 1] as GameObjectSlot).setSpawn("pot", 3);
 		
-				this.objects.push(new GameObjectSlotTrash(new Vec2D(60, 20)));
+				this.objects.push(new GameObjectSlotTrash(new Vec2D(80, 20)));
 				this.objects.push(new GameObjectSlotChute(new Vec2D(130, 20)));
 		
 				this.objects.push(new GameObjectCountertop(new Vec2D(80, 80)));
