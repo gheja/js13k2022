@@ -1,0 +1,6 @@
+class Recipe
+{
+    constructor()
+    {
+    }
+}
