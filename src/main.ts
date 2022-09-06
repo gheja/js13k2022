@@ -31,7 +31,6 @@ function onSpritesLoaded()
 
 	_game.start();
 	_input.start();
-	_input.registerAction(2, "Pause", _game.onPauseClick.bind(_game));
 
 	window.setTimeout(introStart, 1000);
 }
@@ -50,6 +49,10 @@ function b(n: number)
 	if (n == 1)
 	{
 		_game.onPauseClick();
+	}
+	else if (n == 2)
+	{
+		_game.onReloadLevelClick();
 	}
 }
 

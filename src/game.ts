@@ -320,6 +320,12 @@ class Game
 		this.setPause(!this.paused, true);
 	}
 
+	onReloadLevelClick()
+	{
+		this.loadLevel(this.lastLevelNumber);
+		this.setPause(false);
+	}
+
 	updateActions()
 	{
 		_input.deregisterAction(0);
