@@ -1,1 +1,1 @@
-// dummy
+window['b'] = b;

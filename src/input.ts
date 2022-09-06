@@ -5,12 +5,12 @@ class Input
 	keyboardUsedTick: number = 0;
 	psGamepadUsedTick: number = 0;
 	xboxGamepadUsedTick: number = 0;
-	gamepadButtonPressed: Array<boolean> = Array(false, false);
-	gamepadButtonJustPressed: Array<boolean> = Array(false, false);
+	gamepadButtonPressed: Array<boolean> = Array();
+	gamepadButtonJustPressed: Array<boolean> = Array();
 
-	actions: Array<any> = [ null, null ];
+	actions: Array<any> = [ null, null, null ];
 	
-	validKeys = [ "w", "a", "s", "d", "z", "q", " ", "x", "arrowup", "arrowleft", "arrowdown", "arrowright" ];
+	validKeys = [ "w", "a", "s", "d", "z", "q", " ", "x", "arrowup", "arrowleft", "arrowdown", "arrowright", "escape" ];
 
 	constructor()
 	{
@@ -58,6 +58,7 @@ class Input
 		});
 		this.gamepadButtonJustPressed[0] = false;
 		this.gamepadButtonJustPressed[1] = false;
+		this.gamepadButtonJustPressed[9] = false;
 	}
 
 	getSpeedAndDirection()
@@ -77,7 +78,7 @@ class Input
 		let gamepads = navigator.getGamepads()
 		if (gamepads.length > 0 && gamepads[0])
 		{
-			if (round2(gamepads[0].axes[0]) || round2(gamepads[0].axes[1]) || gamepads[0].buttons[0].pressed || gamepads[0].buttons[1].pressed)
+			if (round2(gamepads[0].axes[0]) || round2(gamepads[0].axes[1]) || gamepads[0].buttons[0].pressed || gamepads[0].buttons[1].pressed || gamepads[0].buttons[9].pressed)
 			{
 				if (gamepads[0].id.match(/xbox|x-box|xinput|45e/i))
 				{
@@ -93,7 +94,7 @@ class Input
 			}
 
 			// handle Button 0 and Button 1 ("A" and "B" on an X-Box controller, "X" and "O" on a PS controller)
-			for (let i=0; i<2; i++)
+			for (let i=0; i<10; i++)
 			{
 				if (gamepads[0].buttons[i].pressed)
 				{
@@ -142,6 +143,11 @@ class Input
 		if ((this.gamepadButtonJustPressed[1] || this.keysJustPressed["x"]) && this.actions[1])
 		{
 			this.actions[1].call();
+		}
+
+		if ((this.gamepadButtonJustPressed[9] || this.keysJustPressed["escape"]) && this.actions[2])
+		{
+			this.actions[2].call();
 		}
 	}
 

@@ -30,7 +30,9 @@ function dialogEnd()
 
 	_input.deregisterAction(0);
 	_input.deregisterAction(1);
-	_game.unpause();
+	_input.registerAction(2, "Pause", _game.onPauseClick.bind(_game));
+
+	_game.setPause(false);
 }
 
 function dialogStep()
@@ -54,10 +56,11 @@ function dialogStart(dialog)
 {
 	_dialog = dialog;
 	_dialogIndex = 0;
-	_game.pause();
+	_game.setPause(true, false);
+	_input.deregisterAction(2);
 
 	addClass(getObject("bar1"), "visible");
 	addClass(getObject("bar2"), "visible");
-	
+
 	dialogStep();
 }

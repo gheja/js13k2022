@@ -252,3 +252,37 @@ body.ak .k
 .bt { transform: rotateX(90deg) translateZ(15px); }
 .br { transform: rotateY(90deg) translateZ(15px); }
 .bf { transform: translateZ(15px); }
+
+#overlay
+{
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: #000c;
+	transition: all 0.2s;
+	display: none;
+}
+
+#menu
+{
+	background: #1119;
+	margin: 30vh auto;
+	width: 15rem;
+	color: #888;
+	list-style: none;
+	padding: 0.5rem;
+}
+
+#menu li
+{
+	padding: 0.5rem;
+	transition: color 0.2s, background 0.2s;
+}
+
+#menu li:hover
+{
+	background: #4448;
+	color: #fff;
+}

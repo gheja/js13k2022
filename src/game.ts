@@ -284,6 +284,11 @@ class Game
 		(this.nearestGrabSlot.childObjects[0] as GameObjectContainer).isOnFire = true;
 	}
 
+	onPauseClick()
+	{
+		this.setPause(!this.paused, true);
+	}
+
 	updateActions()
 	{
 		_input.deregisterAction(0);
@@ -302,14 +307,18 @@ class Game
 		}
 	}
 
-	pause()
+	setPause(value: boolean, showMenu: boolean = false)
 	{
-		this.paused = true;
-	}
+		this.paused = value;
 
-	unpause()
-	{
-		this.paused = false;
+		if (value && showMenu)
+		{
+			getObject("overlay").style.display = "block";
+		}
+		if (!value)
+		{
+			getObject("overlay").style.display = "none";
+		}
 	}
 
 	start()

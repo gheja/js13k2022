@@ -28,8 +28,11 @@ function onSpritesLoaded()
 {
 	_game = new Game();
 	_input = new Input();
+
 	_game.start();
 	_input.start();
+	_input.registerAction(2, "Pause", _game.onPauseClick.bind(_game));
+
 	window.setTimeout(introStart, 1000);
 }
 
