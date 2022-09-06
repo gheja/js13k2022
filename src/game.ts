@@ -9,9 +9,10 @@ class Game
 	grabbedObject: GameObject;
 	nearestGrabSlot: GameObjectSlot;
 	nearestDropSlot: GameObjectSlot;
+	nearestRecipe: GameObjectRecipe;
 	_lastDescription: string = "";
 	lastLevelNumber: number;
-	recipes: Array<Recipe>;
+	recipeToCook: GameObjectRecipe;
 
 	constructor()
 	{
@@ -71,6 +72,9 @@ class Game
 				this.objects.push(new GameObjectCountertop(new Vec2D(110, 90)));
 				this.objects.push(new GameObjectCountertop(new Vec2D(110, 100)));
 				this.objects.push(new GameObjectCountertop(new Vec2D(110, 110)));
+
+				this.objects.push(new GameObjectRecipe(new Vec2D(20, 80), "Fried foe", "pan", { "meat": 1 }, []));
+				this.objects.push(new GameObjectRecipe(new Vec2D(20, 100), "Two fried foes", "pan", { "meat": 2 }, []));
 			break;
 		
 			default:
@@ -165,6 +169,7 @@ class Game
 			{
 				description += this.nearestDropSlot.getDescription();
 			}
+			description += "<br/>";
 		}
 		else if (this.nearestGrabSlot)
 		{
@@ -177,7 +182,43 @@ class Game
 			{
 				description += this.nearestGrabSlot.getDescription();
 			}
+			description += "<br/>";
 		}
+		else if (this.nearestRecipe)
+		{
+			description += "In front of you:<br/>";
+			description += this.nearestRecipe.getDescription();
+			description += "<br/>";
+		}
+
+		let a: GameObjectRecipe = null;
+		let b: string = "";
+
+		if (this.grabbedObject instanceof GameObjectContainer && (this.grabbedObject as GameObjectContainer).recipe)
+		{
+			a = (this.grabbedObject as GameObjectContainer).recipe;
+		}
+		else if (this.nearestGrabSlot && this.nearestGrabSlot.childObjects.length != 0 && (this.nearestGrabSlot.childObjects[0] instanceof GameObjectContainer) && (this.nearestGrabSlot.childObjects[0] as GameObjectContainer).recipe)
+		{
+			a = (this.nearestGrabSlot.childObjects[0] as GameObjectContainer).recipe;
+		}
+		else if (this.nearestDropSlot && this.nearestDropSlot.childObjects.length != 0 && (this.nearestDropSlot.childObjects[0] instanceof GameObjectContainer) && (this.nearestDropSlot.childObjects[0] as GameObjectContainer).recipe)
+		{
+			a = (this.nearestDropSlot.childObjects[0] as GameObjectContainer).recipe;
+		}
+		else if (this.recipeToCook)
+		{
+			a = this.recipeToCook;
+			description += "<b>Pick up a pan or pot to start the recipe.</b><br/>";
+		}
+
+		if (a)
+		{
+			b = a.getDescription();
+		}
+
+
+		document.getElementById("recipe").innerHTML = b;
 
 		// the browser might modify this after setting so save the latest value
 		// to prevent updating every frame
@@ -197,55 +238,72 @@ class Game
 		let grabDistanceMin: number = 9999;
 		let dropSlot: GameObjectSlot;
 		let dropDistanceMin: number = 9999;
+		let recipe: GameObjectRecipe;
+		let recipeDistanceMin: number = 9999;
 		let canDropHere: boolean;
 
 		for (a of this.objects)
 		{
 			a.highlighted = false;
 
-			if (!(a instanceof GameObjectSlot))
+			if (a instanceof GameObjectSlot)
 			{
-				continue;
-			}
-
-			b = dist2d(a.position, this.playerObject.position);
-			canDropHere = true;
-			
-			if (this.grabbedObject)
-			{
-				if (a.childObjects.length != 0)
+				b = dist2d(a.position, this.playerObject.position);
+				canDropHere = true;
+				
+				if (this.grabbedObject)
 				{
-					canDropHere = false;
-					
-					if (a.childObjects[0] instanceof GameObjectContainer && this.grabbedObject instanceof GameObjectIngredient)
+					if (a.childObjects.length != 0)
 					{
-						canDropHere = true;
+						canDropHere = false;
+						
+						if (a.childObjects[0] instanceof GameObjectContainer && this.grabbedObject instanceof GameObjectIngredient)
+						{
+							canDropHere = true;
+						}
+					}
+				}
+
+				if (a.childObjects.length != 0 && !this.grabbedObject)
+				{
+					if (b < grabDistanceMin)
+					{
+						grabDistanceMin = b;
+						grabSlot = a;
+					}
+				}
+				else
+				{
+					if (canDropHere && b < dropDistanceMin)
+					{
+						dropDistanceMin = b;
+						dropSlot = a;
 					}
 				}
 			}
-
-			if (a.childObjects.length != 0 && !this.grabbedObject)
+			else if (a instanceof GameObjectRecipe)
 			{
-				if (b < grabDistanceMin)
+				b = dist2d(a.position, this.playerObject.position);
+				
+				if (b < recipeDistanceMin)
 				{
-					grabDistanceMin = b;
-					grabSlot = a;
-				}
-			}
-			else
-			{
-				if (canDropHere && b < dropDistanceMin)
-				{
-					dropDistanceMin = b;
-					dropSlot = a;
+					recipeDistanceMin = b;
+					recipe = a;
 				}
 			}
 		}
 
 		this.nearestGrabSlot = null;
 		this.nearestDropSlot = null;
+		this.nearestRecipe = null;
 
 		// TODO: only highlight when interactable
+
+		if (recipeDistanceMin <= MAX_GRAB_DISTANCE)
+		{
+			this.nearestRecipe = recipe;
+			this.nearestRecipe.highlighted = true;
+		}
 
 		if (grabDistanceMin <= MAX_GRAB_DISTANCE)
 		{
@@ -330,20 +388,38 @@ class Game
 		this.setPause(false);
 	}
 
+	onAcceptRecipe()
+	{
+		if (this.recipeToCook && this.recipeToCook.status == RECIPE_STATUS_ACCEPTED)
+		{
+			this.recipeToCook.status = RECIPE_STATUS_NEW;
+		}
+		this.recipeToCook = this.nearestRecipe;
+		this.recipeToCook.status = RECIPE_STATUS_ACCEPTED;
+	}
+
 	updateActions()
 	{
 		_input.deregisterAction(0);
 		_input.deregisterAction(1);
-		if (this.grabbedObject && this.nearestDropSlot)
+
+		if (!this.grabbedObject && this.nearestRecipe && this.nearestRecipe.status == RECIPE_STATUS_NEW)
 		{
-			_input.registerAction(0, 'Drop', this.onDropGrabbedObject.bind(this));
+			_input.registerAction(0, 'Accept', this.onAcceptRecipe.bind(this));
 		}
-		else if (!this.grabbedObject && this.nearestGrabSlot)
+		else
 		{
-			_input.registerAction(0, 'Grab', this.onGrabObject.bind(this));
-			if (this.nearestGrabSlot.childObjects.length != 0 && this.nearestGrabSlot.childObjects[0] instanceof GameObjectContainer && !(this.nearestGrabSlot.childObjects[0] as GameObjectContainer).isOnFire)
+			if (this.grabbedObject && this.nearestDropSlot)
 			{
-				_input.registerAction(1, 'Light it', this.onLightObject.bind(this));
+				_input.registerAction(0, 'Drop', this.onDropGrabbedObject.bind(this));
+			}
+			else if (!this.grabbedObject && this.nearestGrabSlot)
+			{
+				_input.registerAction(0, 'Grab', this.onGrabObject.bind(this));
+				if (this.nearestGrabSlot.childObjects.length != 0 && this.nearestGrabSlot.childObjects[0] instanceof GameObjectContainer && !(this.nearestGrabSlot.childObjects[0] as GameObjectContainer).isOnFire)
+				{
+					_input.registerAction(1, 'Light it', this.onLightObject.bind(this));
+				}
 			}
 		}
 	}

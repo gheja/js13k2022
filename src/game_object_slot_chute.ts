@@ -14,6 +14,11 @@ class GameObjectSlotChute extends GameObjectSlot
     catch(obj: GameObject)
     {
         // TODO: evaulate points
+        if (obj instanceof GameObjectContainer && (obj as GameObjectContainer).recipe)
+        {
+            (obj as GameObjectContainer).recipe.status = RECIPE_STATUS_DONE;
+        }
+        
         _game.destroyObjectRecursively(obj);
     }
 }

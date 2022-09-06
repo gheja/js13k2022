@@ -4,6 +4,7 @@ class GameObjectContainer extends GameObject
     domObjectFire: HTMLElement;
     animationFrame: number;
     isOnFire: boolean = false;
+    recipe: GameObjectRecipe;
 
     constructor(position: Vec2D, width: number, height: number, name: string, description: string, spriteX: number, spriteY: number)
     {
@@ -19,9 +20,34 @@ class GameObjectContainer extends GameObject
         this.childObjects = [];
     }
 
+    getDescriptionExtra()
+    {
+        if (this.recipe)
+        {
+            return "<br/>Cooking <b>" + this.recipe.name + "</b>";
+        }
+
+        return "";
+    }
+
     onGrabbed()
     {
+        if (_game.recipeToCook && _game.recipeToCook.status == RECIPE_STATUS_ACCEPTED)
+        {
+            this.recipe = _game.recipeToCook;
+            _game.recipeToCook.status = RECIPE_STATUS_COOKING;
+            _game.recipeToCook = null;
+        }
+
         this.isOnFire = false;
+    }
+
+    onDestroy()
+    {
+        if (this.recipe.status == RECIPE_STATUS_COOKING)
+        {
+            this.recipe.status = RECIPE_STATUS_NEW;
+        }
     }
 
     updateSprite()
