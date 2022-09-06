@@ -126,6 +126,7 @@ class Game
 			this.destroyObjectRecursively(element);
 		});
 
+		obj.onDestroy();
 		obj.destroyed = true;
 	}
 

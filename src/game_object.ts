@@ -102,6 +102,11 @@ class GameObject
 
 	}
 
+	onDestroy()
+	{
+		
+	}
+
 	getDescription()
 	{
 		let s = "<b>" + this.name + "</b><br/>" + this.description + "<br/>";
