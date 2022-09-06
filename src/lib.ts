@@ -160,6 +160,16 @@ function _assert(condition: any)
 	}
 }
 
+// This is for debugging. In the final build it will be an empty function and
+// will be removed by tscc or Google Closure Compiler.
+function _exception(message: string)
+{
+	if (!IS_PROD_BUILD)
+	{
+		throw new Error(message);
+	}
+}
+
 function pointInBox(p1: Vec2D, p2: Vec2D, width: number, height: number)
 {
 	if ((p1.x > p2.x - width/2) && (p1.x < p2.x + width/2) && (p1.y > p2.y - height/2) && (p1.y < p2.y + height/2))

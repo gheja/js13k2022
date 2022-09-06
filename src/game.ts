@@ -71,7 +71,7 @@ class Game
 			break;
 		
 			default:
-				_assert("invalid level");
+				_exception("invalid level");
 			break;
 		}
 	}
