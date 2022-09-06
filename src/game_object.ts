@@ -14,6 +14,9 @@ class GameObject
 	destroyed: boolean = false;
 	collidable: boolean = false;
 
+	cookedForTicks: number = 0;
+	cookedForTarget: number = 0;
+
 	constructor(position: Vec2D, width: number, height: number, name: string, description: string)
 	{
 		this.domObject = newElement(_divLayer, "div", "o");
@@ -51,6 +54,49 @@ class GameObject
         this.childObjects.pop();
     }
 
+	cook()
+	{
+		this.childObjects.forEach(element => {
+			element.cook();
+		});
+		
+		if (this.cookedForTarget != 0)
+		{
+			this.onCook();
+		}
+	}
+
+	onCook()
+	{
+		this.cookedForTicks++;
+
+		// TODO: optimize this... although zip should be pretty efficient here
+		if (this.cookedForTicks == Math.floor(this.cookedForTarget * 0.1))
+		{
+			emitParticle(this.position.x, this.position.y, 60, 18, 10, 10, "a3", 3000);
+		}
+		else if (this.cookedForTicks == Math.floor(this.cookedForTarget * 0.7))
+		{
+			emitParticle(this.position.x, this.position.y, 70, 18, 10, 10, "a3", 3000);
+		}
+		else if (this.cookedForTicks == Math.floor(this.cookedForTarget * 0.9))
+		{
+			emitParticle(this.position.x, this.position.y, 80, 18, 10, 10, "a3", 3000);
+		}
+		else if (this.cookedForTicks == this.cookedForTarget)
+		{
+			emitParticle(this.position.x, this.position.y, 90, 18, 10, 10, "a3", 3000);
+		}
+		else if (this.cookedForTicks == Math.floor(this.cookedForTarget * 1.1))
+		{
+			emitParticle(this.position.x, this.position.y, 100, 18, 10, 10, "a3", 3000);
+		}
+		else if (this.cookedForTicks == Math.floor(this.cookedForTarget * 1.2))
+		{
+			emitParticle(this.position.x, this.position.y, 110, 18, 10, 10, "a3", 3000);
+		}
+	}
+
 	onGrabbed()
 	{
 
@@ -65,7 +111,17 @@ class GameObject
 			s += "<div class=\"box\">Contains:<br/>";
 
 			this.childObjects.forEach(element => {
-				s += "&nbsp;- " + element.name + "<br/>";
+				s += "&nbsp;- " + element.name;
+
+				if (element.cookedForTarget != 0)
+				{
+					s += " (cooked to " +
+						Math.round(element.cookedForTicks / element.cookedForTarget * 100) + "%, " +
+						(element.cookedForTarget > element.cookedForTicks ? _ticksToSeconds(element.cookedForTarget - element.cookedForTicks) + "s left" : "overcooked") +
+						")";
+				}
+
+				s += "<br/>";
 			});
 
 			s += "</div>";

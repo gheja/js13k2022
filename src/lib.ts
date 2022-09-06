@@ -169,3 +169,8 @@ function pointInBox(p1: Vec2D, p2: Vec2D, width: number, height: number)
 
 	return false;
 }
+
+function _ticksToSeconds(ticks: number)
+{
+	return (ticks / 60).toFixed(1);
+}
