@@ -1,13 +1,14 @@
 # js13k2022
 
 ## general
-- [ ] cooking individual ingredients
-- [ ] text progressbar for cooking
+- [x] cooking individual ingredients
+- [x] text progressbar for cooking
 - [ ] level loading
 - [ ] save/load progress
 - [ ] new game
 - [ ] recipes
 - [ ] feedback (★ = &starf;)
+- [ ] menu button
 
 ## ui
 - [ ] menu
@@ -20,3 +21,5 @@
 - [ ] border around dialog profile picture
 - [ ] better font
 - [ ] progressbar for cooking
+- [ ] disable text selection
+- [ ] recursive highlight so the meat also blinks
