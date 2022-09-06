@@ -36,7 +36,7 @@ body
 	left: 0;
 	right: 0;
 	height: 0;
-	background: #000;
+	background: #000d;
 	transition: height 0.5s;
 }
 
@@ -60,9 +60,9 @@ body
 {
 	font-family: 'bahnschrift', arial;
 	opacity: 0;
-	border: 0.5rem solid #333;
+	border: 0.5rem solid #24c;
 	width: 60vw;
-	background: #000c;
+	background: #000e;
 	position: fixed;
 	left: 10vw;
 	color: #fff;
@@ -80,7 +80,7 @@ body
 	width: 5rem;
 	height: 5rem;
 	float: left;
-	background: #333;
+	background: #24c;
 }
 
 .message
@@ -91,7 +91,7 @@ body
 
 .name
 {
-	color: #333;
+	color: #24c;
 	font-weight: bold;
 }
 
@@ -124,6 +124,7 @@ body
 
 #a0,
 #a1,
+#a2,
 #description
 {
 	background: #1119;
@@ -148,16 +149,23 @@ body
 }
 
 #a0,
-#a1
+#a1,
+#a2
 {
 	bottom: 1rem;
 	width: 20vw;
-	left: 28vw;
+	left: 10vw;
+	display: block;
 }
 
 #a1
 {
-	left: 52vw;
+	left: 40vw;
+}
+
+#a2
+{
+	left: 70vw;
 }
 
 #d
@@ -208,21 +216,21 @@ body.ak .k
 	display: inline;
 }
 
-.g1
+.g0
 {
 	background: #0c2;
 	border-color: #0c2;
 }
-.g2
+.g1
 {
 	background: #c00;
 	border-color: #c00;
 }
-.h1
+.h0
 {
 	color: #9ae;
 }
-.h2
+.h1
 {
 	color: #f66;
 }
@@ -252,6 +260,21 @@ body.ak .k
 .bt { transform: rotateX(90deg) translateZ(15px); }
 .br { transform: rotateY(90deg) translateZ(15px); }
 .bf { transform: translateZ(15px); }
+
+#recipe
+{
+	padding: 1rem;
+	position: fixed;
+	left: 1rem;
+	top: 1rem;
+	background: #1119;
+	color: #bbb;
+}
+
+#recipe b
+{
+	color: #fff;
+}
 
 #overlay
 {
