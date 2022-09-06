@@ -51,4 +51,12 @@ function init()
 	_sprites.src = GFX_SPRITES;
 }
 
+function b(n: number)
+{
+	if (n == 1)
+	{
+		_game.onPauseClick();
+	}
+}
+
 window.addEventListener("load", init);
