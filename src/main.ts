@@ -40,12 +40,6 @@ function init()
 {
 	_divLayer = getObject("d");
 
-	_floorImage = (newElement(_divLayer, "img", "") as HTMLImageElement);
-	_floorImage.className = "floor";
-	_floorImage.src = GFX_FLOOR;
-	_floorImage.width = _z(200);
-	_floorImage.height = _z(120);
-
 	_sprites = new Image();
 	_sprites.addEventListener("load", onSpritesLoaded);
 	_sprites.src = GFX_SPRITES;

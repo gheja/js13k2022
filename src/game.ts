@@ -10,39 +10,70 @@ class Game
 	nearestGrabSlot: GameObjectSlot;
 	nearestDropSlot: GameObjectSlot;
 	_lastDescription: string = "";
+	lastLevelNumber: number;
+	recipes: Array<Recipe>;
 
 	constructor()
 	{
-		this.objects = [];
-
-		this.objects.push(new GameObjectPlayer(new Vec2D(100, 20)));
-		this.objects.push(new GameObjectSlot(new Vec2D(50, 50)));
-		this.objects.push(new GameObjectSlot(new Vec2D(100, 50)));
-		this.objects.push(new GameObjectSlot(new Vec2D(150, 50)));
-		this.objects.push(new GameObjectSlot(new Vec2D(150, 100)));
-
-		this.objects.push(new GameObjectSlot(new Vec2D(20, 20)));
-		(this.objects[this.objects.length - 1] as GameObjectSlot).setSpawn("meat", 2);
-
-		this.objects.push(new GameObjectSlot(new Vec2D(40, 20)));
-		(this.objects[this.objects.length - 1] as GameObjectSlot).setSpawn("pot", 5);
-
-		this.objects.push(new GameObjectSlotTrash(new Vec2D(60, 20)));
-		this.objects.push(new GameObjectSlotChute(new Vec2D(130, 20)));
-
-		this.objects.push(new GameObjectCountertop(new Vec2D(80, 80)));
-		this.objects.push(new GameObjectCountertop(new Vec2D(90, 80)));
-		this.objects.push(new GameObjectCountertop(new Vec2D(100, 80)));
-		this.objects.push(new GameObjectCountertop(new Vec2D(110, 80)));
-		this.objects.push(new GameObjectCountertop(new Vec2D(120, 80)));
-		this.objects.push(new GameObjectCountertop(new Vec2D(110, 90)));
-		this.objects.push(new GameObjectCountertop(new Vec2D(110, 100)));
-		this.objects.push(new GameObjectCountertop(new Vec2D(110, 110)));
-
 		this.ticks = 0;
 		this.time = 0;
+	}
 
+	loadLevel(n: number)
+	{
+		this.lastLevelNumber = n;
+
+		_divLayer.innerHTML = "";
+		this.objects = [];
+		this.grabbedObject = null;
+
+		_input.deregisterAction(0);
+		_input.deregisterAction(1);
+		_input.deregisterAction(2);
+
+		_input.registerAction(2, "Pause", _game.onPauseClick.bind(_game));
+
+		this.objects.push(new GameObjectPlayer(new Vec2D(100, 20)));
 		this.playerObject = (this.objects[0] as GameObjectPlayer);
+
+		// TODO: move this somewhere...
+		_floorImage = (newElement(_divLayer, "img", "") as HTMLImageElement);
+		_floorImage.className = "floor";
+		_floorImage.src = GFX_FLOOR;
+		_floorImage.width = _z(200);
+		_floorImage.height = _z(120);
+
+		switch (n)
+		{
+			case 0:
+				this.objects.push(new GameObjectSlot(new Vec2D(50, 50)));
+				this.objects.push(new GameObjectSlot(new Vec2D(100, 50)));
+				this.objects.push(new GameObjectSlot(new Vec2D(150, 50)));
+				this.objects.push(new GameObjectSlot(new Vec2D(150, 100)));
+		
+				this.objects.push(new GameObjectSlot(new Vec2D(20, 20)));
+				(this.objects[this.objects.length - 1] as GameObjectSlot).setSpawn("meat", 2);
+		
+				this.objects.push(new GameObjectSlot(new Vec2D(40, 20)));
+				(this.objects[this.objects.length - 1] as GameObjectSlot).setSpawn("pot", 5);
+		
+				this.objects.push(new GameObjectSlotTrash(new Vec2D(60, 20)));
+				this.objects.push(new GameObjectSlotChute(new Vec2D(130, 20)));
+		
+				this.objects.push(new GameObjectCountertop(new Vec2D(80, 80)));
+				this.objects.push(new GameObjectCountertop(new Vec2D(90, 80)));
+				this.objects.push(new GameObjectCountertop(new Vec2D(100, 80)));
+				this.objects.push(new GameObjectCountertop(new Vec2D(110, 80)));
+				this.objects.push(new GameObjectCountertop(new Vec2D(120, 80)));
+				this.objects.push(new GameObjectCountertop(new Vec2D(110, 90)));
+				this.objects.push(new GameObjectCountertop(new Vec2D(110, 100)));
+				this.objects.push(new GameObjectCountertop(new Vec2D(110, 110)));
+			break;
+		
+			default:
+				_assert("invalid level");
+			break;
+		}
 	}
 
 	handleInput()
@@ -323,8 +354,7 @@ class Game
 
 	start()
 	{
+		this.loadLevel(0);
 		this.onFrame();
-		_input.deregisterAction(0)
-		_input.deregisterAction(1)
 	}
 }
