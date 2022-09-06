@@ -55,6 +55,9 @@ function dialogStart(dialog)
 	_dialog = dialog;
 	_dialogIndex = 0;
 	_game.pause();
+
+	addClass(getObject("bar1"), "visible");
+	addClass(getObject("bar2"), "visible");
 	
 	dialogStep();
 }

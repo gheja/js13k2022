@@ -12,9 +12,6 @@ let _zoom = 3;
 
 function introStart()
 {
-	addClass(getObject("bar1"), "visible");
-	addClass(getObject("bar2"), "visible");
-	
 	dialogStart([
 		[ 2, 2, "*ring-ring*" ],
 		[ 0, 2, "Knock-knock!" ],
