@@ -485,7 +485,7 @@ class Game
 
 	start()
 	{
-		this.loadLevel(1);
+		this.loadLevel(0);
 		this.onFrame();
 	}
 }
