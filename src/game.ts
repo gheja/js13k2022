@@ -83,10 +83,10 @@ class Game
 				this.dialogOnStart = [
 					[ 3, 1, "Hey Boss!" ],
 					[ 3, 1, "It's been a while. How do you do?" ],
-					[ 1, 2, "Hey Goblin! All fine, thanks. I need to cook for Skully, do we have pans around?" ],
+					[ 0, 2, "Hey Goblin! All fine, thanks. I need to cook for Skully, do we have pans around?" ],
 					[ 3, 1, "Sure we have! Just pick up the recipe first." ],
 					[ 3, 1, "I'll be here if you need any help." ],
-					[ 1, 2, "That won't be necessary but thanks." ],
+					[ 0, 2, "That won't be necessary but thanks." ],
 				];
 			break;
 		
