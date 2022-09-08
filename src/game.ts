@@ -7,6 +7,7 @@ class Game
 	paused: boolean = false;
 	objects: Array<GameObject>;
 	grabbedObject: GameObject;
+	dialogOnStart: Array<any> = null;
 	nearestGrabSlot: GameObjectSlot;
 	nearestDropSlot: GameObjectSlot;
 	nearestObject: GameObject;
@@ -27,6 +28,7 @@ class Game
 		_divLayer.innerHTML = "";
 		this.objects = [];
 		this.grabbedObject = null;
+		this.dialogOnStart = null;
 
 		_input.deregisterAction(0);
 		_input.deregisterAction(1);
@@ -80,6 +82,11 @@ class Game
 			default:
 				_exception("invalid level");
 			break;
+		}
+
+		if (this.dialogOnStart)
+		{
+			window.setTimeout(dialogStart.bind(null, this.dialogOnStart), 300);
 		}
 	}
 
