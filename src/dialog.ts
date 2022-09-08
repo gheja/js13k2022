@@ -1,4 +1,4 @@
-let _names = [ "Devil", "Skully", "phone" ];
+let _names = [ "Devil", "Skully", "phone", "Goblin" ];
 let _dialog;
 let _dialogIndex;
 let _dialogTimeout;

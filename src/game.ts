@@ -49,6 +49,8 @@ class Game
 		switch (n)
 		{
 			case 0:
+				this.objects.push(new GameObjectDeputy(new Vec2D(90, 10)));
+
 				this.objects.push(new GameObjectSlot(new Vec2D(50, 50)));
 				this.objects.push(new GameObjectSlot(new Vec2D(100, 50)));
 				this.objects.push(new GameObjectSlot(new Vec2D(150, 50)));
@@ -77,6 +79,15 @@ class Game
 
 				this.objects.push(new GameObjectRecipe(new Vec2D(20, 80), "Fried foe", "pan", { "meat": 1 }, []));
 				this.objects.push(new GameObjectRecipe(new Vec2D(20, 100), "Two fried foes", "pan", { "meat": 2 }, []));
+
+				this.dialogOnStart = [
+					[ 3, 1, "Hey Boss!" ],
+					[ 3, 1, "It's been a while. How do you do?" ],
+					[ 1, 2, "Hey Goblin! All fine, thanks. I need to cook for Skully, do we have pans around?" ],
+					[ 3, 1, "Sure we have! Just pick up the recipe first." ],
+					[ 3, 1, "I'll be here if you need any help." ],
+					[ 1, 2, "That won't be necessary but thanks." ],
+				];
 			break;
 		
 			default:
