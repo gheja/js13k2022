@@ -31,6 +31,7 @@ class Game
 		this.grabbedObject = null;
 		this.dialogOnStart = null;
 		this.onDialogEnd = null;
+		this.paused = false;
 
 		_input.deregisterAction(0);
 		_input.deregisterAction(1);
