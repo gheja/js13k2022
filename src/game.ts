@@ -317,7 +317,7 @@ class Game
 
 		// TODO: only highlight when interactable
 
-		if (objDistanceMin <= MAX_GRAB_DISTANCE)
+		if (objDistanceMin <= MAX_GRAB_DISTANCE && !obj.getIsGrabbed())
 		{
 			this.nearestObject = obj;
 			this.nearestObject.highlighted = true;

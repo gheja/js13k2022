@@ -145,6 +145,21 @@ class GameObject
 		return "";
 	}
 
+	getIsGrabbed()
+	{
+		if (this == _game.grabbedObject)
+		{
+			return true;
+		}
+
+		if (this.parentObject)
+		{
+			return this.parentObject.getIsGrabbed();
+		}
+
+		return false;
+	}
+
 	calculateCollision()
 	{
 
