@@ -8,6 +8,7 @@ class Game
 	objects: Array<GameObject>;
 	grabbedObject: GameObject;
 	dialogOnStart: Array<any> = null;
+	onDialogEnd: any = null;
 	nearestGrabTarget: GameObject;
 	nearestDropTarget: GameObject;
 	nearestObject: GameObject;
@@ -29,6 +30,7 @@ class Game
 		this.objects = [];
 		this.grabbedObject = null;
 		this.dialogOnStart = null;
+		this.onDialogEnd = null;
 
 		_input.deregisterAction(0);
 		_input.deregisterAction(1);

@@ -33,6 +33,10 @@ function dialogEnd()
 	_input.registerAction(2, "Pause", _game.onPauseClick.bind(_game));
 
 	_game.setPause(false);
+	if (_game.onDialogEnd)
+	{
+		_game.onDialogEnd.call();
+	}
 }
 
 function dialogStep()
