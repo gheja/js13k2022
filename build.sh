@@ -93,7 +93,12 @@ _title "Copying files to build directory..."
 
 try rsync -xa --exclude '*.js' --exclude '*.js.map' --exclude '*.zip' "${source_dir}/" ./
 try rsync -xa "${source_dir}/3rdparty/" ./3rdparty/
-try cp "${source_dir}/externs.js" ./
+
+if [ -e "${source_dir}/externs.js" ]; then
+	try cp "${source_dir}/externs.js" ./
+else
+	try cp "${source_dir}/externs.ts" ./externs.js
+fi
 
 zip -r9 ${zip_prefix}_original.zip .
 
