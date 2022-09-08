@@ -15,6 +15,7 @@ class Game
 	_lastDescription: string = "";
 	lastLevelNumber: number;
 	recipeToCook: GameObjectRecipe;
+	welcomePaused: boolean = false;
 
 	constructor()
 	{
@@ -380,7 +381,7 @@ class Game
 		let scale = (window.innerHeight / 1080) * 1.2;
 
 		this.handleInput();
-		if (!this.paused)
+		if (!this.paused && !this.welcomePaused)
 		{
 			this.objects.forEach((element) => { element.update(); element.moveAndSlide(delta); element.updateChildObjectsPosition(); });
 			// this.sortObjects();

@@ -7,6 +7,7 @@ html
 body
 {
 	background: #480c0c;
+	color: #999;
 	overflow: hidden;
 }
 
@@ -277,7 +278,8 @@ body.ak .k
 	color: #fff;
 }
 
-#overlay
+#overlay,
+#welcome-overlay
 {
 	position: fixed;
 	top: 0;
@@ -286,7 +288,30 @@ body.ak .k
 	left: 0;
 	background: #000c;
 	transition: all 0.2s;
+}
+
+#overlay
+{
 	display: none;
+}
+
+h1,
+h2,
+#welcome
+{
+	text-align: center;
+}
+
+h1,
+#welcome
+{
+	color: #fff;
+	margin-top: 6rem;
+}
+
+h2
+{
+	font-size: 1rem;
 }
 
 #menu

@@ -24,15 +24,31 @@ function introStart()
 	]);
 }
 
+function welcomeStart()
+{
+	_input.registerAction(0, "Start", welcomeProceed);
+
+	// it got registered on level load
+	_input.deregisterAction(2);
+}
+
+function welcomeProceed()
+{
+	getObject("welcome-overlay").style.display = "none";
+	_game.welcomePaused = false;
+	_game.loadLevel(1);
+}
+
 function onSpritesLoaded()
 {
 	_game = new Game();
 	_input = new Input();
 
+	_game.welcomePaused = true;
 	_game.start();
 	_input.start();
 
-	// window.setTimeout(introStart, 1000);
+	welcomeStart();
 }
 
 function init()
