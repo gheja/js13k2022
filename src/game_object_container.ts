@@ -10,7 +10,7 @@ class GameObjectContainer extends GameObject
     {
         super(position, width, height, name, description);
         this.domObject2 = newSpriteDomObject(this.domObject, spriteX, spriteY, width, height);
-        this.domObjectFire = newSpriteDomObject(this.domObject, 0, 0, 10, 10);
+        this.domObjectFire = newSpriteDomObject(this.domObject, 0, 0, 10, 40);
         this.animationFrame = Math.floor(Math.random() * 5000);
         this.reset();
     }
@@ -63,7 +63,7 @@ class GameObjectContainer extends GameObject
         {
             this.animationFrame++;
             let a = [ 10, 20, 10, 30, 20, 10, 30 ];
-            replaceSpriteDomObject(this.domObjectFire, a[(this.animationFrame) % 7], 18, 10, 10);
+            replaceSpriteDomObject(this.domObjectFire, a[(this.animationFrame) % 7], 40, 10, 10);
         }
 
         // warning

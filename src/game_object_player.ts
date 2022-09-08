@@ -15,9 +15,9 @@ class GameObjectPlayer extends GameObject
 
 		this.domObject.style.width = _z(10) + "px";
 		this.domObject.style.height = _z(18) + "px";
-		this.domObjectBodyFront = newSpriteDomObject(this.domObject, 10, 0, 10, 18)
-		this.domObjectBodyBack = newSpriteDomObject(this.domObject, 20, 0, 10, 18)
-		this.domObjectShadow = newSpriteDomObject(this.domObject, 40, 18, 10, 10)
+		this.domObjectBodyFront = newSpriteDomObject(this.domObject, 0, 2, 10, 18)
+		this.domObjectBodyBack = newSpriteDomObject(this.domObject, 10, 2, 10, 18)
+		this.domObjectShadow = newSpriteDomObject(this.domObject, 40, 40, 10, 10)
 		this.domObjectShadow.style.transform = "translateY(" + _z(12) + "px) rotateX(90deg)";
 		this.domObjectShadow.style.opacity = "0.5";
 	}
@@ -44,7 +44,7 @@ class GameObjectPlayer extends GameObject
 			if (moving)
 			{
 				this.domTransformExtra = "rotate(-10deg)";
-				emitParticle(this.position.x + 5.5, this.position.y, 5, 14, 3, 3, "dust2", 300);
+				emitParticle(this.position.x + 5.5, this.position.y, 20, 70, 3, 3, "dust2", 300);
 			}
 			else
 			{
@@ -56,7 +56,7 @@ class GameObjectPlayer extends GameObject
 			if (moving)
 			{
 				this.domTransformExtra = "rotate(10deg)";
-				emitParticle(this.position.x + 1.5, this.position.y, 5, 14, 3, 3, "dust2", 300);
+				emitParticle(this.position.x + 1.5, this.position.y, 20, 70, 3, 3, "dust2", 300);
 			}
 			else
 			{

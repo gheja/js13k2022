@@ -11,16 +11,16 @@ class GameObjectCountertop extends GameObject
 
         this.collidable = true;
 
-        this.domObjectTop = newSpriteDomObject(this.domObject, 150, 18, 10, 10);
+        this.domObjectTop = newSpriteDomObject(this.domObject, 30, 60, 10, 10);
         this.domObjectTop.className = "bt";
 
-        this.domObjectLeft = newSpriteDomObject(this.domObject, 140, 18, 10, 10);
+        this.domObjectLeft = newSpriteDomObject(this.domObject, 20, 60, 10, 10);
         this.domObjectLeft.className = "bl";
 
-        this.domObjectRight = newSpriteDomObject(this.domObject, 140, 18, 10, 10);
+        this.domObjectRight = newSpriteDomObject(this.domObject, 20, 60, 10, 10);
         this.domObjectRight.className = "br";
 
-        this.domObjectFront = newSpriteDomObject(this.domObject, 140    , 18, 10, 10);
+        this.domObjectFront = newSpriteDomObject(this.domObject, 20, 60, 10, 10);
         this.domObjectFront.className = "bf";
     }
 }

@@ -73,27 +73,27 @@ class GameObject
 		// TODO: optimize this... although zip should be pretty efficient here
 		if (this.cookedForTicks == Math.floor(this.cookedForTarget * 0.1))
 		{
-			emitParticle(this.position.x, this.position.y, 60, 18, 10, 10, "a3", 3000);
+			emitParticle(this.position.x, this.position.y, 0, 50, 10, 10, "a3", 3000);
 		}
 		else if (this.cookedForTicks == Math.floor(this.cookedForTarget * 0.7))
 		{
-			emitParticle(this.position.x, this.position.y, 70, 18, 10, 10, "a3", 3000);
+			emitParticle(this.position.x, this.position.y, 10, 50, 10, 10, "a3", 3000);
 		}
 		else if (this.cookedForTicks == Math.floor(this.cookedForTarget * 0.9))
 		{
-			emitParticle(this.position.x, this.position.y, 80, 18, 10, 10, "a3", 3000);
+			emitParticle(this.position.x, this.position.y, 20, 50, 10, 10, "a3", 3000);
 		}
 		else if (this.cookedForTicks == this.cookedForTarget)
 		{
-			emitParticle(this.position.x, this.position.y, 90, 18, 10, 10, "a3", 3000);
+			emitParticle(this.position.x, this.position.y, 30, 50, 10, 10, "a3", 3000);
 		}
 		else if (this.cookedForTicks == Math.floor(this.cookedForTarget * 1.1))
 		{
-			emitParticle(this.position.x, this.position.y, 100, 18, 10, 10, "a3", 3000);
+			emitParticle(this.position.x, this.position.y, 40, 50, 10, 10, "a3", 3000);
 		}
 		else if (this.cookedForTicks == Math.floor(this.cookedForTarget * 1.2))
 		{
-			emitParticle(this.position.x, this.position.y, 110, 18, 10, 10, "a3", 3000);
+			emitParticle(this.position.x, this.position.y, 50, 50, 10, 10, "a3", 3000);
 		}
 	}
 

@@ -14,7 +14,7 @@ class GameObjectRecipe extends GameObject
         this.ingredients = ingredients;
         this.seasoning = seasoning;
 
-        replaceSpriteDomObject(this.domObject, 180, 18, 10, 10);
+        replaceSpriteDomObject(this.domObject, 0, 70, 10, 10);
 
         this.status = RECIPE_STATUS_NEW;
     }
