@@ -288,11 +288,13 @@ body.ak .k
 	left: 0;
 	background: #000c;
 	transition: all 0.2s;
+	display: none;
 }
 
-#overlay
+#welcome-overlay
 {
-	display: none;
+	background: #000;
+	display: block;
 }
 
 h1,
