@@ -9,7 +9,7 @@ class Game
 	grabbedObject: GameObject;
 	nearestGrabSlot: GameObjectSlot;
 	nearestDropSlot: GameObjectSlot;
-	nearestRecipe: GameObjectRecipe;
+	nearestObject: GameObject;
 	_lastDescription: string = "";
 	lastLevelNumber: number;
 	recipeToCook: GameObjectRecipe;
@@ -184,10 +184,10 @@ class Game
 			}
 			description += "<br/>";
 		}
-		else if (this.nearestRecipe)
+		else if (this.nearestObject)
 		{
 			description += "In front of you:<br/>";
-			description += this.nearestRecipe.getDescription();
+			description += this.nearestObject.getDescription();
 			description += "<br/>";
 		}
 
@@ -238,8 +238,8 @@ class Game
 		let grabDistanceMin: number = 9999;
 		let dropSlot: GameObjectSlot;
 		let dropDistanceMin: number = 9999;
-		let recipe: GameObjectRecipe;
-		let recipeDistanceMin: number = 9999;
+		let obj: GameObject;
+		let objDistanceMin: number = 9999;
 		let canDropHere: boolean;
 
 		for (a of this.objects)
@@ -281,28 +281,28 @@ class Game
 					}
 				}
 			}
-			else if (a instanceof GameObjectRecipe)
+			else if (a instanceof GameObject && !(a instanceof GameObjectPlayer || a instanceof GameObjectSlot || a instanceof GameObjectCountertop))
 			{
 				b = dist2d(a.position, this.playerObject.position);
 				
-				if (b < recipeDistanceMin)
+				if (b < objDistanceMin)
 				{
-					recipeDistanceMin = b;
-					recipe = a;
+					objDistanceMin = b;
+					obj = a;
 				}
 			}
 		}
 
 		this.nearestGrabSlot = null;
 		this.nearestDropSlot = null;
-		this.nearestRecipe = null;
+		this.nearestObject = null;
 
 		// TODO: only highlight when interactable
 
-		if (recipeDistanceMin <= MAX_GRAB_DISTANCE)
+		if (objDistanceMin <= MAX_GRAB_DISTANCE)
 		{
-			this.nearestRecipe = recipe;
-			this.nearestRecipe.highlighted = true;
+			this.nearestObject = obj;
+			this.nearestObject.highlighted = true;
 		}
 
 		if (grabDistanceMin <= MAX_GRAB_DISTANCE)
@@ -368,7 +368,7 @@ class Game
 	onGrabObject()
 	{
 		_assert(this.nearestGrabSlot);
-		
+
 		this.nearestGrabSlot.giveToPlayer();
 	}
 
@@ -394,7 +394,7 @@ class Game
 		{
 			this.recipeToCook.status = RECIPE_STATUS_NEW;
 		}
-		this.recipeToCook = this.nearestRecipe;
+		this.recipeToCook = (this.nearestObject as GameObjectRecipe);
 		this.recipeToCook.status = RECIPE_STATUS_ACCEPTED;
 	}
 
@@ -403,7 +403,7 @@ class Game
 		_input.deregisterAction(0);
 		_input.deregisterAction(1);
 
-		if (!this.grabbedObject && this.nearestRecipe && this.nearestRecipe.status == RECIPE_STATUS_NEW)
+		if (!this.grabbedObject && this.nearestObject && this.nearestObject instanceof GameObjectRecipe && this.nearestObject.status == RECIPE_STATUS_NEW)
 		{
 			_input.registerAction(0, 'Accept', this.onAcceptRecipe.bind(this));
 		}

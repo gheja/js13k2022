@@ -44,7 +44,7 @@ class GameObjectContainer extends GameObject
 
     onDestroy()
     {
-        if (this.recipe.status == RECIPE_STATUS_COOKING)
+        if (this.recipe && this.recipe.status == RECIPE_STATUS_COOKING)
         {
             this.recipe.status = RECIPE_STATUS_NEW;
         }
