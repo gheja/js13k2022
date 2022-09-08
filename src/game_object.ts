@@ -10,6 +10,7 @@ class GameObject
 	highlighted: boolean = false;
 	name: string;
 	description: string;
+	parentObject: GameObject;
 	childObjects: Array<GameObject> = [];
 	destroyed: boolean = false;
 	collidable: boolean = false;
@@ -44,6 +45,7 @@ class GameObject
 		}
 		else
 		{
+			obj.parentObject = this;
 			this.childObjects.push(obj);
 			obj.position.copyFrom(this.position);
 		}
@@ -52,6 +54,7 @@ class GameObject
     giveToPlayer()
     {
         _game.grabbedObject = this.childObjects[0];
+		this.childObjects[0].parentObject = null;
 		this.childObjects[0].onGrabbed();
         this.childObjects.pop();
     }
