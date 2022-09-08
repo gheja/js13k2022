@@ -12,11 +12,20 @@
 
 ## ui
 - [x] menu
-- [ ] welcome screen
+- [x] welcome screen
 - [ ] level transition effect
 
 ## annoying bugs
 - [x] "in front of you" checks the grabbed object and its children as well
+
+## severe bugs
+
+## breaking bugs
+
+## optimizations
+- [ ] rename css classes, ids, etc.
+- [ ] use integers instead of object names as strings
+- [/] pack sprite sheet more densly
 
 ## nice to have
 - [ ] some transition from the welcome screen
@@ -26,15 +35,14 @@
 - [ ] proper 3rd axis handling (z-height?)
 - [ ] stacking z-height handling
 - [ ] sort the contents of dishes properly
-- [ ] border around dialog profile picture
+- [ ] fix border around dialog profile picture
 - [x] better font
 - [ ] progressbar for cooking
 - [ ] disable text selection
 - [ ] recursive highlight so the meat also blinks
 - [ ] better gamepad dead zone handling (i.e. https://www.smashingmagazine.com/2015/11/gamepad-api-in-web-games/#applying-a-dead-zone )
 - [ ] cursor always arrow
-- [ ] use integers instead of object names as strings
-- [/] pack sprite sheet more densly
 - [ ] blinky "Press Start"? :)
 - [ ] _floorHeight, _floorWidth, _padX, _padY, _zoom -> const
 - [ ] _names -> data
+- [ ] separate shadows from objects?
