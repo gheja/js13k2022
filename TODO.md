@@ -17,6 +17,7 @@
 - [x] "in front of you" checks the grabbed object and its children as well
 
 ## nice to have
+- [ ] Find a name for Goblin
 - [ ] proper move and slide
 - [ ] GameObject is interactable?
 - [ ] proper 3rd axis handling (z-height?)
