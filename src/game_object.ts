@@ -17,6 +17,8 @@ class GameObject
 	cookedForTicks: number = 0;
 	cookedForTarget: number = 0;
 
+	canCatch: boolean = false;
+
 	constructor(position: Vec2D, width: number, height: number, name: string, description: string)
 	{
 		this.domObject = newElement(_divLayer, "div", "o");
