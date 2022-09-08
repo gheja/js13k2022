@@ -50,7 +50,20 @@ class Game
 
 		switch (n)
 		{
+			// a dummy level for the welcome screen
 			case 0:
+			break;
+
+			case 1:
+				this.dialogOnStart = [
+					[ 0, 2, "This is nice...", 1000 ],
+					[ 0, 2, "Although a bit boring...", 1000 ],
+					[ 0, 2, "I better get going" ],
+				];
+				this.onDialogEnd = this.loadNextLevelDelayed.bind(this);
+			break;
+
+			case 2:
 				this.objects.push(new GameObjectDeputy(new Vec2D(90, 10)));
 
 				this.objects.push(new GameObjectSlot(new Vec2D(50, 50)));
@@ -470,7 +483,7 @@ class Game
 
 	start()
 	{
-		this.loadLevel(0);
+		this.loadLevel(1);
 		this.onFrame();
 	}
 }
