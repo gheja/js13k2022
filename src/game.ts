@@ -103,6 +103,16 @@ class Game
 		}
 	}
 
+	loadNextLevel()
+	{
+		this.loadLevel(this.lastLevelNumber + 1);
+	}
+
+	loadNextLevelDelayed()
+	{
+		window.setTimeout(this.loadNextLevel.bind(this), 300);
+	}
+
 	handleInput()
 	{
 		let a = _input.getSpeedAndDirection();
