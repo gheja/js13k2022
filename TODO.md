@@ -12,6 +12,8 @@
 
 ## ui
 - [x] menu
+- [ ] welcome screen
+- [ ] level transition effect
 
 ## annoying bugs
 - [x] "in front of you" checks the grabbed object and its children as well
