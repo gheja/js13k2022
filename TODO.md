@@ -19,6 +19,7 @@
 - [x] "in front of you" checks the grabbed object and its children as well
 
 ## nice to have
+- [ ] some transition from the welcome screen
 - [ ] Find a name for Goblin
 - [ ] proper move and slide
 - [ ] GameObject is interactable?
@@ -34,3 +35,6 @@
 - [ ] cursor always arrow
 - [ ] use integers instead of object names as strings
 - [/] pack sprite sheet more densly
+- [ ] blinky "Press Start"? :)
+- [ ] _floorHeight, _floorWidth, _padX, _padY, _zoom -> const
+- [ ] _names -> data
