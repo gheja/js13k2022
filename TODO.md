@@ -13,6 +13,9 @@
 ## ui
 - [x] menu
 
+## annoying bugs
+- [ ] "in front of you" checks the grabbed object and its children as well
+
 ## nice to have
 - [ ] proper move and slide
 - [ ] GameObject is interactable?
