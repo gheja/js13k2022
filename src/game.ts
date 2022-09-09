@@ -58,9 +58,23 @@ class Game
 
 			case 1:
 				this.dialogOnStart = [
-					[ 0, 2, "This is nice...", 1000 ],
-					[ 0, 2, "Although a bit boring...", 1000 ],
-					[ 0, 2, "I better get going" ],
+					[ 0, 2, "Ahh... what a wonderful day!" ],
+					[ 0, 2, "The temperature is sweet, the weather is just perfect...", 1000 ],
+					[ 0, 2, "A really wonderful day!", 1000 ],
+					[ 0, 2, "*sigh* I am bored.", 1000 ],
+					[ 2, 2, "*ring-ring*", 2000 ],
+					[ 0, 2, "Hello, Devil speaking!" ],
+					[ 1, 1, "Hey Dev, this is Skully!" ],
+					[ 0, 2, "Death, what a nice surprise! How's it going?" ],
+					[ 1, 1, "Great, great. But listen. By any chance..." ],
+					[ 1, 1, "Is that restaurant of yours still around?" ],
+					[ 0, 2, "Yeah, it is. But--" ],
+					[ 1, 1, "Great! So I was wondering if you're still into the cooking business.<br/>I'll have a party today with friends and stuff..." ],
+					[ 1, 1, "[...]" ],
+					[ 0, 2, "Sure, but--" ],
+					[ 1, 1, "Thanks, you're the best!" ],
+					[ 2, 2, "*click*" ],
+					[ 0, 2, "I think I better get going", 2000 ],
 				];
 				this.onDialogEnd = this.loadNextLevelDelayed.bind(this);
 			break;
