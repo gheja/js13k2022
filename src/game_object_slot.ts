@@ -20,7 +20,10 @@ class GameObjectSlot extends GameObject
 
     updateSprite()
     {
-        this.domObject2.style.display = (this.childObjects.length != 0 ? "none" : "");
+        if (this.domObject2)
+        {
+            this.domObject2.style.display = (this.childObjects.length != 0 ? "none" : "");
+        }
 
         if (this.spawnPoint)
         {
