@@ -199,13 +199,17 @@ class Game
 
 		if (this.grabbedObject)
 		{
-			description += this.grabbedObject.getDescription() + "<br/>";
+			description += "Carrying:<br/>";
+			description += "<div class=\"box\">";
+			description += this.grabbedObject.getDescription();
+			description += "</div>";
 		}
 
 		// TODO: optimize this
 		if (this.nearestDropTarget)
 		{
-			description += "Drop target:<br/>";
+			description += "Drop target:";
+			description += "<div class=\"box\">";
 			if (this.nearestDropTarget.childObjects.length != 0)
 			{
 				description += this.nearestDropTarget.childObjects[0].getDescription();
@@ -214,11 +218,12 @@ class Game
 			{
 				description += this.nearestDropTarget.getDescription();
 			}
-			description += "<br/>";
+			description += "</div>";
 		}
 		else if (this.nearestGrabTarget)
 		{
-			description += "In front of you:<br/>";
+			description += "In front of you:";
+			description += "<div class=\"box\">";
 			if (this.nearestGrabTarget.childObjects.length != 0)
 			{
 				description += this.nearestGrabTarget.childObjects[0].getDescription();
@@ -227,13 +232,14 @@ class Game
 			{
 				description += this.nearestGrabTarget.getDescription();
 			}
-			description += "<br/>";
+			description += "</div>";
 		}
 		else if (this.nearestObject)
 		{
-			description += "In front of you:<br/>";
+			description += "In front of you:";
+			description += "<div class=\"box\">";
 			description += this.nearestObject.getDescription();
-			description += "<br/>";
+			description += "</div>";
 		}
 
 		let a: GameObjectRecipe = null;
@@ -254,7 +260,9 @@ class Game
 		else if (this.recipeToCook)
 		{
 			a = this.recipeToCook;
-			description += "<b>Pick up a pan or pot to start the recipe.</b><br/>";
+			description += "<div class=\"box2\">";
+			description += "Pick up a pan or pot to start the recipe.";
+			description += "</div>";
 		}
 
 		if (a)

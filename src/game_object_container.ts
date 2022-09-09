@@ -24,7 +24,7 @@ class GameObjectContainer extends GameObject
     {
         if (this.recipe)
         {
-            return "<br/>Cooking <b>" + this.recipe.name + "</b>";
+            return "Cooking <b>" + this.recipe.name + "</b>";
         }
 
         return "";

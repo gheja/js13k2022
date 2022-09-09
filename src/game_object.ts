@@ -114,7 +114,7 @@ class GameObject
 
 	getDescription()
 	{
-		let s = "<b>" + this.name + "</b><br/>" + this.description + "<br/>";
+		let s = "<b>" + this.name + "</b><br/>" + this.description;
 
 		if (this.childObjects.length != 0)
 		{

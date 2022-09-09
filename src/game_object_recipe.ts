@@ -23,6 +23,7 @@ class GameObjectRecipe extends GameObject
     {
         let s: string = "";
 
+        s += "<br/>";
         s += "- Grab a <b>" + (this.containerType == "pan" ? "Pan" : "Small Pot") + "</b><br/>";
         s += "- Add <b>" + this.ingredients["meat"] + " pcs Meat</b><br/>";
         s += "- Fry for <b>20 seconds</b><br/>";
