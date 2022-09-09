@@ -43,6 +43,7 @@
 - [/] pack sprite sheet more densly
 
 ## nice to have
+- [x] cache the sprites in getSprite()
 - [ ] some transition from the welcome screen
 - [ ] Find a name for Goblin
 - [ ] proper move and slide

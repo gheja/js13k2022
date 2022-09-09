@@ -101,15 +101,24 @@ function lerp(a: number, b: number, ratio: number)
 	return a + (b - a) * ratio;
 }
 
+let _spriteCache: Array<any> = [];
+
 function getSprite(x: number, y: number, width: number, height: number)
 {
-	let canvas = document.createElement("canvas");
-	canvas.width = _z(width);
-	canvas.height = _z(height);
-	let ctx = canvas.getContext("2d");
-	ctx.imageSmoothingEnabled = false;
-	ctx.drawImage(_sprites, x, y, width, height, 0, 0, _z(width), _z(height));
-	return canvas.toDataURL();
+	let a = [x, y, width, height].join(",");
+
+	if (!_spriteCache[a])
+	{
+		let canvas = document.createElement("canvas");
+		canvas.width = _z(width);
+		canvas.height = _z(height);
+		let ctx = canvas.getContext("2d");
+		ctx.imageSmoothingEnabled = false;
+		ctx.drawImage(_sprites, x, y, width, height, 0, 0, _z(width), _z(height));
+		_spriteCache[a] = canvas.toDataURL();
+	}
+
+	return _spriteCache[a];
 }
 
 function replaceSpriteDomObject(obj: HTMLElement, x: number, y: number, width: number, height: number)
