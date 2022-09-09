@@ -9,11 +9,26 @@
 - [x] recipes
 - [ ] feedback (★ = &starf;)
 - [x] menu button
+- [ ] recipe content caching
+
+## input
+- [ ] virtual gamepad for mobile
 
 ## ui
 - [x] menu
 - [x] welcome screen
 - [ ] level transition effect
+
+## extras/bonuses
+- [ ] infinite pans, pots
+- [ ] extended last 3 seconds
+
+## content
+### seasoning
+- [ ] black pepper
+- [ ] garlic
+- [ ] green chili
+- [ ] red habanero
 
 ## annoying bugs
 - [x] "in front of you" checks the grabbed object and its children as well
@@ -46,3 +61,5 @@
 - [ ] _floorHeight, _floorWidth, _padX, _padY, _zoom -> const
 - [ ] _names -> data
 - [ ] separate shadows from objects?
+- [ ] dynamic shirt, pants colors
+- [x] rearrange description box, separate boxes for "in front of", "drop target", etc.
