@@ -27,7 +27,8 @@ class Game
 	{
 		this.lastLevelNumber = n;
 
-		_divLayer.innerHTML = "";
+		// TODO: optimize?
+		_divLayer.innerHTML = "<div id=\"l0\"><div id=\"l1\"></div><div id=\"l2\"></div><div id=\"l3\"></div></div>";
 		this.objects = [];
 		this.grabbedObject = null;
 		this.dialogOnStart = null;

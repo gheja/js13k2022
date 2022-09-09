@@ -7,7 +7,7 @@ html
 
 body
 {
-	background: #480c0c;
+	background: #e22;
 	color: #999;
 	overflow: hidden;
 }
@@ -174,8 +174,7 @@ body
 #d
 {
 	position: absolute;
-	width: 200px;
-	height: 120px;
+	background: #fff3;
 }
 
 #d,
@@ -184,13 +183,60 @@ body
 	transform-style: preserve-3d;
 }
 
+#l0
+{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 4000px;
+	height: 2000px;
+	transform: translateY(-820px) rotateX(90deg) translateY(-500px) translateX(-1500px);
+	background: #ff04;
+}
+#l1,
+#l2,
+#l3
+{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+#l1
+{
+	/* lava_optimized.png */
+	background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKAgMAAADwXCcuAAAACVBMVEXcQwv75mL/jgCGM68cAAAAMElEQVQI12NgERRgSNRQYFBwa2AQVFBg6HCawMAi0sAg4eHA0KS4gEHMVYEhScUBAICSBxxSNRNRAAAAAElFTkSuQmCC");
+	background-size: 40px 40px;
+	animation: l1 7s linear infinite;
+}
+
+#l2
+{
+	/* rocks_optimized.png */
+	background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWAgMAAAC52oSoAAAADFBMVEUAAABKFxFhIBGsSh4DteyuAAAAAXRSTlMAQObYZgAAAKVJREFUCNdjWMq2KpM1gSGVNWopbwBDOG/UcuYAhhjmq1MEPjB8TDGdIsrAwJjKHyMawOCY5vBhWQBDcFQoY+YChinXwlmXTmBYalkjtmoCw0pfB1OgXGbyUd6sAIaoKayTbxUwLE2RnGJ6gGFuhFgoPwND8Z2opQEMDAcMV61a4MAgyZiVGRjAECm4NLJwAkO64PRIV6CZknNuhi1gWKI1xT4qAADvZzNerS3tjAAAAABJRU5ErkJggg==");
+	background-size: 88px 88px;
+}
+
+#l3
+{
+	/* fog */
+	background: linear-gradient(0deg, #f004 0%, #c119 30%, #e22 75%);
+}
+
+@keyframes l1
+{
+0% { background-position: 0 0; }
+100% { background-position: 80px 40px; }
+}
+
+
 .floor
 {
 	position: absolute;
 	top: 0;
 	left: 0;
-	transform: translateZ(-180px) rotateX(90deg) translateY(360px); /* translateZ(_floorHeight / 2 * _zoom) ... translateY(_floorHeight * _zoom)  */
-	opacity: 0.8;
+	transform: rotateX(90deg) translateY(200px);
 }
 
 .o
