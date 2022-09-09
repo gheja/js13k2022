@@ -9,7 +9,8 @@
 - [x] recipes
 - [ ] feedback (★ = &starf;)
 - [x] menu button
-- [ ] recipe content caching
+- [ ] recipe text content caching
+- [x] play area boundaries
 
 ## input
 - [ ] virtual gamepad for mobile
@@ -18,6 +19,11 @@
 - [x] menu
 - [x] welcome screen
 - [ ] level transition effect
+
+## graphics
+- [ ] wall
+- [ ] cutting board
+- [ ] firewood/place
 
 ## extras/bonuses
 - [ ] infinite pans, pots
@@ -64,3 +70,4 @@
 - [ ] separate shadows from objects?
 - [ ] dynamic shirt, pants colors
 - [x] rearrange description box, separate boxes for "in front of", "drop target", etc.
+- [ ] easter egg for trying to leave the play area?
