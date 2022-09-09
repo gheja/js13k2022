@@ -182,7 +182,7 @@ class GameObject
 		_game.objects.forEach(element => {
 			if (element.collidable)
 			{
-				if (pointInBox(targetPosition, element.position, 20, 20))
+				if (pointInBox(targetPosition, element.position, 10, 10, ((element as GameObjectWall).repeatWidth * 10), 10))
 				{
 					canMove = false;
 				}

@@ -4,6 +4,8 @@ class GameObjectWall extends GameObject
     domObjectFront: HTMLElement;
     domObjectTop: HTMLElement;
     domObjectRight: HTMLElement;
+    repeatWidth: number;
+    // repeatHeight: number;
 
     constructor(position: Vec2D, width: number=1, height: number=1, zHeight: number=1)
     {
@@ -23,6 +25,9 @@ class GameObjectWall extends GameObject
         this.domObjectFront = newSpriteDomObject(this.domObject, 30, 70, 10, 10);
         this.domObjectFront.className = "bf";
 
+        this.repeatWidth = width;
+        // this.repeatHeight = height;
+        
         // x
         this.domObjectFront.style.width = _z(width * 10) + "px";
         this.domObjectTop.style.width = _z(width * 10) + "px";

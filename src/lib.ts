@@ -179,9 +179,9 @@ function _exception(message: string)
 	}
 }
 
-function pointInBox(p1: Vec2D, p2: Vec2D, width: number, height: number)
+function pointInBox(p1: Vec2D, p2: Vec2D, width1: number, height1: number, width2: number, height2: number)
 {
-	if ((p1.x > p2.x - width/2) && (p1.x < p2.x + width/2) && (p1.y > p2.y - height/2) && (p1.y < p2.y + height/2))
+	if ((p1.x > p2.x - width1) && (p1.x < p2.x + width2) && (p1.y > p2.y - height1) && (p1.y < p2.y + height2))
 	{
 		return true;
 	}
