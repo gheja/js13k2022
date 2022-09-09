@@ -363,7 +363,7 @@ class Game
 					}
 				}
 			}
-			else if (a instanceof GameObject && !(a instanceof GameObjectPlayer || a instanceof GameObjectSlot || a instanceof GameObjectCountertop))
+			else if (a instanceof GameObject && !(a instanceof GameObjectPlayer || a instanceof GameObjectSlot || a instanceof GameObjectWall))
 			{
 				b = dist2d(a.position, this.playerObject.position);
 				
