@@ -189,6 +189,12 @@ class GameObject
 			}
 		});
 
+		// hard-coded boundaries
+		if (targetPosition.x < -94 || targetPosition.x > 240 || targetPosition.y < -310 || targetPosition.y > 160)
+		{
+			canMove = false;
+		}
+
 		if (canMove)
 		{
 			this.position.copyFrom(targetPosition);
