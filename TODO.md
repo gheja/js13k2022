@@ -1,6 +1,7 @@
 # js13k2022
 
 ## general
+- [ ] find a name
 - [x] cooking individual ingredients
 - [x] text progressbar for cooking
 - [x] level loading
@@ -30,6 +31,11 @@
 - [ ] extended last 3 seconds
 
 ## content
+
+### ingredients
+- [ ] fire fungi
+- [ ] some vegetables
+
 ### seasoning
 - [ ] black pepper
 - [ ] garlic
@@ -44,12 +50,12 @@
 ## breaking bugs
 
 ## optimizations
+- [x] cache the sprites in getSprite()
 - [ ] rename css classes, ids, etc.
 - [ ] use integers instead of object names as strings
 - [/] pack sprite sheet more densly
 
 ## nice to have
-- [x] cache the sprites in getSprite()
 - [ ] some transition from the welcome screen
 - [ ] Find a name for Goblin
 - [ ] proper move and slide
@@ -61,7 +67,7 @@
 - [x] better font
 - [ ] progressbar for cooking
 - [ ] disable text selection
-- [ ] recursive highlight so the meat also blinks
+- [x] recursive highlight so the meat also blinks
 - [ ] better gamepad dead zone handling (i.e. https://www.smashingmagazine.com/2015/11/gamepad-api-in-web-games/#applying-a-dead-zone )
 - [ ] cursor always arrow
 - [ ] blinky "Press Start"? :)
