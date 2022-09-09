@@ -190,7 +190,7 @@ class GameObject
 		});
 
 		// hard-coded boundaries
-		if (targetPosition.x < -94 || targetPosition.x > 240 || targetPosition.y < -310 || targetPosition.y > 160)
+		if (targetPosition.x < -94 || targetPosition.x > 240 || targetPosition.y < -600 || targetPosition.y > 137)
 		{
 			canMove = false;
 		}
