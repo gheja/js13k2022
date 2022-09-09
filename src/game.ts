@@ -42,6 +42,12 @@ class Game
 		_input.registerAction(2, "Pause", _game.onPauseClick.bind(_game));
 
 		this.objects.push(new GameObjectPlayer(new Vec2D(100, 20)));
+
+		this.objects.push(new GameObjectWall(new Vec2D(0, 0), 20, 1, 2));
+		this.objects.push(new GameObjectWall(new Vec2D(0, 120), 20, 1, 1));
+		this.objects.push(new GameObjectWall(new Vec2D(0, 110)));
+		this.objects.push(new GameObjectWall(new Vec2D(190, 110)));
+
 		this.playerObject = (this.objects[0] as GameObjectPlayer);
 
 		switch (n)
