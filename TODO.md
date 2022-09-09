@@ -13,22 +13,38 @@
 - [ ] recipe text content caching
 - [x] play area boundaries
 
+
 ## input
 - [ ] virtual gamepad for mobile
+
 
 ## ui
 - [x] menu
 - [x] welcome screen
 - [ ] level transition effect
 
+
 ## graphics
 - [ ] wall
 - [ ] cutting board
 - [ ] firewood/place
 
+
 ## extras/bonuses
 - [ ] infinite pans, pots
 - [ ] extended last 3 seconds
+
+
+## server features
+
+### stats
+- [ ] total meals started
+- [ ] total meals finished
+- [ ] total time cooked
+- [ ] total pans and pots used
+- [ ] total seasoning used
+- [ ] total stars collected
+
 
 ## content
 
@@ -42,18 +58,25 @@
 - [ ] green chili
 - [ ] red habanero
 
+
 ## annoying bugs
 - [x] "in front of you" checks the grabbed object and its children as well
 
+
 ## severe bugs
 
+
 ## breaking bugs
+
 
 ## optimizations
 - [x] cache the sprites in getSprite()
 - [ ] rename css classes, ids, etc.
 - [ ] use integers instead of object names as strings
+- [ ] remove css comments
+- [ ] AdvZIP
 - [/] pack sprite sheet more densly
+
 
 ## nice to have
 - [ ] some transition from the welcome screen
@@ -76,4 +99,5 @@
 - [ ] separate shadows from objects?
 - [ ] dynamic shirt, pants colors
 - [x] rearrange description box, separate boxes for "in front of", "drop target", etc.
-- [ ] easter egg for trying to leave the play area?
+- [ ] easter egg for trying to leave the play area
+- [ ] easter egg for cooking stuffs too long (turn into coal)
