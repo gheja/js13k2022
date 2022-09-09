@@ -123,7 +123,7 @@ function getSprite(x: number, y: number, width: number, height: number)
 
 function replaceSpriteDomObject(obj: HTMLElement, x: number, y: number, width: number, height: number)
 {
-	obj.style.background = "url(" + getSprite(x, y, width, height) + ") no-repeat";
+	obj.style.background = "url(" + getSprite(x, y, width, height) + ")";
 	obj.style.width = _z(width) + "px";
 	obj.style.height = _z(height) + "px";
 }
