@@ -28,7 +28,7 @@ class Game
 		this.lastLevelNumber = n;
 
 		// TODO: optimize?
-		_divLayer.innerHTML = "<div id=\"l0\"><div id=\"l1\"></div><div id=\"l2\"></div><div id=\"l3\"></div></div>";
+		_divLayer.innerHTML = "<div id=\"l0\"><div id=\"l1\"></div><div id=\"l2\"></div><div id=\"l3\"></div><div id=\"floor\"></div></div>";
 		this.objects = [];
 		this.grabbedObject = null;
 		this.dialogOnStart = null;
@@ -43,13 +43,6 @@ class Game
 
 		this.objects.push(new GameObjectPlayer(new Vec2D(100, 20)));
 		this.playerObject = (this.objects[0] as GameObjectPlayer);
-
-		// TODO: move this somewhere...
-		_floorImage = (newElement(_divLayer, "img", "") as HTMLImageElement);
-		_floorImage.className = "floor";
-		_floorImage.src = GFX_FLOOR;
-		_floorImage.width = _z(200);
-		_floorImage.height = _z(120);
 
 		switch (n)
 		{

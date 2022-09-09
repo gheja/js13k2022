@@ -231,12 +231,14 @@ body
 }
 
 
-.floor
+#floor
 {
 	position: absolute;
-	top: 0;
-	left: 0;
-	transform: rotateX(90deg) translateY(200px);
+	width: 600px;
+	height: 360px;
+	background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAAB4AgMAAADK/FV4AAAADFBMVEU5EgAvDgBOGABEFQAn1W0eAAAAaUlEQVRYw+3XMQoAIQxE0TR7v21yyTTezyZCLAVtFEL4zRQDr5uAiuovM9y7WcS+g9QhIp9qhFlzj9h3kDok7Swh3D7kJTnOZO0gdchpJmsHqUPSzhLC7UNekrzPUQhvfgj/fQi3D7lNBtEWKB6kL05uAAAAAElFTkSuQmCC");
+	background-size: 100% 100%;
+	transform: translateY(1500px) translateX(1500px);
 }
 
 .o
