@@ -36,7 +36,7 @@ function welcomeProceed()
 {
 	getObject("welcome-overlay").style.display = "none";
 	_game.welcomePaused = false;
-	_game.loadLevel(1);
+	_game.loadLevel(3);
 }
 
 function onSpritesLoaded()

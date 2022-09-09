@@ -66,7 +66,7 @@ class Game
 			break;
 
 			case 2:
-				this.objects.push(new GameObjectDeputy(new Vec2D(90, 10)));
+				this.objects.push(new GameObjectDeputy(new Vec2D(120, 10)));
 
 				this.objects.push(new GameObjectSlot(new Vec2D(50, 50)));
 				this.objects.push(new GameObjectSlot(new Vec2D(100, 50)));
@@ -79,11 +79,7 @@ class Game
 				this.objects.push(new GameObjectSlot(new Vec2D(40, 20)));
 				(this.objects[this.objects.length - 1] as GameObjectSlot).setSpawn("pan", 3);
 
-				this.objects.push(new GameObjectSlot(new Vec2D(60, 20)));
-				(this.objects[this.objects.length - 1] as GameObjectSlot).setSpawn("pot", 3);
-		
-				this.objects.push(new GameObjectSlotTrash(new Vec2D(80, 20)));
-				this.objects.push(new GameObjectSlotChute(new Vec2D(130, 20)));
+				this.objects.push(new GameObjectSlotChute(new Vec2D(150, 20)));
 		
 				this.objects.push(new GameObjectCountertop(new Vec2D(80, 80)));
 				this.objects.push(new GameObjectCountertop(new Vec2D(90, 80)));
@@ -95,7 +91,6 @@ class Game
 				this.objects.push(new GameObjectCountertop(new Vec2D(110, 110)));
 
 				this.objects.push(new GameObjectRecipe(new Vec2D(20, 80), "Fried foe", "pan", { "meat": 1 }, []));
-				this.objects.push(new GameObjectRecipe(new Vec2D(20, 100), "Two fried foes", "pan", { "meat": 2 }, []));
 
 				this.dialogOnStart = [
 					[ 3, 1, "Hey Boss!" ],
@@ -104,6 +99,46 @@ class Game
 					[ 3, 1, "Sure we have! Just pick up the recipe first." ],
 					[ 3, 1, "I'll be here if you need any help." ],
 					[ 0, 2, "That won't be necessary but thanks." ],
+				];
+			break;
+
+			case 3:
+				this.objects.push(new GameObjectDeputy(new Vec2D(120, 10)));
+
+				this.objects.push(new GameObjectSlot(new Vec2D(50, 50)));
+				this.objects.push(new GameObjectSlot(new Vec2D(100, 50)));
+				this.objects.push(new GameObjectSlot(new Vec2D(150, 50)));
+				this.objects.push(new GameObjectSlot(new Vec2D(150, 100)));
+		
+				this.objects.push(new GameObjectSlot(new Vec2D(20, 20)));
+				(this.objects[this.objects.length - 1] as GameObjectSlot).setSpawn("meat", 2);
+		
+				this.objects.push(new GameObjectSlot(new Vec2D(40, 20)));
+				(this.objects[this.objects.length - 1] as GameObjectSlot).setSpawn("pan", 3);
+
+/*
+				this.objects.push(new GameObjectSlot(new Vec2D(60, 20)));
+				(this.objects[this.objects.length - 1] as GameObjectSlot).setSpawn("pot", 3);
+*/		
+				this.objects.push(new GameObjectSlotTrash(new Vec2D(80, 20)));
+				this.objects.push(new GameObjectSlotChute(new Vec2D(150, 20)));
+		
+				this.objects.push(new GameObjectCountertop(new Vec2D(80, 80)));
+				this.objects.push(new GameObjectCountertop(new Vec2D(90, 80)));
+				this.objects.push(new GameObjectCountertop(new Vec2D(100, 80)));
+				this.objects.push(new GameObjectCountertop(new Vec2D(110, 80)));
+				this.objects.push(new GameObjectCountertop(new Vec2D(120, 80)));
+				this.objects.push(new GameObjectCountertop(new Vec2D(110, 90)));
+				this.objects.push(new GameObjectCountertop(new Vec2D(110, 100)));
+				this.objects.push(new GameObjectCountertop(new Vec2D(110, 110)));
+
+				this.objects.push(new GameObjectRecipe(new Vec2D(20, 100), "Two fried foes", "pan", { "meat": 2 }, []));
+
+				this.dialogOnStart = [
+					[ 3, 1, "Hey Boss!" ],
+					[ 3, 1, "Look who came by! It's your favorite three-in-one pup, Cerberos!" ],
+					[ 3, 1, "He looks hungry, I guess he can help you out with leftovers..." ],
+					[ 3, 1, "... and anything with else, too, I guess." ],
 				];
 			break;
 		
