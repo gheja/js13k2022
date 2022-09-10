@@ -28,7 +28,7 @@ class Game
 		this.lastLevelNumber = n;
 
 		// TODO: optimize?
-		_divLayer.innerHTML = "<div id=\"l0\"><div id=\"l1\"></div><div id=\"l2\"></div><div id=\"l3\"></div><div id=\"floor\"></div></div>";
+		_divLayer.innerHTML = "<div id=\"l0\"><div id=\"l1\"></div><div id=\"l2\"></div><div id=\"l3\"></div>" + (n > 1 ? "<div id=\"floor\"></div>" : "") + "</div>";
 		this.objects = [];
 		this.grabbedObject = null;
 		this.dialogOnStart = null;
@@ -43,31 +43,34 @@ class Game
 
 		this.objects.push(new GameObjectPlayer(new Vec2D(100, 20)));
 
-		this.objects.push(new GameObjectDeputy(new Vec2D(120, 10)));
+		if (n > 1)
+		{
+			this.objects.push(new GameObjectDeputy(new Vec2D(120, 10)));
 
-		this.objects.push(new GameObjectWall(new Vec2D(0, 0), 20, 1, 2));
-		this.objects.push(new GameObjectWall(new Vec2D(0, 120), 20, 1, 1));
-		this.objects.push(new GameObjectWall(new Vec2D(0, 110)));
-		this.objects.push(new GameObjectWall(new Vec2D(190, 110)));
+			this.objects.push(new GameObjectWall(new Vec2D(0, 0), 20, 1, 2));
+			this.objects.push(new GameObjectWall(new Vec2D(0, 120), 20, 1, 1));
+			this.objects.push(new GameObjectWall(new Vec2D(0, 110)));
+			this.objects.push(new GameObjectWall(new Vec2D(190, 110)));
 
-		this.objects.push(new GameObjectSlot(new Vec2D(50, 50)));
-		this.objects.push(new GameObjectSlot(new Vec2D(100, 50)));
-		this.objects.push(new GameObjectSlot(new Vec2D(150, 50)));
-		this.objects.push(new GameObjectSlot(new Vec2D(150, 100)));
+			this.objects.push(new GameObjectSlot(new Vec2D(50, 50)));
+			this.objects.push(new GameObjectSlot(new Vec2D(100, 50)));
+			this.objects.push(new GameObjectSlot(new Vec2D(150, 50)));
+			this.objects.push(new GameObjectSlot(new Vec2D(150, 100)));
 
-		this.objects.push(new GameObjectCountertop(new Vec2D(140, 10)));
-		this.objects.push(new GameObjectCountertop(new Vec2D(150, 10)));
-		this.objects.push(new GameObjectCountertop(new Vec2D(160, 10)));
-		this.objects.push(new GameObjectSlotChute(new Vec2D(150, 10)));
+			this.objects.push(new GameObjectCountertop(new Vec2D(140, 10)));
+			this.objects.push(new GameObjectCountertop(new Vec2D(150, 10)));
+			this.objects.push(new GameObjectCountertop(new Vec2D(160, 10)));
+			this.objects.push(new GameObjectSlotChute(new Vec2D(150, 10)));
 
-		this.objects.push(new GameObjectCountertop(new Vec2D(80, 80)));
-		this.objects.push(new GameObjectCountertop(new Vec2D(90, 80)));
-		this.objects.push(new GameObjectCountertop(new Vec2D(100, 80)));
-		this.objects.push(new GameObjectCountertop(new Vec2D(110, 80)));
-		this.objects.push(new GameObjectCountertop(new Vec2D(120, 80)));
-		this.objects.push(new GameObjectCountertop(new Vec2D(110, 90)));
-		this.objects.push(new GameObjectCountertop(new Vec2D(110, 100)));
-		this.objects.push(new GameObjectCountertop(new Vec2D(110, 110)));
+			this.objects.push(new GameObjectCountertop(new Vec2D(80, 80)));
+			this.objects.push(new GameObjectCountertop(new Vec2D(90, 80)));
+			this.objects.push(new GameObjectCountertop(new Vec2D(100, 80)));
+			this.objects.push(new GameObjectCountertop(new Vec2D(110, 80)));
+			this.objects.push(new GameObjectCountertop(new Vec2D(120, 80)));
+			this.objects.push(new GameObjectCountertop(new Vec2D(110, 90)));
+			this.objects.push(new GameObjectCountertop(new Vec2D(110, 100)));
+			this.objects.push(new GameObjectCountertop(new Vec2D(110, 110)));
+		}
 
 		if (n > 2)
 		{
@@ -107,12 +110,12 @@ class Game
 
 			case 2:
 				this.objects.push(new GameObjectSlot(new Vec2D(20, 20)));
-				(this.objects[this.objects.length - 1] as GameObjectSlot).setSpawn("meat", 2);
+				(this.objects[this.objects.length - 1] as GameObjectSlot).setSpawn(OBJ_MEAT, 2);
 		
 				this.objects.push(new GameObjectSlot(new Vec2D(40, 20)));
-				(this.objects[this.objects.length - 1] as GameObjectSlot).setSpawn("pan", 3);
+				(this.objects[this.objects.length - 1] as GameObjectSlot).setSpawn(OBJ_PAN, 3);
 
-				this.objects.push(new GameObjectRecipe(new Vec2D(20, 80), "Fried foe", "pan", { "meat": 1 }, []));
+				this.objects.push(new GameObjectRecipe(new Vec2D(20, 80), "Fried foe", "pan", [ 0, 1 ], []));
 
 				this.dialogOnStart = [
 					[ 3, 1, "Hey Boss!" ],
@@ -126,12 +129,12 @@ class Game
 
 			case 3:
 				this.objects.push(new GameObjectSlot(new Vec2D(20, 20)));
-				(this.objects[this.objects.length - 1] as GameObjectSlot).setSpawn("meat", 2);
+				(this.objects[this.objects.length - 1] as GameObjectSlot).setSpawn(OBJ_MEAT, 2);
 		
 				this.objects.push(new GameObjectSlot(new Vec2D(40, 20)));
-				(this.objects[this.objects.length - 1] as GameObjectSlot).setSpawn("pan", 3);
+				(this.objects[this.objects.length - 1] as GameObjectSlot).setSpawn(OBJ_PAN, 3);
 
-				this.objects.push(new GameObjectRecipe(new Vec2D(20, 100), "Spicy fried friends", "pan", { "meat": 2 }, []));
+				this.objects.push(new GameObjectRecipe(new Vec2D(20, 100), "Spicy fried friends", "pan", [ 0, 2 ], []));
 
 				this.dialogOnStart = [
 					[ 3, 1, "Hey Boss!" ],
