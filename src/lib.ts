@@ -121,11 +121,14 @@ function getSprite(x: number, y: number, width: number, height: number)
 	return _spriteCache[a];
 }
 
-function replaceSpriteDomObject(obj: HTMLElement, x: number, y: number, width: number, height: number)
+function replaceSpriteDomObject(obj: HTMLElement, x: number, y: number, width: number, height: number, doNotResize: boolean = false)
 {
 	obj.style.background = "url(" + getSprite(x, y, width, height) + ")";
-	obj.style.width = _z(width) + "px";
-	obj.style.height = _z(height) + "px";
+	if (!doNotResize)
+	{
+		obj.style.width = _z(width) + "px";
+		obj.style.height = _z(height) + "px";
+	}
 }
 
 function newSpriteDomObject(parentNode: HTMLElement, x: number, y: number, width: number, height: number)
