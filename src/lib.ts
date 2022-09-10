@@ -83,7 +83,7 @@ function removeClass(obj: HTMLElement, className: string)
 	obj.classList.remove(className);
 }
 
-function newElement(parentNode: HTMLElement, tagName: string, className: string): HTMLElement
+function newDomElement(parentNode: HTMLElement, tagName: string, className: string): HTMLElement
 {
 	let a = document.createElement(tagName);
 	a.className = className;

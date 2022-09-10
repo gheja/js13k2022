@@ -23,7 +23,7 @@ class GameObject
 
 	constructor(position: Vec2D, width: number, height: number, name: string, description: string, objectType: number = OBJ_UNDEFINED)
 	{
-		this.domObject = newElement(_divLayer, "div", "o");
+		this.domObject = newDomElement(_divLayer, "div", "o");
 		this.domObject.style.width = width + "px";
 		this.domObject.style.height = height + "px";
 		this.position = new Vec2D();
