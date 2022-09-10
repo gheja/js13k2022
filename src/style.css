@@ -17,21 +17,6 @@ body
 	image-rendering: pixelated;
 }
 
-@keyframes dust2
-{
-	0% { opacity: 0.2; }
-	30% { opacity: 1; }
-	100% { opacity: 0; }
-}
-
-@keyframes a3
-{
-  0% { opacity: 0; margin-top: -20px; }
-  10% { opacity: 1; margin-top: -30px; }
-  90% { opacity: 1; margin-top: -30px; }
-  100% { opacity: 0; margin-top: -60px; }
-}
-
 #bar1,
 #bar2
 {
@@ -61,14 +46,14 @@ body
 
 .speak
 {
-	font-family: 'bahnschrift', arial;
-	opacity: 0;
-	border: 0.5rem solid #24c;
-	width: 60vw;
-	background: #000e;
 	position: fixed;
 	left: 10vw;
+	width: 60vw;
+	font-family: bahnschrift, arial;
+	background: #000e;
 	color: #fff;
+	opacity: 0;
+	border: 0.5rem solid #24c;
 	font-size: 1rem;
 	transition: opacity 0.15s;
 }
@@ -157,8 +142,8 @@ body
 #a2
 {
 	bottom: 1rem;
-	width: 20vw;
 	left: 10vw;
+	width: 20vw;
 	display: block;
 }
 
@@ -187,8 +172,8 @@ body
 #l0
 {
 	position: absolute;
-	left: 0;
 	top: 0;
+	left: 0;
 	width: 4000px;
 	height: 2000px;
 	transform: translateY(-820px) rotateX(90deg) translateY(-500px) translateX(-1500px);
@@ -225,13 +210,6 @@ body
 	background: linear-gradient(0deg, #f004 0%, #c119 30%, #e22 75%);
 }
 
-@keyframes l1
-{
-0% { background-position: 0 0; }
-100% { background-position: 80px 40px; }
-}
-
-
 #floor
 {
 	position: absolute;
@@ -257,13 +235,13 @@ body
 .h,
 .k
 {
-	display: none;
-	border: 0.2em #333 solid;
-	border-radius: 0.2em;
+	font-weight: bold;
 	background: #333;
 	color: #fff;
+	border: 0.2em #333 solid;
+	border-radius: 0.2em;
 	margin-right: 0.2em;
-	font-weight: bold;
+	display: none;
 }
 
 body.ag .g,
@@ -310,12 +288,12 @@ body.ak .k
 .c1
 {
 	position: relative;
-	text-align: center;
 	top: -25px;
 	left: -35px;
 	width: 100px;
 	font-size: 0.75rem;
 	color: #fff;
+	text-align: center;
 	z-index: 50000;
 }
 
@@ -384,12 +362,12 @@ h2
 
 #menu
 {
-	background: #1119;
-	margin: 30vh auto;
 	width: 15rem;
+	background: #1119;
+	padding: 0.5rem;
+	margin: 30vh auto;
 	color: #888;
 	list-style: none;
-	padding: 0.5rem;
 }
 
 #menu li
@@ -402,4 +380,25 @@ h2
 {
 	background: #4448;
 	color: #fff;
+}
+
+@keyframes dust2
+{
+	0% { opacity: 0.2; }
+	30% { opacity: 1; }
+	100% { opacity: 0; }
+}
+
+@keyframes a3
+{
+	0% { opacity: 0; margin-top: -20px; }
+	10% { opacity: 1; margin-top: -30px; }
+	90% { opacity: 1; margin-top: -30px; }
+	100% { opacity: 0; margin-top: -60px; }
+}
+
+@keyframes l1
+{
+	0% { background-position: 0 0; }
+	100% { background-position: 80px 40px; }
 }
