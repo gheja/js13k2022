@@ -3,7 +3,7 @@ class GameObjectSlot extends GameObject
     domObject2: HTMLElement;
     domObjectLabel: HTMLElement;
     spawnPoint: boolean = false;
-    spawnObjectType: string;
+    spawnObjectType: number;
     spawnCount: number;
     spawnLast: GameObject;
 
@@ -38,15 +38,15 @@ class GameObjectSlot extends GameObject
                     let a: GameObject;
 
                     // structuredClone() fails so...
-                    if (this.spawnObjectType == "meat")
+                    if (this.spawnObjectType == OBJ_MEAT)
                     {
                         a = new GameObjectMeat(new Vec2D(0, 0));
                     }
-                    else if (this.spawnObjectType == "pan")
+                    else if (this.spawnObjectType == OBJ_PAN)
                     {
                         a = new GameObjectContainerPan(new Vec2D(0, 0));
                     }
-                    else if (this.spawnObjectType == "pot")
+                    else if (this.spawnObjectType == OBJ_POT)
                     {
                         a = new GameObjectContainerPot(new Vec2D(0, 0));
                     }
@@ -64,7 +64,7 @@ class GameObjectSlot extends GameObject
         }
     }
 
-    setSpawn(objectType: string, count: number)
+    setSpawn(objectType: number, count: number)
     {
         this.spawnPoint = true;
         this.spawnObjectType = objectType;

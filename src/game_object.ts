@@ -14,13 +14,14 @@ class GameObject
 	childObjects: Array<GameObject> = [];
 	destroyed: boolean = false;
 	collidable: boolean = false;
+	objectType: number;
 
 	cookedForTicks: number = 0;
 	cookedForTarget: number = 0;
 
 	canCatch: boolean = false;
 
-	constructor(position: Vec2D, width: number, height: number, name: string, description: string)
+	constructor(position: Vec2D, width: number, height: number, name: string, description: string, objectType: number = OBJ_UNDEFINED)
 	{
 		this.domObject = newElement(_divLayer, "div", "o");
 		this.domObject.style.width = width + "px";
@@ -30,6 +31,7 @@ class GameObject
 		this.velocity = new Vec2D();
 		this.name = name;
 		this.description = description;
+		this.objectType = objectType;
 
 		this.width = width;
 		this.height = height;

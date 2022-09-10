@@ -6,9 +6,9 @@ class GameObjectContainer extends GameObject
     isOnFire: boolean = false;
     recipe: GameObjectRecipe;
 
-    constructor(position: Vec2D, width: number, height: number, name: string, description: string, spriteX: number, spriteY: number)
+    constructor(position: Vec2D, width: number, height: number, name: string, description: string, spriteX: number, spriteY: number, objectType: number)
     {
-        super(position, width, height, name, description);
+        super(position, width, height, name, description, objectType);
         this.domObject2 = newSpriteDomObject(this.domObject, spriteX, spriteY, width, height);
         this.domObjectFire = newSpriteDomObject(this.domObject, 0, 0, 10, 40);
         this.animationFrame = Math.floor(Math.random() * 5000);
