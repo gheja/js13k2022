@@ -41,13 +41,15 @@ class Game
 
 		_input.registerAction(2, "Pause", _game.onPauseClick.bind(_game));
 
-		this.objects.push(new GameObjectPlayer(new Vec2D(100, 20)));
+		this.objects.push(new GameObjectPlayer(new Vec2D(170, 100)));
 
 		if (n > 1)
 		{
-			this.objects.push(new GameObjectDeputy(new Vec2D(120, 10)));
+			this.objects.push(new GameObjectDeputy(new Vec2D(170, 50)));
 
-			this.objects.push(new GameObjectWall(new Vec2D(0, 0), 20, 1, 2));
+			this.objects.push(new GameObjectWall(new Vec2D(0, 0), 14, 1, 2));
+			this.objects.push(new GameObjectWall(new Vec2D(140, 0), 3, 1, 1));
+			this.objects.push(new GameObjectWall(new Vec2D(170, 0), 3, 1, 2));
 			this.objects.push(new GameObjectWall(new Vec2D(0, 120), 20, 1, 1));
 			this.objects.push(new GameObjectWall(new Vec2D(0, 110)));
 			this.objects.push(new GameObjectWall(new Vec2D(190, 110)));
@@ -57,16 +59,13 @@ class Game
 			this.objects.push(new GameObjectSlot(new Vec2D(150, 50)));
 			this.objects.push(new GameObjectSlot(new Vec2D(150, 100)));
 
-			this.objects.push(new GameObjectCountertop(new Vec2D(140, 10)));
-			this.objects.push(new GameObjectCountertop(new Vec2D(150, 10)));
-			this.objects.push(new GameObjectCountertop(new Vec2D(160, 10)));
+			// ingredients, seasoning, etc.
+			this.objects.push(new GameObjectCountertop(new Vec2D(10, 10), 8, 1, 1));
+
+			this.objects.push(new GameObjectCountertop(new Vec2D(140, 10), 4, 1, 1));
 			this.objects.push(new GameObjectSlotChute(new Vec2D(150, 10)));
 
-			this.objects.push(new GameObjectCountertop(new Vec2D(80, 80)));
-			this.objects.push(new GameObjectCountertop(new Vec2D(90, 80)));
-			this.objects.push(new GameObjectCountertop(new Vec2D(100, 80)));
-			this.objects.push(new GameObjectCountertop(new Vec2D(110, 80)));
-			this.objects.push(new GameObjectCountertop(new Vec2D(120, 80)));
+			this.objects.push(new GameObjectCountertop(new Vec2D(80, 80), 7, 1, 1));
 			this.objects.push(new GameObjectCountertop(new Vec2D(110, 90)));
 			this.objects.push(new GameObjectCountertop(new Vec2D(110, 100)));
 			this.objects.push(new GameObjectCountertop(new Vec2D(110, 110)));
