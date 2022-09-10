@@ -128,22 +128,23 @@ body
 #a0,
 #a1,
 #a2,
-#description
+#description,
+#recipe,
+#status
 {
+	position: fixed;
 	background: #1119;
+	color: #bbb;
 	padding: 0.5em;
 	font-size: 1rem;
-	position: fixed;
-	color: #bbb;
 }
 
 #description
 {
-	font-size: 0.75rem;
-	left: 20vw;
-	right: 20vw;
-	/* bottom: 4.25rem; */
 	top: 1rem;
+	left: 25vw;
+	right: 25vw;
+	font-size: 0.75rem;
 }
 
 #description b
@@ -321,17 +322,21 @@ body.ak .k
 
 #recipe
 {
-	padding: 1rem;
-	position: fixed;
-	left: 1rem;
 	top: 1rem;
-	background: #1119;
-	color: #bbb;
+	left: 3vw;
+	width: 17vw;
 }
 
 #recipe b
 {
 	color: #fff;
+}
+
+#status
+{
+	top: 1rem;
+	right: 3vw;
+	width: 17vw;
 }
 
 #overlay,
