@@ -35,7 +35,7 @@ class GameObject
 		this.height = height;
 	}
 
-	catch(obj: GameObject)
+	catch(obj: GameObject): boolean
     {
 		// if this already has an object and it is a container then give the
 		// "obj" to that container
@@ -49,6 +49,8 @@ class GameObject
 			this.childObjects.push(obj);
 			obj.position.copyFrom(this.position);
 		}
+
+		return true;
     }
 
     giveToPlayer()

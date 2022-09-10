@@ -11,11 +11,13 @@ class GameObjectSlotChute extends GameObjectSlot
         this.domObjectLabel.innerHTML = "Ready!";
     }
 
-    catch(obj: GameObject)
+    catch(obj: GameObject): boolean
     {
-        // TODO: evaulate points
-
-        dialogStart([[ 1, 1, "Oh nice!" ], [ 1, 1, "It is a bit raw, though... 4/5 stars. (But this is just a dummy text.)" ]]);
+        if (!_game.evaluate())
+        {
+            // something is not right...
+            return false;
+        }
 
         if (obj instanceof GameObjectContainer && (obj as GameObjectContainer).recipe)
         {
@@ -23,5 +25,7 @@ class GameObjectSlotChute extends GameObjectSlot
         }
         
         _game.destroyObjectRecursively(obj);
+
+        return true;
     }
 }

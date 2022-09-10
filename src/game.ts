@@ -463,8 +463,10 @@ class Game
 		_assert(this.grabbedObject);
 		_assert(this.nearestDropTarget);
 		
-		this.nearestDropTarget.catch(this.grabbedObject)
-		this.grabbedObject = null;
+		if (this.nearestDropTarget.catch(this.grabbedObject))
+		{
+			this.grabbedObject = null;
+		}
 	}
 
 	onGrabObject()
@@ -498,6 +500,27 @@ class Game
 		}
 		this.recipeToCook = (this.nearestObject as GameObjectRecipe);
 		this.recipeToCook.status = RECIPE_STATUS_ACCEPTED;
+	}
+
+	evaluate()
+	{
+		if (!(this.grabbedObject instanceof GameObjectContainer))
+		{
+			dialogStart([[ 0, 2, "Hmm... maybe I should not serve this." ]]);
+			return false;
+		}
+
+		if (!this.grabbedObject.recipe)
+		{
+			dialogStart([[ 0, 2, "Ooof, I forgot the recipe!" ]]);
+			return false;
+		}
+
+		// evaluate
+		// - already
+		dialogStart([[ 1, 1, "Oh nice!" ], [ 1, 1, "It is a bit raw, though... 4/5 stars. (But this is just a dummy text.)" ]]);
+
+		return true;
 	}
 
 	updateActions()
