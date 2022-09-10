@@ -50,6 +50,167 @@ class GameObjectContainer extends GameObject
         }
     }
 
+    evaluate()
+    {
+        _assert(this.recipe);
+
+        let stars = 5;
+        let i: number;
+        let j: number;
+        let n: number;
+
+        let alreadyDone = false;
+        let emptyDish = false;
+        let countMissing = 0;
+        let countExtra = 0;
+        let countRaw = 0;
+        let countUndercooked = 0;
+        let countOvercooked = 0;
+        let countPerfect = 0;
+
+        // TODO: fix this! status is reset to ACCEPTED on grab
+        alreadyDone = (this.recipe.status == RECIPE_STATUS_DONE);
+        emptyDish = (this.childObjects.length == 0);
+
+        for (i=OBJ_INGREDIENT_FIRST; i<OBJ_INGREDIENT_LAST + 1; i++)
+        {
+            n = 0;
+            this.childObjects.forEach(element => {
+                if (element.objectType == i)
+                {
+                    n++;
+                }
+            });
+
+            if (this.recipe.ingredients[i] > n)
+            {
+                // was missing at least one of this type of ingredient
+                countMissing++;
+            }
+
+            if (this.recipe.ingredients[i] < n)
+            {
+                // was more than expected at least one of this type of ingredient
+                countExtra++;
+            }
+        }
+
+        this.childObjects.forEach(element => {
+            let cookPercent: number;
+
+            _assert(element.cookedForTarget != 0);
+
+            cookPercent = element.cookedForTicks / element.cookedForTarget;
+
+            if (cookPercent < 0.5)
+            {
+                countRaw++;
+            }
+            else if (cookPercent > 0.98 && cookPercent < 1.02)
+            {
+                countPerfect++;
+            }
+            else if (cookPercent < 0.8)
+            {
+                countUndercooked++;
+            }
+            else if (cookPercent > 1.2)
+            {
+                countOvercooked++;
+            }
+        });
+
+
+        if (emptyDish)
+        {
+            stars = 1;
+        }
+        else
+        {
+            stars = 5 - countMissing * 2 - countExtra * 1 - countRaw * 2 - countUndercooked * 0.5 - countOvercooked * 0.5 + countPerfect * 1;
+        }
+
+        console.log([ emptyDish, countMissing, countExtra, countRaw, countUndercooked, countOvercooked, countPerfect ]);
+        console.log(stars);
+
+        stars = clamp(1, 5, stars);
+
+
+        let s: string = "";
+        let s1: string;
+        let problems: Array<string> = [];
+
+        if (stars == 1)
+        {
+            s1 = "I won't comment this one";
+        }
+        else
+        {
+            if (countRaw > 0)
+            {
+                problems.push("something was raw");
+            }
+
+            if (countMissing > 0)
+            {
+                problems.push("something was missing");
+            }
+
+            if (countExtra > 0)
+            {
+                problems.push("I got more of something");
+            }
+
+            if (countUndercooked > 0)
+            {
+                problems.push("something was a bit underdone");
+            }
+
+            if (countOvercooked > 0)
+            {
+                problems.push("something was overdone");
+            }
+
+            if (alreadyDone)
+            {
+                problems.push("I got this earlier");
+            }
+
+            if (stars >= 4.5)
+            {
+                s1 = "I loved it";
+
+                if (problems.length == 0 && countPerfect > 0)
+                {
+                    s1 = "It was perfect";
+                }
+            }
+            else if (stars >= 3)
+            {
+                s1 = "It was nice";
+            }
+            else
+            {
+                s1 = "Thanks";
+            }
+
+        }
+        
+        s = s1;
+
+        if (problems.length > 0)
+        {
+            s += ", although ";
+            s += problems.join(" and ");
+        }
+
+        s += ". " + (stars) + "/5 stars";
+
+        // NOTE: if (alreadyDone), don't count to score!
+
+        dialogStart([[ 1, 1, s ]]);
+    }
+
     updateSprite()
     {
         this.domObjectFire.style.display = (this.isOnFire ? "" : "none");

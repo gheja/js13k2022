@@ -504,9 +504,7 @@ class Game
 			return false;
 		}
 
-		// evaluate
-		// - already
-		dialogStart([[ 1, 1, "Oh nice!" ], [ 1, 1, "It is a bit raw, though... 4/5 stars. (But this is just a dummy text.)" ]]);
+		this.grabbedObject.evaluate();
 
 		return true;
 	}
