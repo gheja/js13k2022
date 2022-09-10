@@ -16,7 +16,7 @@
 - [ ] recipe text content caching
 - [x] play area boundaries
 - [ ] add status - score display, recipe+stars, total points
-- [ ] common way of updating recipe, description, status divs
+- [x] common way to update the contents of recipe, description, status divs
 
 
 ## input

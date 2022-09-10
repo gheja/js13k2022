@@ -12,7 +12,6 @@ class Game
 	nearestGrabTarget: GameObject;
 	nearestDropTarget: GameObject;
 	nearestObject: GameObject;
-	_lastDescription: string = "";
 	lastLevelNumber: number;
 	recipeToCook: GameObjectRecipe;
 	welcomePaused: boolean = false;
@@ -307,17 +306,8 @@ class Game
 			b = a.getDescription();
 		}
 
-
-		document.getElementById("recipe").innerHTML = b;
-
-		// the browser might modify this after setting so save the latest value
-		// to prevent updating every frame
-		if (this._lastDescription != description)
-		{
-			getObject("description").style.display = (description == "" ? "none" : "");
-			getObject("description").innerHTML = description;
-			this._lastDescription = description;
-		}
+		setInnerHTML("recipe", b);
+		setInnerHTML("description", description);
 	}
 
 	updateGrabDropTargets()

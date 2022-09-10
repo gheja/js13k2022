@@ -197,3 +197,18 @@ function _ticksToSeconds(ticks: number)
 {
 	return (ticks / 60).toFixed(1);
 }
+
+function setInnerHTML(name: string, s: string)
+{
+	let obj = getObject(name);
+
+	// To prevent updating the DOM element on every frame we note the latest
+	// value, but innerHTML gets modified by the browser after setting it.
+	if (obj.dataset['a'] != s)
+	{
+		obj.innerHTML = s;
+		obj.dataset["a"] = s;
+		obj.style.display = (s ? "" : "none");
+	}
+
+}
