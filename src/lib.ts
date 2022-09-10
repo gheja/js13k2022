@@ -91,7 +91,7 @@ function newElement(parentNode: HTMLElement, tagName: string, className: string)
 	return a;
 }
 
-function getObject(name: string)
+function getDomElement(name: string)
 {
 	return document.getElementById(name);
 }
@@ -200,7 +200,7 @@ function _ticksToSeconds(ticks: number)
 
 function setInnerHTML(name: string, s: string)
 {
-	let obj = getObject(name);
+	let obj = getDomElement(name);
 
 	// To prevent updating the DOM element on every frame we note the latest
 	// value, but innerHTML gets modified by the browser after setting it.

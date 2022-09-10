@@ -531,11 +531,11 @@ class Game
 
 		if (value && showMenu)
 		{
-			getObject("overlay").style.display = "block";
+			getDomElement("overlay").style.display = "block";
 		}
 		if (!value)
 		{
-			getObject("overlay").style.display = "none";
+			getDomElement("overlay").style.display = "none";
 		}
 	}
 

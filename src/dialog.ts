@@ -23,10 +23,10 @@ function dialogEnd()
 		window.clearTimeout(_dialogTimeout);
 	}
 	
-	removeClass(getObject("speak1"), "speak-visible");
-	removeClass(getObject("speak2"), "speak-visible");
-	removeClass(getObject("bar1"), "visible");
-	removeClass(getObject("bar2"), "visible");
+	removeClass(getDomElement("speak1"), "speak-visible");
+	removeClass(getDomElement("speak2"), "speak-visible");
+	removeClass(getDomElement("bar1"), "visible");
+	removeClass(getDomElement("bar2"), "visible");
 
 	_input.deregisterAction(0);
 	_input.deregisterAction(1);
@@ -48,7 +48,7 @@ function dialogStep()
 	}
 	
 	let line = _dialog[_dialogIndex];
-	let obj = getObject("speak" + line[1]);
+	let obj = getDomElement("speak" + line[1]);
 	let delay = line[3] ? line[3] : 0;
 	
 	removeClass(obj, "speak-visible");
@@ -64,8 +64,8 @@ function dialogStart(dialog)
 	_game.setPause(true, false);
 	_input.deregisterAction(2);
 
-	addClass(getObject("bar1"), "visible");
-	addClass(getObject("bar2"), "visible");
+	addClass(getDomElement("bar1"), "visible");
+	addClass(getDomElement("bar2"), "visible");
 
 	dialogStep();
 }

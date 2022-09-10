@@ -20,14 +20,14 @@ class Input
 	registerAction(index: number, text: string, callback: any)
 	{
 		this.actions[index] = callback;
-		getObject("a" + index.toString()).style.display = "block";
-		getObject("b" + index.toString()).innerHTML = text;
+		getDomElement("a" + index.toString()).style.display = "block";
+		getDomElement("b" + index.toString()).innerHTML = text;
 	}
 
 	deregisterAction(index: number)
 	{
 		this.actions[index] = null;
-		getObject("a" + index.toString()).style.display = "none";
+		getDomElement("a" + index.toString()).style.display = "none";
 	}
 	
 	onKeyEvent(event: KeyboardEvent)

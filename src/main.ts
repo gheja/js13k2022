@@ -34,7 +34,7 @@ function welcomeStart()
 
 function welcomeProceed()
 {
-	getObject("welcome-overlay").style.display = "none";
+	getDomElement("welcome-overlay").style.display = "none";
 	_game.welcomePaused = false;
 	_game.loadLevel(FIRST_LEVEL_NUMBER);
 }
@@ -53,7 +53,7 @@ function onSpritesLoaded()
 
 function init()
 {
-	_divLayer = getObject("d");
+	_divLayer = getDomElement("d");
 
 	_sprites = new Image();
 	_sprites.addEventListener("load", onSpritesLoaded);
