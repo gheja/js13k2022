@@ -61,7 +61,7 @@
 
 ## annoying bugs
 - [x] "in front of you" checks the grabbed object and its children as well
-
+- [ ] jagged/buggy edges of transformed divs (Chrome only)
 
 ## severe bugs
 
@@ -72,15 +72,17 @@
 ## optimizations
 - [x] cache the sprites in getSprite()
 - [ ] rename css classes, ids, etc.
-- [ ] use integers instead of object names as strings
+- [x] use integers instead of strings for object types
 - [ ] remove css comments
 - [ ] AdvZIP
 - [/] pack sprite sheet more densly
+- [ ] replace all unicode characters with html entities
 
 
 ## nice to have
 - [ ] some transition from the welcome screen
 - [ ] Find a name for Goblin
+- [ ] Goblin shuold walk around
 - [ ] proper move and slide
 - [ ] GameObject is interactable?
 - [ ] proper 3rd axis handling (z-height?)
