@@ -528,7 +528,7 @@ class Game
 		_input.deregisterAction(0);
 		_input.deregisterAction(1);
 
-		if (!this.grabbedObject && this.nearestObject && this.nearestObject instanceof GameObjectRecipe && this.nearestObject.status == RECIPE_STATUS_NEW)
+		if (!this.grabbedObject && this.nearestObject && this.nearestObject instanceof GameObjectRecipe && this.nearestObject.status != RECIPE_STATUS_ACCEPTED)
 		{
 			_input.registerAction(0, 'Accept', this.onAcceptRecipe.bind(this));
 		}
