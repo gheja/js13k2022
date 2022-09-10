@@ -17,6 +17,14 @@
 - [x] play area boundaries
 - [ ] add status - score display, recipe+stars, total points
 - [x] common way to update the contents of recipe, description, status divs
+- [ ] head pats for Cerberos
+
+
+## sounds
+- [ ] steps x2
+- [ ] cooking
+- [ ] dialog x3
+- [ ] level load
 
 
 ## input
