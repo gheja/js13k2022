@@ -230,6 +230,9 @@ class Game
 	updateDescription()
 	{
 		let description: string = "";
+		
+
+		// -- description
 
 		if (this.grabbedObject)
 		{
@@ -276,6 +279,9 @@ class Game
 			description += "</div>";
 		}
 
+
+		// -- recipe
+
 		let a: GameObjectRecipe = null;
 		let b: string = "";
 
@@ -304,8 +310,39 @@ class Game
 			b = a.getDescription();
 		}
 
+		
+		// -- status
+
+		let status: string = "";
+		let starsMax: number = 0;
+		let starsCollected: number = 0;
+
+		this.objects.forEach(element => {
+			if (element instanceof GameObjectRecipe)
+			{
+				status += "<b>" + element.name + "</b><br/>";
+
+				starsMax += 5;
+
+				if (element.stars)
+				{
+					starsCollected += element.stars;
+					status += element.stars + "/5<br/>";
+				}
+				else
+				{
+					status += "(new)<br/>";
+				}
+			}
+		});
+
+		status += "<br/>";
+		status += "<b>" + starsCollected + " stars collected</b> of " + starsMax + ".<br/>";
+		status += "You need " + Math.max(starsMax / 5 * 4 - starsCollected, 0) + " more to finish.";
+
 		setInnerHTML("recipe", b);
 		setInnerHTML("description", description);
+		setInnerHTML("status", status);
 	}
 
 	updateGrabDropTargets()
