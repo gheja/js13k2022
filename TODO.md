@@ -83,6 +83,7 @@
 - [ ] AdvZIP
 - [/] pack sprite sheet more densly
 - [ ] replace all unicode characters with html entities
+- [ ] set Google Closure Compiler to use single quotes (already set?!)
 
 
 ## nice to have
