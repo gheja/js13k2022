@@ -17,6 +17,11 @@ body
 	image-rendering: pixelated;
 }
 
+b
+{
+	color: #fff;
+}
+
 #bar1,
 #bar2
 {
@@ -130,11 +135,6 @@ body
 	left: 25vw;
 	right: 25vw;
 	font-size: 0.75rem;
-}
-
-#description b
-{
-	color: fff;
 }
 
 #a0,
@@ -308,11 +308,6 @@ body.ak .k
 	top: 1rem;
 	left: 3vw;
 	width: 17vw;
-}
-
-#recipe b
-{
-	color: #fff;
 }
 
 #status
