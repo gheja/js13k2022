@@ -15,6 +15,8 @@
 - [x] menu button
 - [ ] recipe text content caching
 - [x] play area boundaries
+- [ ] add status - score display, recipe+stars, total points
+- [ ] common way of updating recipe, description, status divs
 
 
 ## input
@@ -75,6 +77,7 @@
 ## optimizations
 - [x] cache the sprites in getSprite()
 - [ ] rename css classes, ids, etc.
+- [ ] remove newlines from minimized html
 - [x] use integers instead of strings for object types
 - [ ] remove css comments
 - [ ] AdvZIP
