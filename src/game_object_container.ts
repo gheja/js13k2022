@@ -210,6 +210,8 @@ class GameObjectContainer extends GameObject
 
         s += ". " + (stars) + "/5 stars";
 
+        this.recipe.stars = stars;
+
         // NOTE: if (alreadyDone), don't count to score!
 
         dialogStart([[ 1, 1, s ]]);

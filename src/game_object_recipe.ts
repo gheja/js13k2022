@@ -5,6 +5,7 @@ class GameObjectRecipe extends GameObject
     ingredients: any;
     seasoning: any;
     status: number;
+    stars: number;
 
     constructor(position: Vec2D, name: string, containerType: string, ingredients: any, seasoning: any)
     {
@@ -27,6 +28,12 @@ class GameObjectRecipe extends GameObject
         s += "- Grab a <b>" + (this.containerType == "pan" ? "Pan" : "Small Pot") + "</b><br/>";
         s += "- Add <b>" + this.ingredients[OBJ_MEAT] + " pcs Meat</b><br/>";
         s += "- Fry for <b>20 seconds</b><br/>";
+        
+        if (this.stars)
+        {
+            s += "<br/>";
+            s += "Got <b>" + (this.stars) + "/5 stars";
+        }
 
         return s;
     }
