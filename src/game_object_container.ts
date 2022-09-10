@@ -68,8 +68,12 @@ class GameObjectContainer extends GameObject
         let countOvercooked = 0;
         let countPerfect = 0;
 
-        // TODO: fix this! status is reset to ACCEPTED on grab
-        alreadyDone = (this.recipe.status == RECIPE_STATUS_DONE);
+        // // TODO: fix this! status is reset to ACCEPTED on grab
+        // alreadyDone = (this.recipe.status == RECIPE_STATUS_DONE);
+
+        // NOTE: skipping alreadyDone check to give a chance to fix the mistake
+        // (the rest of this will be optimized out as this is always false)
+        alreadyDone = false;
         emptyDish = (this.childObjects.length == 0);
 
         for (i=OBJ_INGREDIENT_FIRST; i<OBJ_INGREDIENT_LAST + 1; i++)

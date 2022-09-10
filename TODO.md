@@ -1,5 +1,8 @@
 # js13k2022
 
+## notes
+- If you mess up but have the ingredients you can try to cook it again. (skipping alreadyDone)
+
 ## general
 - [ ] find a name
 - [x] cooking individual ingredients
