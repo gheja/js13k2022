@@ -450,7 +450,7 @@ class Game
 	{
 		if (this.levelFinished && !this.levelFinishSaid)
 		{
-			window.setTimeout(dialogStart.bind(null, [[ 3, 1, "Wow, you already finished all orders!<br/>Check your action buttons to proceed to the next level." ], [ 3, 1, "No need to hurry, take your time." ]]), 1000);
+			window.setTimeout(dialogStart.bind(null, [[ 3, 1, "Wow, you just finished all orders!<br/>Check your action buttons to proceed to the next level." ], [ 3, 1, "No need to hurry, take your time." ]]), 1000);
 			this.levelFinishSaid = true;
 		}
 	}
