@@ -494,6 +494,7 @@ class Game
 		{
 			this.grabbedObject = null;
 		}
+		playSound(SOUND_DROP);
 	}
 
 	onGrabObject()
@@ -501,6 +502,7 @@ class Game
 		_assert(this.nearestGrabTarget);
 
 		this.nearestGrabTarget.giveToPlayer();
+		playSound(SOUND_PICK_UP);
 	}
 
 	onLightObject()
@@ -509,6 +511,7 @@ class Game
 		_assert(this.nearestGrabTarget.childObjects[0]);
 
 		(this.nearestGrabTarget.childObjects[0] as GameObjectContainer).isOnFire = true;
+		playSound(SOUND_FRYING);
 	}
 
 	onPauseClick()

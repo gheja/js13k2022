@@ -12,6 +12,17 @@ function dialogShowLine(obj, line)
 	
 	name.innerHTML = _names[line[0]];
 	text.innerHTML = line[2];
+
+	if (line[1] == 1)
+	{
+		// lower dialog box
+		playSound(SOUND_SPEAK_1);
+	}
+	else
+	{
+		// upper dialog box
+		playSound(SOUND_SPEAK_2);
+	}
 	
 	_input.registerAction(0, "Continue", dialogStep.bind(null));
 }

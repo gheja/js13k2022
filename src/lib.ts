@@ -211,3 +211,8 @@ function setInnerHTML(name: string, s: string)
 	}
 
 }
+
+function playSound(n: number)
+{
+	zzfx(..._sounds[n]);
+}

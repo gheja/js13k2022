@@ -83,26 +83,32 @@ class GameObject
 		if (this.cookedForTicks == Math.floor(this.cookedForTarget * 0.1))
 		{
 			emitParticle(this.position.x, this.position.y, 0, 50, 10, 10, "a3", 3000);
+			playSound(SOUND_BLIP);
 		}
 		else if (this.cookedForTicks == Math.floor(this.cookedForTarget * 0.7))
 		{
 			emitParticle(this.position.x, this.position.y, 10, 50, 10, 10, "a3", 3000);
+			playSound(SOUND_BLIP);
 		}
 		else if (this.cookedForTicks == Math.floor(this.cookedForTarget * 0.9))
 		{
 			emitParticle(this.position.x, this.position.y, 20, 50, 10, 10, "a3", 3000);
+			playSound(SOUND_BLIP);
 		}
 		else if (this.cookedForTicks == this.cookedForTarget)
 		{
 			emitParticle(this.position.x, this.position.y, 30, 50, 10, 10, "a3", 3000);
+			playSound(SOUND_BLIP);
 		}
 		else if (this.cookedForTicks == Math.floor(this.cookedForTarget * 1.1))
 		{
 			emitParticle(this.position.x, this.position.y, 40, 50, 10, 10, "a3", 3000);
+			playSound(SOUND_BLIP);
 		}
 		else if (this.cookedForTicks == Math.floor(this.cookedForTarget * 1.2))
 		{
 			emitParticle(this.position.x, this.position.y, 50, 50, 10, 10, "a3", 3000);
+			playSound(SOUND_BLIP);
 		}
 	}
 
