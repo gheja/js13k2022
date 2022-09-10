@@ -1,7 +1,6 @@
 class Game
 {
 	ticks: number;
-	time: number;
 	maxSpeed: number = 100;
 	playerObject: GameObjectPlayer;
 	paused: boolean = false;
@@ -19,7 +18,6 @@ class Game
 	constructor()
 	{
 		this.ticks = 0;
-		this.time = 0;
 	}
 
 	loadLevel(n: number)
@@ -411,8 +409,7 @@ class Game
 		let delta = 1000/60;
 
 		this.ticks += 1;
-		this.time += delta;
-
+		
 		let scale = (window.innerHeight / 1080) * 1.2;
 
 		this.handleInput();
