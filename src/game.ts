@@ -73,6 +73,7 @@ class Game
 
 		if (n > 2)
 		{
+			// hello, Cerberos
 			this.objects.push(new GameObjectSlotTrash(new Vec2D(80, 20)));
 		}
 

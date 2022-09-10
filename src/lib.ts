@@ -101,6 +101,7 @@ function lerp(a: number, b: number, ratio: number)
 	return a + (b - a) * ratio;
 }
 
+// cache the sprites so there's no need to process them every time
 let _spriteCache: Array<any> = [];
 
 function getSprite(x: number, y: number, width: number, height: number)
