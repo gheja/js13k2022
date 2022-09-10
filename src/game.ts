@@ -14,6 +14,8 @@ class Game
 	lastLevelNumber: number;
 	recipeToCook: GameObjectRecipe;
 	welcomePaused: boolean = false;
+	levelFinished: boolean;
+	levelFinishSaid: boolean = false;
 
 	constructor()
 	{
@@ -31,6 +33,7 @@ class Game
 		this.dialogOnStart = null;
 		this.onDialogEnd = null;
 		this.paused = false;
+		this.levelFinished = false;
 
 		_input.deregisterAction(0);
 		_input.deregisterAction(1);
@@ -340,6 +343,8 @@ class Game
 		status += "<b>" + starsCollected + " stars collected</b> of " + starsMax + ".<br/>";
 		status += "You need " + Math.max(starsMax / 5 * 4 - starsCollected, 0) + " more to finish.";
 
+		this.levelFinished = (starsCollected > starsMax / 5 * 4);
+
 		setInnerHTML("recipe", b);
 		setInnerHTML("description", description);
 		setInnerHTML("status", status);
@@ -441,6 +446,15 @@ class Game
 		}
 	}
 
+	sayHelpTexts()
+	{
+		if (this.levelFinished && !this.levelFinishSaid)
+		{
+			window.setTimeout(dialogStart.bind(null, [[ 3, 1, "Wow, you already finished all orders!<br/>Check your action buttons to proceed to the next level." ], [ 3, 1, "No need to hurry, take your time." ]]), 1000);
+			this.levelFinishSaid = true;
+		}
+	}
+
 	onFrame()
 	{
 		let delta = 1000/60;
@@ -464,6 +478,7 @@ class Game
 			this.updateGrabDropTargets();
 			this.updateActions();
 			this.updateDescription();
+			this.sayHelpTexts();
 			this.cleanupDestroyedObjects();
 		}
 
@@ -504,6 +519,11 @@ class Game
 		this.setPause(false);
 	}
 
+	onNextLevelClick()
+	{
+		this.loadNextLevelDelayed();
+	}
+
 	onAcceptRecipe()
 	{
 		if (this.recipeToCook && this.recipeToCook.status == RECIPE_STATUS_ACCEPTED)
@@ -537,6 +557,11 @@ class Game
 	{
 		_input.deregisterAction(0);
 		_input.deregisterAction(1);
+
+		if (!this.grabbedObject && this.levelFinished)
+		{
+			_input.registerAction(1, 'Next level', this.onNextLevelClick.bind(this));
+		}
 
 		if (!this.grabbedObject && this.nearestObject && this.nearestObject instanceof GameObjectRecipe && this.nearestObject.status != RECIPE_STATUS_ACCEPTED)
 		{
