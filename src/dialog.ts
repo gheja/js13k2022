@@ -52,6 +52,8 @@ function dialogEnd()
 
 function dialogStep()
 {
+	_input.deregisterAction(0);
+
 	if (_dialogIndex >= _dialog.length)
 	{
 		dialogEnd();
