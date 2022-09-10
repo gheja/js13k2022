@@ -248,6 +248,11 @@ body
 	transition: transform 0.1s;
 }
 
+.o div
+{
+	position: absolute;
+}
+
 .g,
 .h,
 .k

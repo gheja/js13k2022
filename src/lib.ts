@@ -135,7 +135,6 @@ function replaceSpriteDomObject(obj: HTMLElement, x: number, y: number, width: n
 function newSpriteDomObject(parentNode: HTMLElement, x: number, y: number, width: number, height: number)
 {
 	let obj = document.createElement("div");
-	obj.style.position = "absolute";
 	parentNode.appendChild(obj);
 
 	replaceSpriteDomObject(obj, x, y, width, height);
