@@ -505,6 +505,9 @@ class Game
 
 	onLightObject()
 	{
+		_assert(this.nearestGrabTarget);
+		_assert(this.nearestGrabTarget.childObjects[0]);
+
 		(this.nearestGrabTarget.childObjects[0] as GameObjectContainer).isOnFire = true;
 	}
 
@@ -526,6 +529,8 @@ class Game
 
 	onAcceptRecipe()
 	{
+		_assert(this.nearestObject);
+
 		if (this.recipeToCook && this.recipeToCook.status == RECIPE_STATUS_ACCEPTED)
 		{
 			this.recipeToCook.status = RECIPE_STATUS_NEW;
@@ -536,6 +541,8 @@ class Game
 
 	evaluate()
 	{
+		_assert(this.grabbedObject);
+
 		if (!(this.grabbedObject instanceof GameObjectContainer))
 		{
 			dialogStart([[ 0, 2, "Hmm... maybe I should not serve this." ]]);
