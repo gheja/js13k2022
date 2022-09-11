@@ -42,9 +42,17 @@
                 const account = await _nearWallet.account();
                 await account.sendMoney(
                     "receiver-account.testnet", // receiver account
-                    "250000000000000000000000" // amount in yoctoNEAR
+                    "250000000000000000000000" // amount in yoctoNEAR (~1.2 USD on Aug 11th 2022)
                 );
+
+                // window.location after a failed payment (i.e. declined, non-existent receiver):
+                //  .../near_send_money.html?errorCode=userRejected&errorMessage=User%2520rejected%2520transaction
+                //
+                // window.location after a successful payment (does not strip query string!):
+                //  .../near_send_money.html?transactionHashes=8AnSrE98vwUrUc2DAri7itSmkLah6GqPhkHJeXKjNZkV
+                //  .../near_send_money.html?errorCode=userRejected&errorMessage=User%2520rejected%2520transaction&transactionHashes=4jtxv2M6dg8X3ooyHDMZr5jPfv7HNAqKDsUyuz7JSTk9
             }
+
 
             window.addEventListener("load", nearInit);
         </script>
