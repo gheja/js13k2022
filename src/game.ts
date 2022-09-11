@@ -369,7 +369,7 @@ class Game
 			status += statsLine("Perfect foods", STATS_FOODS_PERFECT);
 		}
 
-		let newLevelFinished: boolean = (starsLeft <= 0);
+		let newLevelFinished: boolean = (this.lastLevelNumber > 1 && starsLeft <= 0);
 
 		if (!this.levelFinished && newLevelFinished)
 		{
