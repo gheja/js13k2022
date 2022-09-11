@@ -403,6 +403,7 @@ body.w #menu
 .link
 {
 	cursor: pointer;
+	text-decoration: underline;
 }
 
 @keyframes dust2

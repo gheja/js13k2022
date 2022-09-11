@@ -59,9 +59,9 @@ function onSpritesLoaded()
 
 function updateBonuses()
 {
-	setInnerHTML("wc", _coilActive ? "Coil is active, thank you!" : "Coil is inactive.");
+	setInnerHTML("wc", _coilActive ? "Unlocked - Coil is active, thank you!" : "<span onclick=\"b(5);\" class=\"link\">Activate Coil to unlock.</span>");
 	setInnerHTML("wn",
-		(na() ? "NEAR is active!" : "<span onclick=\"b(3);\" class=\"link\">Click to log in to NEAR " + nn + ".</span>") +
+		(na() ? "Unlocked - NEAR is active!" : "<span onclick=\"b(3);\" class=\"link\">Log in to NEAR " + nn + " here to unlock.</span>") +
 		(window.location.search.indexOf("nHa") > 0 ? "<br/><br/>Thank you very much for your tip!" : "") // "nHa" = "transactionHashes"
 	);
 	getDomElement("mn").style.display = (na() ? "" : "none");
@@ -102,6 +102,10 @@ function b(n: number)
 	{
 		// nearTip();
 		nt();
+	}
+	else if (n == 5)
+	{
+		window.location.href = "https://coil.com";
 	}
 }
 
