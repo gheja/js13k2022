@@ -44,6 +44,16 @@
 
 
 ## extras/bonuses
+
+### Coil
+- [x] add notice
+
+### NEAR
+- [x] add login
+- [x] tip?
+- [x] "thank you" message for tip
+
+### in game
 - [ ] infinite pans, pots
 - [ ] extended last 3 seconds
 
@@ -109,7 +119,7 @@
 - [ ] disable text selection
 - [x] recursive highlight so the meat also blinks
 - [ ] better gamepad dead zone handling (i.e. https://www.smashingmagazine.com/2015/11/gamepad-api-in-web-games/#applying-a-dead-zone )
-- [ ] cursor always arrow
+- [x] cursor always arrow
 - [ ] blinky "Press Start"? :)
 - [ ] _floorHeight, _floorWidth, _padX, _padY, _zoom -> const
 - [ ] _names -> data
