@@ -5,19 +5,21 @@
 
 ## general
 - [ ] find a name
+- [ ] handle ticks separately from frames (skip frames instead of slowing down)
 - [x] cooking individual ingredients
 - [x] text progressbar for cooking
 - [x] level loading
-- [ ] save/load progress
-- [ ] new game
+- [x] save/load progress
+- [x] new game
 - [x] recipes
-- [ ] feedback (★ = &starf;)
+- [x] feedback (★ = &starf;)
 - [x] menu button
-- [ ] recipe text content caching
+- [x] recipe text content caching
 - [x] play area boundaries
-- [ ] add status - score display, recipe+stars, total points
+- [x] add status - score display, recipe+stars, total points
 - [x] common way to update the contents of recipe, description, status divs
 - [ ] head pats for Cerberos
+- [ ] About page
 
 
 ## sounds
@@ -55,19 +57,19 @@
 - [x] "thank you" message for tip
 
 ### in game
-- [ ] infinite pans, pots
-- [ ] extended last 3 seconds
+- [x] infinite pans, pots
+- [x] extended last 3 seconds
 
 
 ## server features
 
 ### stats
-- [ ] total meals started
-- [ ] total meals finished
+- [x] total meals started
+- [x] total meals finished
 - [ ] total time cooked
-- [ ] total pans and pots used
+- [x] total pans and pots used
 - [ ] total seasoning used
-- [ ] total stars collected
+- [x] total stars collected
 
 
 ## content
@@ -86,6 +88,7 @@
 ## annoying bugs
 - [x] "in front of you" checks the grabbed object and its children as well
 - [ ] jagged/buggy edges of transformed divs (Chrome only)
+- [x] "d" div has background color
 
 ## severe bugs
 
@@ -103,6 +106,9 @@
 - [/] pack sprite sheet more densly
 - [ ] replace all unicode characters with html entities
 - [ ] set Google Closure Compiler to use single quotes (already set?!)
+- [ ] remove unused dialogs
+- [ ] remove console.log() calls
+- [ ] trash icon in sprites is unused
 
 
 ## nice to have
