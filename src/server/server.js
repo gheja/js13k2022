@@ -1,12 +1,10 @@
 "use strict";
 
 const MESSAGE_RECORD = "b";
-const MESSAGE_GET_STATS = "c";
 const MESSAGE_STATS = "d";
 
 const STORAGE_KEY = "a";
 
-let leaderboards = null;
 let players = 0;
 
 function log(a, b)
@@ -16,21 +14,26 @@ function log(a, b)
 	console.log(Date.now() + ":" + a + ":" + JSON.stringify(b));
 }
 
-async function submitRecord(socket_id, entry)
+async function submitRecord(socket, entry)
 {
 	let a;
+	let i;
 	
 	// TODO:
-	// a = (await storage.get(STORAGE_KEY)) || [];
-	// await storage.set(STORAGE_KEY, a);
+	a = (await storage.get(STORAGE_KEY)) || [0,0,0,0,0,0,0,0,0,0,0,0];
+	
+	for(i=0;i<entry.length;i++)
+	{
+		a[i] += entry[i];
+	}
+	
+	await storage.set(STORAGE_KEY, a);
+
 	
 	log("a", a);
 	log("b", entry);
-}
 
-async function sendStats(socket)
-{
-	socket.emit(MESSAGE_STATS, await storage.get(STORAGE_KEY));
+	socket.emit(MESSAGE_STATS, a);
 }
 
 module.exports = {
@@ -39,9 +42,7 @@ module.exports = {
 			players--;
 			log("e", players);
 		});
-		socket.on(MESSAGE_RECORD, (entry) => submitRecord(socket.id, entry));
-		socket.on(MESSAGE_NEW_NAME, (name) => setName(socket.id, name));
-		socket.on(MESSAGE_GET_STATS, () => sendStats(socket));
+		socket.on(MESSAGE_RECORD, (entry) => submitRecord(socket, entry));
 		
 		players++;
 		log("d", players);
