@@ -212,6 +212,8 @@ class GameObjectContainer extends GameObject
 
         this.recipe.stars = stars;
 
+        statsIncrease(STATS_STARS_COLLECTED, stars);
+        
         // NOTE: if (alreadyDone), don't count to score!
 
         dialogStart([[ 1, 1, s ]]);

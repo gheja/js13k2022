@@ -27,6 +27,11 @@ function statsIncrease(n: number, count: number)
     _stats[n] += count;
 }
 
+function statsLine(s: string, n: number)
+{
+    return s + ": <b>" + (_stats[n] + _statsGlobal[n]) + "</b><br/>";
+}
+
 function statsInit()
 {
     _statsGlobal = [0,0,0,0,0,0,0,0,0,0,0,0];
@@ -38,7 +43,7 @@ function statsInit()
     }
     catch (e)
     {
-        _statsIo = { emit: function() {}, on: function() {} };
+        _statsIo = { emit: function() {}, on: function() {}, connected: false };
     }
     
     _statsIo.on(MESSAGE_STATS, onStatsReceived);

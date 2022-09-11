@@ -153,6 +153,8 @@ class Game
 		{
 			window.setTimeout(dialogStart.bind(null, this.dialogOnStart), 300);
 		}
+
+		statsIncrease(STATS_LEVELS_STARTED, 1);
 	}
 
 	loadNextLevel()
@@ -343,7 +345,26 @@ class Game
 		status += "<b>" + starsCollected + " stars collected</b> of " + starsMax + ".<br/>";
 		status += "You need " + Math.max(starsMax / 5 * 4 - starsCollected, 0) + " more to finish.";
 
-		this.levelFinished = (starsCollected > starsMax / 5 * 4);
+		if (_statsIo['connected'])
+		{
+			status += "<br/>";
+			status += "<br/>";
+			status += "<b>Global stats:</b><br/>";
+			status += statsLine("Levels started", STATS_LEVELS_STARTED);
+			status += statsLine("Fires started", STATS_FIRES_STARTED);
+			status += statsLine("Foods started", STATS_FOODS_STARTED);
+			status += statsLine("Foods served", STATS_FOODS_SERVED);
+			status += statsLine("Stars collected", STATS_STARS_COLLECTED);
+		}
+
+		let x: boolean = (starsCollected > starsMax / 5 * 4);
+
+		if (!this.levelFinished && x)
+		{
+			statsIncrease(STATS_LEVELS_FINISHED, 1);
+		}
+
+		this.levelFinished = x;
 
 		setInnerHTML("recipe", b);
 		setInnerHTML("description", description);
@@ -512,6 +533,7 @@ class Game
 
 		(this.nearestGrabTarget.childObjects[0] as GameObjectContainer).isOnFire = true;
 		playSound(SOUND_FRYING);
+		statsIncrease(STATS_FIRES_STARTED, 1);
 	}
 
 	onPauseClick()
@@ -540,6 +562,8 @@ class Game
 		}
 		this.recipeToCook = (this.nearestObject as GameObjectRecipe);
 		this.recipeToCook.status = RECIPE_STATUS_ACCEPTED;
+
+		statsIncrease(STATS_FOODS_STARTED, 1);
 	}
 
 	evaluate()
@@ -559,6 +583,8 @@ class Game
 		}
 
 		this.grabbedObject.evaluate();
+
+		statsIncrease(STATS_FOODS_SERVED, 1);
 
 		return true;
 	}
