@@ -318,7 +318,7 @@ body.ak .k
 }
 
 #overlay,
-#welcome-overlay
+#overlay-bg
 {
 	position: fixed;
 	top: 0;
@@ -330,29 +330,19 @@ body.ak .k
 	display: none;
 }
 
-#welcome-overlay
-{
-	background: #000;
-	display: block;
-}
 
-h1,
-h2,
-#welcome
+#title,
+#menu,
+#start,
+#bonus
 {
 	text-align: center;
+	margin: 4rem auto;
 }
 
-h1,
-#welcome
+#title b
 {
-	color: #fff;
-	margin-top: 6rem;
-}
-
-h2
-{
-	font-size: 1rem;
+	font-size: 2.5rem;
 }
 
 #menu
@@ -360,7 +350,6 @@ h2
 	width: 15rem;
 	background: #1119;
 	padding: 0.5rem;
-	margin: 30vh auto;
 	color: #888;
 	list-style: none;
 }
@@ -375,6 +364,44 @@ h2
 {
 	background: #4448;
 	color: #fff;
+}
+
+#start
+{
+	display: none;
+}
+
+#bonus
+{
+	background: #fc02;
+	padding: 0.5rem;
+}
+
+body.w #overlay-bg
+{
+	background: #000;
+	display: block;
+}
+
+body.w #overlay
+{
+	background: #0000;
+	display: block;
+}
+
+body.w #start
+{
+	display: block;
+}
+
+body.w #menu
+{
+	display: none;
+}
+
+.link
+{
+	cursor: pointer;
 }
 
 @keyframes dust2
