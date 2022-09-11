@@ -10,6 +10,9 @@ let _padX = 0;
 let _padY = 0;
 let _zoom = 3;
 
+let _coilActive: boolean = false;
+let _nearActive: boolean = false;
+
 function introStart()
 {
 	dialogStart([

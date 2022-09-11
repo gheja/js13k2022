@@ -2,7 +2,6 @@
 
 // <script src="https://cdn.jsdelivr.net/npm/near-api-js@0.45.1/dist/near-api-js.min.js"></script>
 let _nearWallet;
-let _nearActive;
 
 function nearLogin()
 {
