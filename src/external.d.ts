@@ -19,3 +19,5 @@ declare var ni: dummyFunction;
 declare var nl: dummyFunction;
 declare var nt: dummyFunction;
 declare var nn: string;
+
+declare var io: dummyFunction;
