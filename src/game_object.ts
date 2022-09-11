@@ -77,6 +77,12 @@ class GameObject
 
 	onCook()
 	{
+		if (na() && this.cookedForTicks == this.cookedForTarget)
+		{
+			// can't cook it more than that
+			return;
+		}
+		
 		this.cookedForTicks++;
 
 		// TODO: optimize this... although zip should be pretty efficient here

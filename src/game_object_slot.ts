@@ -57,8 +57,12 @@ class GameObjectSlot extends GameObject
                     _game.objects.push(a);
                     this.catch(a);
                     this.spawnCount--;
+                    if (_coilActive)
+                    {
+                        this.spawnCount = 9001;
+                    }
                     this.spawnLast = a;
-                    this.domObjectLabel.innerHTML = (this.spawnCount != 0 ? ("+" + this.spawnCount.toString()) : "");
+                    this.domObjectLabel.innerHTML = (this.spawnCount != 0 ? ("+" + (this.spawnCount > 9000 ? "&#8734;" : this.spawnCount.toString())) : "");
                 }
             }
         }
