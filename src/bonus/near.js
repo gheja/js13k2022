@@ -4,6 +4,11 @@
 let _nearWallet;
 let _nearNetName = "testnet";
 
+function nearActive()
+{
+    return _nearWallet["isSignedIn"]();
+}
+
 function nearLogin()
 {
     _nearWallet["requestSignIn"]();
@@ -22,7 +27,6 @@ function nearInit()
     })
     .then((near) => {
         _nearWallet = new window.nearApi.WalletConnection(near);
-        _nearActive = _nearWallet["isSignedIn"]();
     });
 }
 
@@ -34,3 +38,10 @@ async function nearTip()
         "250000000000000000000000"// about 1.5 USD
     );
 }
+
+let na = nearActive;
+let nw = _nearWallet;
+let nn = _nearNetName;
+let nl = nearLogin;
+let ni = nearInit;
+let nt = nearTip;
