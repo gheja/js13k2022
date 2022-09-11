@@ -143,7 +143,7 @@ class GameObject
 				{
 					s += " (cooked to " +
 						Math.round(element.cookedForTicks / element.cookedForTarget * 100) + "%, " +
-						(element.cookedForTarget > element.cookedForTicks ? _ticksToSeconds(element.cookedForTarget - element.cookedForTicks) + "s left" : "overcooked") +
+						(element.cookedForTarget >= element.cookedForTicks ? _ticksToSeconds(element.cookedForTarget - element.cookedForTicks) + "s left" : "overcooked") +
 						")";
 				}
 
