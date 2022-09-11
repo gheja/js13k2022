@@ -33,3 +33,6 @@ let nl = function(){}; // nearLogin()
 let ni = function(){}; // nearInit()
 let nt = function(){}; // nearTip()
 
+let localStorage = {};
+localStorage.setItem = function(a, b){};
+localStorage.getItem = function(a){};
