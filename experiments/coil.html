@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>Coil test</title>
+        <meta name="monetization" content="$ilp.gatehub.net/770547877" />
+        <script>
+            let _coilActive;
+
+            function coilInit()
+            {
+                _coilActive = (document.monetization && document.monetization.state);
+
+                if (_coilActive)
+                {
+                    document.getElementById("coil-info").innerHTML = "Coil is active!";
+                }
+                else
+                {
+                    document.getElementById("coil-info").innerHTML = "Coil is not active.";
+                }
+            }
+
+            window.addEventListener("load", coilInit);
+        </script>
+    </head>
+    <body>
+        <h1>Coil test</h1>
+
+        <div id="coil-info">Loading...</div>
+
+        <p>
+            Based on the followings:
+            <ul>
+                <li><a href="https://webmonetization.org/docs/getting-started/">https://webmonetization.org/docs/getting-started/</a></li>
+                <li><a href="https://help.coil.com/docs/monetize/wallets/gatehub/index.html">https://help.coil.com/docs/monetize/wallets/gatehub/index.html</a></li>
+            </ul>
+        </p>
+    </body>
+</html>
