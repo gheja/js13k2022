@@ -2,7 +2,7 @@
 <!-- insert minified css here -->
 <!-- insert minified javascript here -->
 </head>
-<body class="ag ah ak">
+<body class="ag ah ak w">
 <div id="d"></div>
 <div id="recipe"></div>
 <div id="description"></div>
@@ -24,25 +24,32 @@
 <div class="text"></div>
 </div>
 </div>
-<div id="welcome-overlay">
-<h1>Untitled Game</h1>
-<h2>by Gabor Heja for js13kGames 2022</h2>
-<div id="welcome">
-Press Start
-</div>
-</div>
+<div id="overlay-bg"></div>
 <div id="controls">
 <span id="a0"><span class="g g0">A</span><span class="h h1">X</span><span class="k">Space</span><span id="b0"></span></span>
 <span id="a1"><span class="g g1">B</span><span class="h h0">O</span><span class="k">X</span><span id="b1"></span></span>
 <span id="a2"><span class="g">&#9776;</span><span class="h">OPTIONS</span><span class="k">ESC</span><span id="b2"></span></span>
 </div>
 <div id="overlay">
+<div id="title">
+<b>Untitled Game</b><br/>
+by Gabor Heja for js13kGames 2022
+</div>
 <ul id="menu">
 <li onclick="b(1);">Continue</li>
 <li onclick="b(2);">Restart level</li>
 <li>About</li>
+<li onclick="b(4);" id="mn">Send tip on NEAR</li>
 <li>Reset progress</li>
 </ul>
+<div id="start">
+<b>Press Start</b>
+</div>
+<div id="bonus">
+<b>Bonus content for your support!</b><br/><br/>
+Coil - Infinite pans, pots and ingredients: <b id="wc">...</b><br/><br/>
+NEAR login - auto-stop cooking when ready: <b id="wn">...</b>
+</div>
 </div>
 </body>
 </html>
