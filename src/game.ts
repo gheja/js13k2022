@@ -154,7 +154,10 @@ class Game
 			window.setTimeout(dialogStart.bind(null, this.dialogOnStart), 300);
 		}
 
-		statsIncrease(STATS_LEVELS_STARTED, 1);
+		if (n >= FIRST_LEVEL_NUMBER)
+		{
+			statsIncrease(STATS_LEVELS_STARTED, 1);
+		}
 	}
 
 	loadNextLevel()
@@ -351,10 +354,12 @@ class Game
 			status += "<br/>";
 			status += "<b>Global stats:</b><br/>";
 			status += statsLine("Levels started", STATS_LEVELS_STARTED);
+			status += statsLine("Levels finished", STATS_LEVELS_FINISHED);
 			status += statsLine("Fires started", STATS_FIRES_STARTED);
 			status += statsLine("Foods started", STATS_FOODS_STARTED);
 			status += statsLine("Foods served", STATS_FOODS_SERVED);
 			status += statsLine("Stars collected", STATS_STARS_COLLECTED);
+			status += statsLine("Perfect foods", STATS_FOODS_PERFECT);
 		}
 
 		let x: boolean = (starsCollected > starsMax / 5 * 4);
@@ -585,6 +590,11 @@ class Game
 		this.grabbedObject.evaluate();
 
 		statsIncrease(STATS_FOODS_SERVED, 1);
+
+		if (this.grabbedObject.recipe.stars == 5)
+		{
+			statsIncrease(STATS_FOODS_PERFECT, 1);
+		}
 
 		return true;
 	}
