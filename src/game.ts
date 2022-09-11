@@ -25,6 +25,10 @@ class Game
 	loadLevel(n: number)
 	{
 		this.lastLevelNumber = n;
+		if (n > 1)
+		{
+			saveLevelNumber(n);
+		}
 
 		// TODO: optimize?
 		_divLayer.innerHTML = "<div id=\"l0\"><div id=\"l1\"></div><div id=\"l2\"></div><div id=\"l3\"></div>" + (n > 1 ? "<div id=\"floor\"></div>" : "") + "</div>";

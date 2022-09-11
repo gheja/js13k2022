@@ -34,7 +34,7 @@ function welcomeProceed()
 {
 	document.body.classList.remove('w');
 	_game.welcomePaused = false;
-	_game.loadLevel(FIRST_LEVEL_NUMBER);
+	_game.loadLevel(loadLevelNumber());
 }
 
 function welcomeStart()
@@ -106,6 +106,11 @@ function b(n: number)
 	else if (n == 5)
 	{
 		window.location.href = "https://coil.com";
+	}
+	else if (n == 6)
+	{
+		_game.loadLevel(FIRST_LEVEL_NUMBER);
+		_game.setPause(false, false);
 	}
 }
 
