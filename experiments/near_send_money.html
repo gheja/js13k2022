@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <title>NEAR test - login and send money</title>
+        <script src="https://cdn.jsdelivr.net/npm/near-api-js@0.45.1/dist/near-api-js.min.js"></script>
+        <script>
+            let _nearWallet;
+            let _nearButton;
+
+            function nearLogin()
+            {
+                _nearWallet['requestSignIn']();
+            }
+
+            function nearInit()
+            {
+                _nearButton = document.getElementById("near-button");
+
+                window.nearApi
+                .connect({
+                    nodeUrl: 'https://rpc.testnet.near.org',
+                    walletUrl: 'https://wallet.testnet.near.org',
+                    helperUrl: 'https://helper.testnet.near.org',
+                    explorerUrl: 'https://explorer.testnet.near.org',
+                    networkId: 'testnet',
+                    keyStore: new window.nearApi.keyStores.BrowserLocalStorageKeyStore(),
+                })
+                .then((near) => {
+                    _nearWallet = new window.nearApi.WalletConnection(near);
+
+                    if (_nearWallet['isSignedIn']()) {
+                        _nearButton.innerHTML = "Logged in!";
+                        _nearConnection = near.connection;
+                    } else {
+                        _nearButton.innerHTML = "NEAR login";
+                        _nearButton.addEventListener("click", nearLogin);
+                    }
+                });
+            }
+
+            async function nearTip()
+            {
+                const account = await _nearWallet.account();
+                await account.sendMoney(
+                    "receiver-account.testnet", // receiver account
+                    "250000000000000000000000" // amount in yoctoNEAR
+                );
+            }
+
+            window.addEventListener("load", nearInit);
+        </script>
+    </head>
+    <body>
+        <h1>NEAR test</h1>
+
+        <button id="near-button">Loading...</button>
+        <button id="near-send" onClick="nearTip();">Send money</button>
+
+        <p>Based on the followings:
+             <ul>
+                <li><a href="https://docs.near.org/tools/near-api-js/faq">https://docs.near.org/tools/near-api-js/faq</a></li>
+                <li><a href="https://docs.near.org/tools/near-api-js/quick-reference">https://docs.near.org/tools/near-api-js/quick-reference</li>
+             </ul>
+        </p>
+    </body>
+</html>
