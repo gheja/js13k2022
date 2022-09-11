@@ -327,6 +327,7 @@ class Game
 
 		let status: string = "";
 		let starsMax: number = 0;
+		let starsLeft: number;
 		let starsCollected: number = 0;
 
 		this.objects.forEach(element => {
@@ -348,9 +349,11 @@ class Game
 			}
 		});
 
+		starsLeft = Math.max(starsMax / 5 * 4 - starsCollected, 0);
+
 		status += "<br/>";
 		status += "<b>" + starsCollected + " stars collected</b> of " + starsMax + ".<br/>";
-		status += "You need " + Math.max(starsMax / 5 * 4 - starsCollected, 0) + " more to finish.";
+		status += "You need " + starsLeft + " more to finish.";
 
 		if (_statsIo['connected'])
 		{
@@ -366,14 +369,15 @@ class Game
 			status += statsLine("Perfect foods", STATS_FOODS_PERFECT);
 		}
 
-		let x: boolean = (starsCollected > starsMax / 5 * 4);
+		let newLevelFinished: boolean = (starsLeft <= 0);
 
-		if (!this.levelFinished && x)
+		if (!this.levelFinished && newLevelFinished)
 		{
+			// just finished the level
 			statsIncrease(STATS_LEVELS_FINISHED, 1);
 		}
 
-		this.levelFinished = x;
+		this.levelFinished = newLevelFinished;
 
 		setInnerHTML("recipe", b);
 		setInnerHTML("description", description);
