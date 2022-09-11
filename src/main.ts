@@ -1,3 +1,5 @@
+/// <reference path="external.d.ts" />
+
 let _game: Game;
 let _input: Input;
 let _divLayer: HTMLElement;
