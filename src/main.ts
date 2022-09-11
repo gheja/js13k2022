@@ -29,19 +29,19 @@ function introStart()
 	]);
 }
 
+function welcomeProceed()
+{
+	document.body.classList.remove('w');
+	_game.welcomePaused = false;
+	_game.loadLevel(FIRST_LEVEL_NUMBER);
+}
+
 function welcomeStart()
 {
 	_input.registerAction(0, "Start", welcomeProceed);
 
 	// it got registered on level load
 	_input.deregisterAction(2);
-}
-
-function welcomeProceed()
-{
-	getDomElement("welcome-overlay").style.display = "none";
-	_game.welcomePaused = false;
-	_game.loadLevel(FIRST_LEVEL_NUMBER);
 }
 
 function onSpritesLoaded()
