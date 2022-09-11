@@ -93,6 +93,7 @@ _title "Copying files to build directory..."
 
 try rsync -xa --exclude '*.js' --exclude '*.js.map' --exclude '*.zip' "${source_dir}/" ./
 try rsync -xa "${source_dir}/3rdparty/" ./3rdparty/
+try rsync -xa "${source_dir}/bonus/" ./bonus/
 
 if [ -e "${source_dir}/externs.js" ]; then
 	try cp "${source_dir}/externs.js" ./
@@ -118,8 +119,8 @@ echo "travis_fold:end:npm"
 export PATH="${target_dir}/stage1/node_modules/.bin:${PATH}"
 
 files_html="index.html"
-files_javascript=`cat index.html | grep -E '<script.* src="([^"]+)"' | grep -Eo 'src=\".*\"' | cut -d \" -f 2 | grep -v '/socket.io' | grep -vE '^3rdparty/'`
-files_javascript_3rdparty=`cat index.html | grep -E '<script.* src="([^"]+)"' | grep -Eo 'src=\".*\"' | cut -d \" -f 2 | grep -v '/socket.io' | grep -E '^3rdparty/'`
+files_javascript=`cat index.html | grep -E '<script.* src="([^"]+)"' | grep -Eo 'src=\".*\"' | cut -d \" -f 2 | grep -v '/socket.io' | grep -vE '^(3rdparty|bonus)/'`
+files_javascript_extra=`cat index.html | grep -E '<script.* src="([^"]+)"' | grep -Eo 'src=\".*\"' | cut -d \" -f 2 | grep -v '/socket.io' | grep -E '^(3rdparty|bonus)/'`
 files_typescript=`echo "$files_javascript" | sed -r 's/\.js$/.ts/g'`
 files_css=`cat index.html | grep -E '<link type="text/css" rel="stylesheet" href="([^"]+)"' | grep -Eo 'href=\".*\"' | cut -d \" -f 2`
 
@@ -158,7 +159,7 @@ try google-closure-compiler \
 	--formatting SINGLE_QUOTES \
 	--externs externs.js \
 	--js_output_file min_pretty.js \
-	$files_javascript_3rdparty merged.js
+	$files_javascript_extra merged.js
 
 echo "travis_fold:end:closure-compiler-1"
 
