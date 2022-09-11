@@ -21,10 +21,11 @@
 
 
 ## sounds
-- [ ] steps x2
-- [ ] cooking
+- [x] steps x2
+- [x] cooking
 - [ ] dialog x3
 - [ ] level load
+- [ ] level win
 
 
 ## input
@@ -38,7 +39,7 @@
 
 
 ## graphics
-- [ ] wall
+- [x] wall
 - [ ] cutting board
 - [ ] firewood/place
 
