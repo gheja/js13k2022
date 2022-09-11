@@ -56,6 +56,16 @@ function onSpritesLoaded()
 	welcomeStart();
 }
 
+function updateBonuses()
+{
+	setInnerHTML("wc", _coilActive ? "Coil is active, thank you!" : "Coil is inactive.");
+	setInnerHTML("wn",
+		(_nearActive ? "NEAR is active!" : "<span onclick=\"b(3);\" class=\"link\">Click to log in to NEAR " + _nearNetName + ".</span>") +
+		(window.location.search.indexOf("nHa") > 0 ? "<br/><br/>Thank you very much for your tip!" : "") // "nHa" = "transactionHashes"
+	);
+	getDomElement("mn").style.display = (_nearActive ? "" : "none");
+}
+
 function init()
 {
 	_divLayer = getDomElement("d");
@@ -63,6 +73,11 @@ function init()
 	_sprites = new Image();
 	_sprites.addEventListener("load", onSpritesLoaded);
 	_sprites.src = GFX_SPRITES;
+
+	// bonuses
+	nearInit();
+	coilInit();
+	window.setInterval(updateBonuses, 1000);
 }
 
 function b(n: number)
@@ -74,6 +89,14 @@ function b(n: number)
 	else if (n == 2)
 	{
 		_game.onReloadLevelClick();
+	}
+	else if (n == 3)
+	{
+		nearLogin();
+	}
+	else if (n == 4)
+	{
+		nearTip();
 	}
 }
 
