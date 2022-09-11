@@ -17,3 +17,6 @@ const OBJ_POT = 7;
 
 const OBJ_INGREDIENT_FIRST = 1;
 const OBJ_INGREDIENT_LAST = 1;
+
+const MESSAGE_RECORD = "b";
+const MESSAGE_STATS = "d";

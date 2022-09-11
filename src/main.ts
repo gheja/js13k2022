@@ -75,6 +75,8 @@ function init()
 	_sprites.addEventListener("load", onSpritesLoaded);
 	_sprites.src = GFX_SPRITES;
 
+	statsInit();
+
 	// bonuses
 	ni();
 	coilInit();
