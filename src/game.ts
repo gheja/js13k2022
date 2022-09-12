@@ -34,7 +34,7 @@ class Game
 		}
 
 		// TODO: optimize?
-		_divLayer.innerHTML = "<div id=\"l0\"><div id=\"l1\"></div><div id=\"l2\"></div><div id=\"l3\"></div>" + (n > 1 ? "<div id=\"floor\"></div>" : "") + "</div>";
+		_divLayer.innerHTML = "<div id=\"l0\">" + (_isMobile ? "" : "<div id=\"l1\"></div>") + "<div id=\"l2\"></div><div id=\"l3\"></div>" + (n > 1 ? "<div id=\"floor\"></div>" : "") + "</div>";
 		this.objects = [];
 		this.grabbedObject = null;
 		this.dialogOnStart = null;
