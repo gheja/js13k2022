@@ -23,7 +23,7 @@ class GameObjectSlotTrash extends GameObjectSlot
     catch(obj: GameObject): boolean
     {
         _game.destroyObjectRecursively(obj);
-        emitParticle(this.position.x, this.position.y, 10, 40, 10, 10, "dust2", 400);
+        emitParticle(this.position.x, this.position.y, 10, 40, 10, 10, "a2", 400);
 
         return true;
     }

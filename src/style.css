@@ -181,7 +181,7 @@ b
 	/* lava_optimized.png */
 	background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKAgMAAADwXCcuAAAACVBMVEXcQwv75mL/jgCGM68cAAAAMElEQVQI12NgERRgSNRQYFBwa2AQVFBg6HCawMAi0sAg4eHA0KS4gEHMVYEhScUBAICSBxxSNRNRAAAAAElFTkSuQmCC");
 	background-size: 40px 40px;
-	animation: l1 7s linear infinite;
+	animation: a1 7s linear infinite;
 }
 
 #l2
@@ -402,7 +402,7 @@ body.w #e2
 	opacity: 0.5;
 }
 
-@keyframes dust2
+@keyframes a2
 {
 	0% { opacity: 0.2; }
 	30% { opacity: 1; }
@@ -417,7 +417,7 @@ body.w #e2
 	100% { opacity: 0; margin-top: -60px; }
 }
 
-@keyframes l1
+@keyframes a1
 {
 	0% { background-position: 0 0; }
 	100% { background-position: 80px 40px; }

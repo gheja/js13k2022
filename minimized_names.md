@@ -47,6 +47,12 @@ g g0 g1 - xbox buttons
 h h0 h1 - playstation buttons
 k - keyboard keys
 
+--- css keyframes ---
+a2 - dust2
+a3
+a1 - l1
+
+
 --- from css ---
 #bar1
 #bar2
