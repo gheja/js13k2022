@@ -186,6 +186,7 @@ echo "travis_fold:end:closure-compiler-2"
 _title "Minimizing CSS..."
 
 cat $files_css | \
+	sed -s 's,/\*.*\*/,,g' | \
 	sed -r 's/^\s+//g' | \
 	sed -r 's/\s+$//g' | \
 	tr -d '\r\n' | \
