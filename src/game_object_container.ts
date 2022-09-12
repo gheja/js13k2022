@@ -5,6 +5,7 @@ class GameObjectContainer extends GameObject
     animationFrame: number;
     isOnFire: boolean = false;
     recipe: GameObjectRecipe;
+    seasoning: Array<number> = [0,0];
 
     constructor(position: Vec2D, width: number, height: number, name: string, description: string, spriteX: number, spriteY: number, objectType: number)
     {
@@ -23,12 +24,24 @@ class GameObjectContainer extends GameObject
 
     getDescriptionExtra()
     {
-        if (this.recipe)
+        let s = "";
+
+        if (this.seasoning[0])
         {
-            return "Cooking <b>" + this.recipe.name + "</b>";
+            s += "<br/>+ <b>" + this.seasoning[0] + " grams</b> of Chili";
         }
 
-        return "";
+        if (this.seasoning[1])
+        {
+            s += "<br/>+ <b>" + this.seasoning[1] + " grams</b> of Pepper";
+        }
+
+        if (this.recipe)
+        {
+            s += "<br/>Cooking <b>" + this.recipe.name + "</b>";
+        }
+
+        return s;
     }
 
     onGrabbed()

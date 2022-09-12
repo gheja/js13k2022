@@ -13,8 +13,10 @@ const FIRST_LEVEL_NUMBER = 1;
 const OBJ_UNDEFINED = 0;
 const OBJ_MEAT = 1;
 const OBJ_SHROOM = 2;
-const OBJ_PAN = 3;
-const OBJ_POT = 4;
+const OBJ_CARROT = 3;
+const OBJ_PAN = 4;
+const OBJ_POT = 5;
+const OBJ_SEASONING = 6;
 
 const OBJ_INGREDIENT_FIRST = 1;
 const OBJ_INGREDIENT_LAST = 1;

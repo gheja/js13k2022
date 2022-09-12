@@ -43,6 +43,10 @@ class GameObjectSlot extends GameObject
                     {
                         a = new GameObjectShroom(new Vec2D(0, 0));
                     }
+                    else if (this.spawnObjectType == OBJ_CARROT)
+                    {
+                        a = new GameObjectCarrot(new Vec2D(0, 0));
+                    }
                     else if (this.spawnObjectType == OBJ_PAN)
                     {
                         a = new GameObjectContainerPan(new Vec2D(0, 0));

@@ -72,9 +72,9 @@ class Game
 			this.objects.push(new GameObjectSlot(new Vec2D(110, 100)));
 
 			// ingredients, seasoning, etc.
-			this.objects.push(new GameObjectCountertop(new Vec2D(10, 10), 8, 1, 1));
+			this.objects.push(new GameObjectCountertop(new Vec2D(10, 10), 11, 1, 1));
 
-			this.objects.push(new GameObjectCountertop(new Vec2D(140, 10), 4, 1, 1));
+			this.objects.push(new GameObjectCountertop(new Vec2D(140, 10), 3, 1, 1));
 			this.objects.push(new GameObjectSlotChute(new Vec2D(150, 10)));
 
 			this.objects.push(new GameObjectCountertop(new Vec2D(80, 80), 7, 1, 1));
@@ -86,7 +86,14 @@ class Game
 		if (n > 2)
 		{
 			// hello, Cerberos
-			this.objects.push(new GameObjectSlotTrash(new Vec2D(90, 10)));
+			this.objects.push(new GameObjectSlotTrash(new Vec2D(180, 10)));
+		}
+
+		if (n > 2)
+		{
+			this.objects.push(new GameObjectSlot(new Vec2D(110, 10)));
+			this.objects.push(new GameObjectSeasoning(new Vec2D(110, 10)));
+			this.objects[this.objects.length - 2].catch(this.objects[this.objects.length - 1]);
 		}
 
 		this.playerObject = (this.objects[0] as GameObjectPlayer);
@@ -121,7 +128,7 @@ class Game
 			break;
 
 			case 2:
-				stock = [0,2,0,3];
+				stock = [0,2,0,0,3];
 				recipes = [
 					[ "Fried foe", "pan", [ 0, 1 ], [] ]
 				];
@@ -137,7 +144,7 @@ class Game
 			break;
 
 			case 3:
-				stock = [0,3,3,4];
+				stock = [0,3,3,3,4,4];
 				recipes = [
 					[ "Spicy fried friends", "pan", [ 0, 2 ], [] ],
 				];
@@ -429,7 +436,7 @@ class Game
 					{
 						canDropHere = false;
 						
-						if (a.childObjects[0] instanceof GameObjectContainer && this.grabbedObject instanceof GameObjectIngredient)
+						if (a.childObjects[0] instanceof GameObjectContainer && (this.grabbedObject instanceof GameObjectIngredient || (this.grabbedObject && this.grabbedObject instanceof GameObjectSeasoning)))
 						{
 							canDropHere = true;
 						}
@@ -625,6 +632,12 @@ class Game
 		return true;
 	}
 
+	onAddSeasoning(n: number)
+	{
+		// _assert();... huhh
+		(this.nearestDropTarget.childObjects[0] as GameObjectContainer).seasoning[n]++;
+	}
+
 	updateActions()
 	{
 		_input.deregisterAction(0);
@@ -641,7 +654,18 @@ class Game
 		}
 		else
 		{
-			if (this.grabbedObject && this.nearestDropTarget)
+			if (
+				this.grabbedObject &&
+				this.grabbedObject instanceof GameObjectSeasoning &&
+				this.nearestDropTarget &&
+				this.nearestDropTarget.childObjects.length != 0 &&
+				this.nearestDropTarget.childObjects[0] instanceof GameObjectContainer
+			)
+			{
+				_input.registerAction(0, 'Add chili', this.onAddSeasoning.bind(this, 0));
+				_input.registerAction(1, 'Add pepper', this.onAddSeasoning.bind(this, 1));
+			}
+			else if (this.grabbedObject && this.nearestDropTarget)
 			{
 				_input.registerAction(0, 'Drop', this.onDropGrabbedObject.bind(this));
 			}
