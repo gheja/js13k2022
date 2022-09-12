@@ -109,6 +109,7 @@
 - [x] remove unused dialogs
 - [x] remove console.log() calls
 - [x] trash icon in sprites is unused
+- [x] reduce sprites.png palette
 - [ ] remove quotes from some attributes (i.e. onclick)
 
 
