@@ -102,13 +102,14 @@
 - [ ] remove newlines from minimized html
 - [x] use integers instead of strings for object types
 - [x] remove css comments
-- [ ] AdvZIP
+- [x] AdvZIP
 - [/] pack sprite sheet more densly
 - [x] replace all unicode characters with html entities
 - [ ] set Google Closure Compiler to use single quotes (already set?!)
 - [x] remove unused dialogs
 - [x] remove console.log() calls
 - [x] trash icon in sprites is unused
+- [ ] remove quotes from some attributes (i.e. onclick)
 
 
 ## nice to have
