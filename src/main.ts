@@ -17,20 +17,6 @@ let _coilActive: boolean = false;
 // let _nearActive: boolean = false;
 // moved it to near.js na()
 
-function introStart()
-{
-	dialogStart([
-		[ 2, 2, "*ring-ring*" ],
-		[ 0, 2, "Knock-knock!" ],
-		[ 1, 1, "Who's there?" ],
-		[ 0, 2, "I don't know" ],
-		[ 1, 1, "Erm..." ],
-		[ 1, 1, "Go away?" ],
-		[ 0, 2, "Bye then!" ],
-		[ 1, 1, "Bye!" ],
-	]);
-}
-
 function welcomeProceed()
 {
 	document.body.classList.remove('w');
