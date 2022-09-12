@@ -5,10 +5,10 @@ let _dialogTimeout;
 
 function dialogShowLine(obj, line)
 {
-	let name = obj.getElementsByClassName("name")[0];
-	let text = obj.getElementsByClassName("text")[0];
+	let name = obj.getElementsByClassName("n")[0]; // name
+	let text = obj.getElementsByClassName("t")[0]; // text
 	
-	addClass(obj, "speak-visible");
+	addClass(obj, "u"); // speak-visible
 	
 	name.innerHTML = _names[line[0]];
 	text.innerHTML = line[2];
@@ -34,10 +34,10 @@ function dialogEnd()
 		window.clearTimeout(_dialogTimeout);
 	}
 	
-	removeClass(getDomElement("speak1"), "speak-visible");
-	removeClass(getDomElement("speak2"), "speak-visible");
-	removeClass(getDomElement("bar1"), "visible");
-	removeClass(getDomElement("bar2"), "visible");
+	removeClass(getDomElement("s1"), "u"); // speak1, speak-visible
+	removeClass(getDomElement("s2"), "u"); // speak2, speak-visible
+	removeClass(getDomElement("f1"), "v"); // bar1, visible
+	removeClass(getDomElement("f2"), "v"); // bar2, visible
 
 	_input.deregisterAction(0);
 	_input.deregisterAction(1);
@@ -61,10 +61,10 @@ function dialogStep()
 	}
 	
 	let line = _dialog[_dialogIndex];
-	let obj = getDomElement("speak" + line[1]);
+	let obj = getDomElement("s" + line[1]); // speak1/speak2
 	let delay = line[3] ? line[3] : 0;
 	
-	removeClass(obj, "speak-visible");
+	removeClass(obj, "u"); // speak-visible
 	_dialogTimeout = window.setTimeout(dialogShowLine.bind(this, obj, line), delay + 200);
 	
 	_dialogIndex++;
@@ -77,8 +77,8 @@ function dialogStart(dialog)
 	_game.setPause(true, false);
 	_input.deregisterAction(2);
 
-	addClass(getDomElement("bar1"), "visible");
-	addClass(getDomElement("bar2"), "visible");
+	addClass(getDomElement("f1"), "v"); // visible
+	addClass(getDomElement("f2"), "v"); // visible
 
 	dialogStep();
 }

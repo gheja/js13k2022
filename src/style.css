@@ -23,8 +23,9 @@ b
 	color: #fff;
 }
 
-#bar1,
-#bar2
+/* #bar1, #bar2 */
+#f1,
+#f2
 {
 	position: fixed;
 	left: 0;
@@ -34,23 +35,24 @@ b
 	transition: height 0.5s;
 }
 
-#bar1
+#f1
 {
 	top: 0;
 }
 
-#bar2
+#f2
 {
 	bottom: 0;
 }
 
-#bar1.visible,
-#bar2.visible
+#f1.v,
+#f2.v
 {
 	height: 20vh;
 }
 
-.speak
+/* .speak */
+.s
 {
 	position: fixed;
 	left: 10vw;
@@ -64,45 +66,39 @@ b
 	transition: opacity 0.15s;
 }
 
-.speak-visible
+/* .speak-visible */
+.u
 {
 	opacity: 1;
 }
 
-.message
+/* .message */
+.m
 {
 	padding: 0.5rem;
 }
 
-.name
+/* .name */
+.n
 {
 	color: #24c;
 	font-weight: bold;
 }
 
-#speak1
+#s1
 {
 	top: 5rem;
 	left: 10vw;
 }
 
-#speak2
+#s2
 {
 	bottom: 5rem;
 	left: 30vw;
-}
-
-#speak2
-{
 	border-color: #eb2436;
 }
 
-#speak2 .portrait
-{
-	background: #eb2436;
-}
-
-#speak2 .name
+#s2 .n
 {
 	color: #eb2436;
 }
@@ -110,9 +106,9 @@ b
 #a0,
 #a1,
 #a2,
-#description,
-#recipe,
-#status
+#r1, /* recipe */
+#r2, /* description */
+#r3 /* status */
 {
 	position: fixed;
 	background: #1119;
@@ -121,7 +117,7 @@ b
 	font-size: 1rem;
 }
 
-#description
+#r2
 {
 	top: 1rem;
 	left: 25vw;
@@ -160,7 +156,7 @@ b
 	transform-style: preserve-3d;
 }
 
-#l0
+#l0 /* layer 0 - transform base */
 {
 	position: absolute;
 	top: 0;
@@ -170,9 +166,9 @@ b
 	transform: translateY(-820px) rotateX(90deg) translateY(-500px) translateX(-1500px);
 	background: #ff04;
 }
-#l1,
-#l2,
-#l3
+#l1, /* layer 1 - lava */
+#l2, /* layer 2 - rocks */
+#l3 /* layer 3 - fog */
 {
 	position: fixed;
 	top: 0;
@@ -201,7 +197,7 @@ b
 	background: linear-gradient(0deg, #f004 0%, #c119 30%, #e22 75%);
 }
 
-#floor
+#l4
 {
 	position: absolute;
 	width: 600px;
@@ -294,22 +290,22 @@ body.ak .k
 .br { transform: rotateY(90deg) translateZ(15px); }
 .bf { transform: translateZ(15px); }
 
-#recipe
+#r1
 {
 	top: 1rem;
 	left: 3vw;
 	width: 17vw;
 }
 
-#status
+#r3
 {
 	top: 1rem;
 	right: 3vw;
 	width: 17vw;
 }
 
-#overlay,
-#overlay-bg
+#o1, /* overlay-bg - behind controls */
+#o2 /* overlay - main overlay */
 {
 	position: fixed;
 	top: 0;
@@ -369,13 +365,14 @@ body.ak .k
 	padding: 0.5rem;
 }
 
-body.w #overlay-bg
+/* .w = on welcome screen */
+body.w #o1
 {
 	background: #000;
 	display: block;
 }
 
-body.w #overlay
+body.w #o2
 {
 	background: #0000;
 	display: block;

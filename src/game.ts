@@ -34,7 +34,12 @@ class Game
 		}
 
 		// TODO: optimize?
-		_divLayer.innerHTML = "<div id=\"l0\">" + (_isMobile ? "" : "<div id=\"l1\"></div>") + "<div id=\"l2\"></div><div id=\"l3\"></div>" + (n > 1 ? "<div id=\"floor\"></div>" : "") + "</div>";
+
+		// #l0 - layer 0 - transform base
+		// #l1 - layer 1 - lava
+		// #l2 - layer 2 - rocks
+		// #l3 - layer 3 - fog
+		_divLayer.innerHTML = "<div id=\"l0\">" + (_isMobile ? "" : "<div id=\"l1\"></div>") + "<div id=\"l2\"></div><div id=\"l3\"></div>" + (n > 1 ? "<div id=\"l4\"></div>" : "") + "</div>";
 		this.objects = [];
 		this.grabbedObject = null;
 		this.dialogOnStart = null;
@@ -392,9 +397,9 @@ class Game
 
 		this.levelFinished = newLevelFinished;
 
-		setInnerHTML("recipe", b);
-		setInnerHTML("description", description);
-		setInnerHTML("status", status);
+		setInnerHTML("r1", b);
+		setInnerHTML("r2", description);
+		setInnerHTML("r3", status);
 	}
 
 	updateGrabDropTargets()
@@ -657,11 +662,11 @@ class Game
 
 		if (value && showMenu)
 		{
-			getDomElement("overlay").style.display = "block";
+			getDomElement("o2").style.display = "block"; // main overlay
 		}
 		if (!value)
 		{
-			getDomElement("overlay").style.display = "none";
+			getDomElement("o2").style.display = "none"; // main overlay
 		}
 	}
 
