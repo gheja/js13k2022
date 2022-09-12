@@ -44,7 +44,7 @@ class GameObjectPlayer extends GameObject
 			if (moving)
 			{
 				this.domTransformExtra = "rotate(-10deg)";
-				emitParticle(this.position.x + 5.5, this.position.y, 20, 70, 3, 3, "dust2", 300);
+				emitParticle(this.position.x + 5.5, this.position.y, 20, 70, 3, 3, "a2", 300);
 				playSound(SOUND_STEP_1);
 			}
 			else
@@ -57,7 +57,7 @@ class GameObjectPlayer extends GameObject
 			if (moving)
 			{
 				this.domTransformExtra = "rotate(10deg)";
-				emitParticle(this.position.x + 1.5, this.position.y, 20, 70, 3, 3, "dust2", 300);
+				emitParticle(this.position.x + 1.5, this.position.y, 20, 70, 3, 3, "a2", 300);
 				playSound(SOUND_STEP_2);
 			}
 			else
