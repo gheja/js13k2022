@@ -24,6 +24,9 @@ class Game
 
 	loadLevel(n: number)
 	{
+		let stock: Array<number> = [];
+		let recipes: Array<any> = [];
+
 		this.lastLevelNumber = n;
 		if (n > 1)
 		{
@@ -113,13 +116,10 @@ class Game
 			break;
 
 			case 2:
-				this.objects.push(new GameObjectSlot(new Vec2D(20, 10)));
-				(this.objects[this.objects.length - 1] as GameObjectSlot).setSpawn(OBJ_MEAT, 2);
-		
-				this.objects.push(new GameObjectSlot(new Vec2D(40, 10)));
-				(this.objects[this.objects.length - 1] as GameObjectSlot).setSpawn(OBJ_PAN, 3);
-
-				this.objects.push(new GameObjectRecipe(new Vec2D(20, 80), "Fried foe", "pan", [ 0, 1 ], []));
+				stock = [0,2,0,3];
+				recipes = [
+					[ "Fried foe", "pan", [ 0, 1 ], [] ]
+				];
 
 				this.dialogOnStart = [
 					[ 3, 1, "Hey Boss!" ],
@@ -132,13 +132,10 @@ class Game
 			break;
 
 			case 3:
-				this.objects.push(new GameObjectSlot(new Vec2D(20, 10)));
-				(this.objects[this.objects.length - 1] as GameObjectSlot).setSpawn(OBJ_MEAT, 2);
-		
-				this.objects.push(new GameObjectSlot(new Vec2D(40, 10)));
-				(this.objects[this.objects.length - 1] as GameObjectSlot).setSpawn(OBJ_PAN, 3);
-
-				this.objects.push(new GameObjectRecipe(new Vec2D(20, 100), "Spicy fried friends", "pan", [ 0, 2 ], []));
+				stock = [0,3,3,4];
+				recipes = [
+					[ "Spicy fried friends", "pan", [ 0, 2 ], [] ],
+				];
 
 				this.dialogOnStart = [
 					[ 3, 1, "Hey Boss!" ],
@@ -151,6 +148,22 @@ class Game
 			default:
 				_exception("invalid level");
 			break;
+		}
+
+		let i;
+
+		for (i=0; i<6; i++)
+		{
+			if (stock[i])
+			{
+				this.objects.push(new GameObjectSlot(new Vec2D(10 + (i-1) * 20, 10)));
+				(this.objects[this.objects.length - 1] as GameObjectSlot).setSpawn(i, stock[i]);
+			}
+		}
+
+		for (i=0;i<recipes.length;i++)
+		{
+			this.objects.push(new GameObjectRecipe(new Vec2D(20, 80 - i * 10), recipes[i][0], recipes[i][1], recipes[i][2], recipes[i][3]));
 		}
 
 		if (this.dialogOnStart)
