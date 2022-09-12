@@ -636,6 +636,7 @@ class Game
 	{
 		// _assert();... huhh
 		(this.nearestDropTarget.childObjects[0] as GameObjectContainer).seasoning[n]++;
+		playSound(SOUND_SEASONING);
 	}
 
 	updateActions()

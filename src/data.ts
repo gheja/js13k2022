@@ -6,6 +6,7 @@ const SOUND_DROP = 4;
 const SOUND_BLIP = 5;
 const SOUND_SPEAK_1 = 6;
 const SOUND_SPEAK_2 = 7;
+const SOUND_SEASONING = 8;
 
 let _sounds = [
     [.6,0,392,.01,,.03,2,.8,,,,,,5,,,,.3], // SOUND_STEP_1
@@ -16,4 +17,5 @@ let _sounds = [
     [.7,0,600,.01,,.07,1,,,,300,.03,,,,,,.9,.01], // SOUND_BLIP
     [,0,62,.01,.03,.05,3,,.2,1.5,,,,,2,,.12,.6], // SOUND_SPEAK_1
     [,0,128,.01,.03,.05,3,,.2,1.5,,,,,2,,.12,.6], // SOUND_SPEAK_2
+    [.3,0,2e3,.01,,.04,4,,,,,,,3.6], // SOUND_SEASONING
 ];
