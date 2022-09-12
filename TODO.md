@@ -19,7 +19,7 @@
 - [x] add status - score display, recipe+stars, total points
 - [x] common way to update the contents of recipe, description, status divs
 - [ ] head pats for Cerberos
-- [ ] About page
+- [ ] ~About page~
 
 
 ## sounds
