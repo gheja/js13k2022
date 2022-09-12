@@ -58,10 +58,10 @@ class Game
 			this.objects.push(new GameObjectWall(new Vec2D(0, 110)));
 			this.objects.push(new GameObjectWall(new Vec2D(190, 110)));
 
-			this.objects.push(new GameObjectSlot(new Vec2D(50, 50)));
-			this.objects.push(new GameObjectSlot(new Vec2D(100, 50)));
-			this.objects.push(new GameObjectSlot(new Vec2D(150, 50)));
-			this.objects.push(new GameObjectSlot(new Vec2D(150, 100)));
+			this.objects.push(new GameObjectSlot(new Vec2D(90, 80)));
+			this.objects.push(new GameObjectSlot(new Vec2D(110, 80)));
+			this.objects.push(new GameObjectSlot(new Vec2D(130, 80)));
+			this.objects.push(new GameObjectSlot(new Vec2D(110, 100)));
 
 			// ingredients, seasoning, etc.
 			this.objects.push(new GameObjectCountertop(new Vec2D(10, 10), 8, 1, 1));
@@ -78,7 +78,7 @@ class Game
 		if (n > 2)
 		{
 			// hello, Cerberos
-			this.objects.push(new GameObjectSlotTrash(new Vec2D(80, 20)));
+			this.objects.push(new GameObjectSlotTrash(new Vec2D(90, 10)));
 		}
 
 		this.playerObject = (this.objects[0] as GameObjectPlayer);
@@ -113,10 +113,10 @@ class Game
 			break;
 
 			case 2:
-				this.objects.push(new GameObjectSlot(new Vec2D(20, 20)));
+				this.objects.push(new GameObjectSlot(new Vec2D(20, 10)));
 				(this.objects[this.objects.length - 1] as GameObjectSlot).setSpawn(OBJ_MEAT, 2);
 		
-				this.objects.push(new GameObjectSlot(new Vec2D(40, 20)));
+				this.objects.push(new GameObjectSlot(new Vec2D(40, 10)));
 				(this.objects[this.objects.length - 1] as GameObjectSlot).setSpawn(OBJ_PAN, 3);
 
 				this.objects.push(new GameObjectRecipe(new Vec2D(20, 80), "Fried foe", "pan", [ 0, 1 ], []));
@@ -132,10 +132,10 @@ class Game
 			break;
 
 			case 3:
-				this.objects.push(new GameObjectSlot(new Vec2D(20, 20)));
+				this.objects.push(new GameObjectSlot(new Vec2D(20, 10)));
 				(this.objects[this.objects.length - 1] as GameObjectSlot).setSpawn(OBJ_MEAT, 2);
 		
-				this.objects.push(new GameObjectSlot(new Vec2D(40, 20)));
+				this.objects.push(new GameObjectSlot(new Vec2D(40, 10)));
 				(this.objects[this.objects.length - 1] as GameObjectSlot).setSpawn(OBJ_PAN, 3);
 
 				this.objects.push(new GameObjectRecipe(new Vec2D(20, 100), "Spicy fried friends", "pan", [ 0, 2 ], []));
