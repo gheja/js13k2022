@@ -31,7 +31,7 @@
 
 
 ## input
-- [ ] virtual gamepad for mobile
+- [x] virtual gamepad for mobile
 
 
 ## ui
@@ -75,7 +75,7 @@
 ## content
 
 ### ingredients
-- [ ] fire fungi
+- [x] fire fungi
 - [ ] some vegetables
 
 ### seasoning
@@ -98,29 +98,30 @@
 
 ## optimizations
 - [x] cache the sprites in getSprite()
-- [ ] rename css classes, ids, etc.
+- [x] rename css classes, ids, etc.
 - [ ] remove newlines from minimized html
 - [x] use integers instead of strings for object types
-- [ ] remove css comments
+- [x] remove css comments
 - [ ] AdvZIP
 - [/] pack sprite sheet more densly
-- [ ] replace all unicode characters with html entities
+- [x] replace all unicode characters with html entities
 - [ ] set Google Closure Compiler to use single quotes (already set?!)
-- [ ] remove unused dialogs
-- [ ] remove console.log() calls
-- [ ] trash icon in sprites is unused
+- [x] remove unused dialogs
+- [x] remove console.log() calls
+- [x] trash icon in sprites is unused
 
 
 ## nice to have
 - [ ] some transition from the welcome screen
 - [ ] Find a name for Goblin
+- [ ] green dialog box for Goblin
 - [ ] Goblin shuold walk around
 - [ ] proper move and slide
 - [ ] GameObject is interactable?
 - [ ] proper 3rd axis handling (z-height?)
-- [ ] stacking z-height handling
+- [x] stacking z-height handling
 - [ ] sort the contents of dishes properly
-- [ ] fix border around dialog profile picture
+- [ ] ~fix border around dialog profile picture~
 - [x] better font
 - [ ] progressbar for cooking
 - [ ] disable text selection
