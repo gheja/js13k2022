@@ -146,7 +146,7 @@ class Game
 			case 3:
 				stock = [0,3,3,3,4,4];
 				recipes = [
-					[ "Spicy fried friends", "pan", [ 0, 2 ], [] ],
+					[ "Spicy fried friends", "pan", [ 0, 2 ], [10,0] ],
 				];
 
 				this.dialogOnStart = [

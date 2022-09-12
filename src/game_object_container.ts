@@ -81,6 +81,7 @@ class GameObjectContainer extends GameObject
         let countUndercooked = 0;
         let countOvercooked = 0;
         let countPerfect = 0;
+        let countSeasoningOff = 0;
 
         // // TODO: fix this! status is reset to ACCEPTED on grab
         // alreadyDone = (this.recipe.status == RECIPE_STATUS_DONE);
@@ -138,6 +139,11 @@ class GameObjectContainer extends GameObject
             }
         });
 
+        if (this.seasoning[0] != this.recipe.seasoning[0] || this.seasoning[1] != this.recipe.seasoning[1])
+        {
+            countSeasoningOff++
+        }
+
 
         if (emptyDish)
         {
@@ -145,7 +151,7 @@ class GameObjectContainer extends GameObject
         }
         else
         {
-            stars = 5 - countMissing * 2 - countExtra * 1 - countRaw * 2 - countUndercooked * 0.5 - countOvercooked * 0.5 + countPerfect * 1;
+            stars = 5 - countMissing * 2 - countExtra * 1 - countRaw * 2 - countUndercooked * 0.5 - countOvercooked * 0.5 + countPerfect * 1 - countSeasoningOff * 0.5;
         }
 
         // console.log([ emptyDish, countMissing, countExtra, countRaw, countUndercooked, countOvercooked, countPerfect ]);
@@ -187,6 +193,11 @@ class GameObjectContainer extends GameObject
             if (countOvercooked > 0)
             {
                 problems.push("something was overdone");
+            }
+
+            if (countSeasoningOff > 0)
+            {
+                problems.push("the seasoning was off");
             }
 
             if (alreadyDone)

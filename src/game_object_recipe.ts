@@ -27,6 +27,17 @@ class GameObjectRecipe extends GameObject
         s += "<br/>";
         s += "- Grab a <b>" + (this.containerType == "pan" ? "Pan" : "Small Pot") + "</b><br/>";
         s += "- Add <b>" + this.ingredients[OBJ_MEAT] + " pcs Meat</b><br/>";
+
+        if (this.seasoning[0] > 0)
+        {
+            s += "- Add <b>" + this.seasoning[0] + " grams of Chili</b><br/>";
+        }
+
+        if (this.seasoning[1] > 0)
+        {
+            s += "- Add <b>" + this.seasoning[1] + " grams of Pepper</b><br/>";
+        }
+
         s += "- Fry for <b>20 seconds</b><br/>";
         
         if (this.stars)
