@@ -9,6 +9,7 @@ extra_dir="/home/gheja/works_local/extra"
 final_dir="${dir}"
 min_dir="${dir}/tmp/min"
 csv="${final_dir}/build_stats.csv"
+advzip_iterations="3000"
 
 if [ $TERM == "xterm" ] || [ $TERM == "screen" ]; then
 	color_error='\033[1;31m'
@@ -226,10 +227,18 @@ _title "Creating ZIP files..."
 
 try zip -9 ${zip_prefix}.zip index.html server.js
 
+
+_title "Running advzip..."
+
+try cp ${zip_prefix}.zip ${zip_prefix}_advzip.zip
+try advzip -z -k -4 -i ${advzip_iterations} ${zip_prefix}_advzip.zip
+
 size2_html=`get_size index.min.html`
 size2_javascript=`get_size min.js`
 size2_css=`get_size min.css`
 size2_zip=`get_size ${zip_prefix}.zip`
+size3_zip=`get_size ${zip_prefix}_advzip.zip`
+
 
 cd ..
 
@@ -265,31 +274,31 @@ echo ""
 echo "HTML: ${lines_html} lines, ${size_html} -> ${size2_html} bytes"
 echo "TypeScript: ${lines_typescript} lines, ${size_typescript} -> ${size2_javascript} bytes"
 echo "CSS: ${lines_css} lines, ${size_css} -> ${size2_css} bytes"
-echo "Total source: $((size_html + size_typescript + size_css)) -> ${size2_zip} bytes in final ZIP"
+echo "Total source: $((size_html + size_typescript + size_css)) -> ${size2_zip} -> ${size3_zip} bytes in final ZIP"
 
 cd "${source_dir}"
 
 git_hash=`git rev-parse HEAD 2>/dev/null`
 
 if [ ! -e "$csv" ]; then
-	echo "date_time;filename;git_hash;lines_html;size_html;size2_html;lines_typescript;size_typescript;size2_javascript;lines_css;size_css;size2_css;size2_zip" > $csv
+	echo "date_time;filename;git_hash;lines_html;size_html;size2_html;lines_typescript;size_typescript;size2_javascript;lines_css;size_css;size2_css;size2_zip;size3_zip" > $csv
 fi
 
-echo "${now2};${zip_prefix}.zip;${git_hash};${lines_html};${size_html};${size2_html};${lines_typescript};${size_typescript};${size2_javascript};${lines_css};${size_css};${size2_css};${size2_zip}" >> $csv
+echo "${now2};${zip_prefix}.zip;${git_hash};${lines_html};${size_html};${size2_html};${lines_typescript};${size_typescript};${size2_javascript};${lines_css};${size_css};${size2_css};${size2_zip};${size3_zip}" >> $csv
 
 
-size2_limit=13312
-percent=$((size2_zip * 100 / size2_limit))
+final_limit=13312
+percent=$((size3_zip * 100 / final_limit))
 
 
 echo ""
 
-if [ ${size2_zip} -gt ${size2_limit} ]; then
-	_error "Final ZIP is ${size2_zip} bytes, more than ${size2_limit}!"
+if [ ${size3_zip} -gt ${final_limit} ]; then
+	_error "Final ZIP is ${size3_zip} bytes, more than ${final_limit}!"
 	
 	exit 1
 fi
 
-_success "Final ZIP file is ${size2_zip} bytes of ${size2_limit} (${percent}%)!"
+_success "Final ZIP file is ${size3_zip} bytes of ${final_limit} (${percent}%)!"
 
 exit 0
