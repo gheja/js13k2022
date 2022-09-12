@@ -69,17 +69,8 @@ b
 	opacity: 1;
 }
 
-.portrait
-{
-	width: 5rem;
-	height: 5rem;
-	float: left;
-	background: #24c;
-}
-
 .message
 {
-	float: left;
 	padding: 0.5rem;
 }
 
