@@ -15,6 +15,8 @@ class GameObject
 	destroyed: boolean = false;
 	collidable: boolean = false;
 	objectType: number;
+	stackHeight: number = 0;
+	padZ: number = 0;
 
 	cookedForTicks: number = 0;
 	cookedForTarget: number = 0;
@@ -259,6 +261,16 @@ class GameObject
         }
 	}
 
+	getParentStackHeights()
+	{
+		if (this.parentObject)
+		{
+			return this.parentObject.stackHeight + this.parentObject.getParentStackHeights();
+		}
+
+		return 0;
+	}
+
 	update()
 	{
 		let grabbed2 = 0;
@@ -268,6 +280,10 @@ class GameObject
 			this.position.copyFrom(_game.playerObject.position);
 			this.position.y += 0.2;
 			grabbed2 = 5;
+		}
+		else
+		{
+			grabbed2 += this.getParentStackHeights() + this.padZ;
 		}
 
 		this.updateSprite();

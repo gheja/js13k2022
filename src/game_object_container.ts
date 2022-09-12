@@ -12,6 +12,7 @@ class GameObjectContainer extends GameObject
         this.domObject2 = newSpriteDomObject(this.domObject, spriteX, spriteY, width, height);
         this.domObjectFire = newSpriteDomObject(this.domObject, 0, 0, 10, 40);
         this.animationFrame = Math.floor(Math.random() * 5000);
+        this.stackHeight = 2;
         this.reset();
     }
 

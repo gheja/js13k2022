@@ -17,7 +17,7 @@ class GameObjectSlotTrash extends GameObjectSlot
         this.height = 20;
         this.domObject.style.width = _z(this.width) + "px";
 		this.domObject.style.height = _z(this.height) + "px";
-
+        this.padZ = 0;
     }
 
     catch(obj: GameObject): boolean
