@@ -348,7 +348,7 @@ body.ak .k
 #menu
 {
 	width: 15rem;
-	background: #1119;
+	background: #111c;
 	padding: 0.5rem;
 	color: #888;
 	list-style: none;
@@ -356,6 +356,7 @@ body.ak .k
 
 #menu li
 {
+	text-align: left;
 	padding: 0.5rem;
 	transition: color 0.2s, background 0.2s;
 }
@@ -373,7 +374,7 @@ body.ak .k
 
 #bonus
 {
-	background: #fc02;
+	background: #d512;
 	padding: 0.5rem;
 }
 
