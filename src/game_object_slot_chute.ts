@@ -9,6 +9,7 @@ class GameObjectSlotChute extends GameObjectSlot
         this.name = "Chute";
         this.description = "Place the finished food here.";
         this.domObjectLabel.innerHTML = "Ready!";
+        replaceSpriteDomObject(this.domObject2, 10, 70, 10, 10);
     }
 
     catch(obj: GameObject): boolean
