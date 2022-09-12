@@ -7,6 +7,7 @@ let _floorImage: HTMLImageElement;
 let _floorHeight: number = 120;
 let _floorWidth: number = 200;
 let _sprites: HTMLImageElement;
+let _isMobile: boolean;
 
 let _padX = 0;
 let _padY = 0;
@@ -76,6 +77,8 @@ function init()
 	_sprites.src = GFX_SPRITES;
 
 	statsInit();
+
+	_isMobile = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
 
 	// bonuses
 	ni();
