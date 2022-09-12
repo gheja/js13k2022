@@ -318,21 +318,21 @@ body.ak .k
 }
 
 
-#title,
-#menu,
-#start,
-#bonus
+#e1,
+#e2,
+#e3,
+#e4
 {
 	text-align: center;
 	margin: 3rem auto;
 }
 
-#title b
+#e1 b
 {
 	font-size: 2.5rem;
 }
 
-#menu
+#e2
 {
 	width: 15rem;
 	background: #111c;
@@ -341,25 +341,25 @@ body.ak .k
 	list-style: none;
 }
 
-#menu li
+#e2 li
 {
 	text-align: left;
 	padding: 0.5rem;
 	transition: color 0.2s, background 0.2s;
 }
 
-#menu li:hover
+#e2 li:hover
 {
 	background: #4448;
 	color: #fff;
 }
 
-#start
+#e4
 {
 	display: none;
 }
 
-#bonus
+#e3
 {
 	background: #d512;
 	padding: 0.5rem;
@@ -378,12 +378,12 @@ body.w #o2
 	display: block;
 }
 
-body.w #start
+body.w #e4
 {
 	display: block;
 }
 
-body.w #menu
+body.w #e2
 {
 	display: none;
 }
