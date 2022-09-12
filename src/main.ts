@@ -80,6 +80,11 @@ function init()
 
 	_isMobile = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
 
+	if (_isMobile)
+	{
+		gpInit();
+	}
+
 	// bonuses
 	ni();
 	coilInit();

@@ -74,6 +74,15 @@ class Input
 		y += (this.keysPressed["arrowup"]	|| this.keysPressed["w"] || this.keysPressed["z"]) ? -1 : 0;
 		y += (this.keysPressed["arrowdown"]  || this.keysPressed["s"]						 ) ? +1 : 0;
 
+		// virtual gamepad
+
+		if (_gpDown)
+		{
+			x += (_gpPos.x - _gpDownPos.x) * 3 / _gpCanvas.height;
+			y += (_gpPos.y - _gpDownPos.y) * 3 / _gpCanvas.height;
+		}
+	    // for buttons see mobile_gamepad.ts
+
 		// gamepad
 		let gamepads = navigator.getGamepads()
 		if (gamepads.length > 0 && gamepads[0])
