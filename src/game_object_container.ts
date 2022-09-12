@@ -135,8 +135,8 @@ class GameObjectContainer extends GameObject
             stars = 5 - countMissing * 2 - countExtra * 1 - countRaw * 2 - countUndercooked * 0.5 - countOvercooked * 0.5 + countPerfect * 1;
         }
 
-        console.log([ emptyDish, countMissing, countExtra, countRaw, countUndercooked, countOvercooked, countPerfect ]);
-        console.log(stars);
+        // console.log([ emptyDish, countMissing, countExtra, countRaw, countUndercooked, countOvercooked, countPerfect ]);
+        // console.log(stars);
 
         stars = clamp(1, 5, stars);
 

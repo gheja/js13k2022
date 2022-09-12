@@ -19,7 +19,7 @@ function statsSend()
 function onStatsReceived(a)
 {
     _statsGlobal = a;
-    console.log(a);
+    // console.log(a);
 }
 
 function statsIncrease(n: number, count: number)
