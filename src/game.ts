@@ -89,7 +89,7 @@ class Game
 			this.objects.push(new GameObjectSlotTrash(new Vec2D(180, 10)));
 		}
 
-		if (n > 2)
+		if (n > 3)
 		{
 			this.objects.push(new GameObjectSlot(new Vec2D(110, 10)));
 			this.objects.push(new GameObjectSeasoning(new Vec2D(110, 10)));
@@ -107,30 +107,31 @@ class Game
 			case 1:
 				this.dialogOnStart = [
 					[ 0, 2, "Ahh... what a wonderful day!" ],
-					[ 0, 2, "The temperature is sweet, the weather is just perfect...", 1000 ],
-					[ 0, 2, "A really wonderful day!", 1000 ],
-					[ 0, 2, "*sigh* I am bored.", 1000 ],
-					[ 2, 2, "*ring-ring*", 2000 ],
+					[ 0, 2, "The temperature is sweet, the weather is just perfect...", 1 ],
+					[ 0, 2, "A really wonderful day!", 1 ],
+					[ 0, 2, "*sigh* I am bored.", 1 ],
+					[ 2, 2, "*ring-ring*", 1 ],
 					[ 0, 2, "Hello, Devil speaking!" ],
 					[ 1, 1, "Hey Dev, this is Skully!" ],
 					[ 0, 2, "Death, what a nice surprise! How's it going?" ],
-					[ 1, 1, "Great, great. But listen. By any chance..." ],
+					[ 1, 1, "Great, great. Listen. By any chance..." ],
 					[ 1, 1, "Is that restaurant of yours still around?" ],
 					[ 0, 2, "Yeah, it is. But--" ],
-					[ 1, 1, "Great! So I was wondering if you're still into the cooking business.<br/>I'll have a party today with friends and stuff..." ],
-					[ 1, 1, "[...]" ],
+					[ 1, 1, "Great! So I was wondering if you're still into the cooking business.<br/>I'll have a party tonight with friends and..." ],
+					[ 1, 1, "We want to have something delicious and thought you could help out!" ],
 					[ 0, 2, "Sure, but--" ],
-					[ 1, 1, "Thanks, you're the best!" ],
+					[ 1, 1, "Thanks, I'll send some meat over, you're the best!" ],
 					[ 2, 2, "*click*" ],
-					[ 0, 2, "I think I better get going", 2000 ],
+					[ 0, 2, "I better get going...", 1 ],
 				];
 				this.onDialogEnd = this.loadNextLevelDelayed.bind(this);
 			break;
 
 			case 2:
-				stock = [0,2,0,0,3];
+				// meat, shroom, carrot, pan, pot
+				stock = [ 0, 2, 0, 0, 3 ];
 				recipes = [
-					[ "Fried foe", OBJ_PAN, [ 0, 1 ], [] ]
+					[ "Fried foe", OBJ_PAN, [ 0, 1 ], [ 0, 0 ] ]
 				];
 
 				this.dialogOnStart = [
@@ -138,22 +139,59 @@ class Game
 					[ 3, 1, "It's been a while. How do you do?" ],
 					[ 0, 2, "Hey Goblin! All fine, thanks. I need to cook for Skully, do we have pans around?" ],
 					[ 3, 1, "Sure we have! Just pick up the recipe first." ],
-					[ 3, 1, "I'll be here if you need any help." ],
-					[ 0, 2, "That won't be necessary but thanks." ],
+					[ 3, 1, "And don't worry they still love to be cooked." ],
+					[ 3, 1, "Just don't burn them....", 1 ],
 				];
 			break;
 
 			case 3:
-				stock = [0,3,3,3,4,4];
+				// meat, shroom, carrot, pan, pot
+				stock = [ 0, 4, 0, 0, 3 ];
 				recipes = [
-					[ "Spicy fried friends", OBJ_PAN, [ 0, 2 ], [10,0] ],
+					[ "Fried foe", OBJ_PAN, [ 0, 1 ], [ 0, 0 ] ],
+					[ "Fried foe", OBJ_PAN, [ 0, 1 ], [ 0, 0 ] ]
 				];
 
 				this.dialogOnStart = [
 					[ 3, 1, "Hey Boss!" ],
-					[ 3, 1, "Look who came by! It's your favorite three-in-one pup, Cerberos!" ],
-					[ 3, 1, "He looks hungry, I guess he can help you out with leftovers..." ],
-					[ 3, 1, "... and anything with else, too, I guess." ],
+					[ 3, 1, "Skully called and wants more of those." ],
+				];
+			break;
+
+			case 4:
+				// meat, shroom, carrot, pan, pot
+				stock = [ 0, 4, 0, 0, 3 ];
+				recipes = [
+					[ "Spicy fried friends", OBJ_PAN, [ 0, 2 ], [ 10, 0 ] ],
+				];
+
+				this.dialogOnStart = [
+					[ 3, 1, "Hey Boss!" ],
+					[ 3, 1, "Look who came by! Your favorite three-in-one pup, Cerberos!" ],
+					[ 3, 1, "He looks hungry, I guess he can help you out with leftovers." ],
+					[ 3, 1, "I also got a bit of chili and pepper." ],
+				];
+			break;
+
+			case 5:
+				// meat, shroom, carrot, pan, pot
+				stock = [ 0, 4, 0, 3, 3 ];
+				recipes = [
+					[ "Fred and vegs", OBJ_PAN, [ 0, 1, 0, 2 ], [ 10, 0 ] ],
+				];
+
+				this.dialogOnStart = [
+					[ 3, 1, "Hey Boss!" ],
+					[ 3, 1, "I found some stuff in the fridge." ],
+					[ 3, 1, "Might come handy." ],
+				];
+			break;
+
+			case 6:
+				// meat, shroom, carrot, pan, pot
+				stock = [ 0, 3, 3, 3, 4, 4 ];
+				recipes = [
+					[ "Spicy fried friends", OBJ_PAN, [ 0, 2 ], [ 10, 0 ] ],
 				];
 			break;
 		
