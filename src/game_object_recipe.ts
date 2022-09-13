@@ -25,21 +25,64 @@ class GameObjectRecipe extends GameObject
         let s: string = "";
 
         s += "<br/>";
-        s += "- Grab a <b>" + (this.containerType == "pan" ? "Pan" : "Small Pot") + "</b><br/>";
-        s += "- Add <b>" + this.ingredients[OBJ_MEAT] + " pcs Meat</b><br/>";
+        s += "- grab a <b>" + (this.containerType == "pan" ? "Pan" : "Small Pot") + "</b><br/>";
 
-        if (this.seasoning[0] > 0)
+        // carrot: 30 sec
+        // meat: 20 sec
+        // shroom: 7 sec
+
+        // I hope ZIP likes repetition...
+
+        if (this.ingredients[OBJ_CARROT])
         {
-            s += "- Add <b>" + this.seasoning[0] + " grams of Chili</b><br/>";
+            s += "- add <b>" + this.ingredients[OBJ_MEAT] + " pcs Carrot</b><br/>";
+
+            if (!this.ingredients[OBJ_MEAT] && !this.ingredients[OBJ_SHROOM])
+            {
+                s += "- cook for <b>30 seconds</b><br/>";
+            }
+            else if (this.ingredients[OBJ_MEAT])
+            {
+                s += "- cook for <b>10 seconds</b><br/>";
+            }
+            else (this.ingredients[OBJ_SHROOM])
+            {
+                s += "- cook for <b>23 seconds</b><br/>";
+            }
         }
 
-        if (this.seasoning[1] > 0)
+        if (this.ingredients[OBJ_MEAT])
         {
-            s += "- Add <b>" + this.seasoning[1] + " grams of Pepper</b><br/>";
+            s += "- add <b>" + this.ingredients[OBJ_MEAT] + " pcs Meat</b><br/>";
+
+            if (!this.ingredients[OBJ_SHROOM])
+            {
+                s += "- cook for <b>20 seconds</b><br/>";
+            }
+            else
+            {
+                s += "- cook for <b>13 seconds</b><br/>";
+            }
         }
 
-        s += "- Fry for <b>20 seconds</b><br/>";
-        
+        if (this.seasoning[0])
+        {
+            s += "- add <b>" + this.seasoning[0] + " grams of Chili</b><br/>";
+        }
+
+        if (this.seasoning[1])
+        {
+            s += "- add <b>" + this.seasoning[1] + " grams of Pepper</b><br/>";
+        }
+
+        if (this.ingredients[OBJ_SHROOM])
+        {
+            s += "- add <b>" + this.ingredients[OBJ_SHROOM] + " pcs Fire shroom</b><br/>";
+            s += "- cook for <b>7 seconds</b><br/>";
+        }
+
+        s += "- serve hot<br/>";
+      
         if (this.stars)
         {
             s += "<br/>";
