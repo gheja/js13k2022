@@ -36,7 +36,7 @@ class GameObjectRecipe extends GameObject
 
         if (this.ingredients[OBJ_CARROT])
         {
-            s += "- add <b>" + this.ingredients[OBJ_MEAT] + " pcs Carrot</b><br/>";
+            s += "- add <b>" + this.ingredients[OBJ_CARROT] + " pcs Carrot</b><br/>";
 
             if (this.ingredients[OBJ_MEAT])
             {
