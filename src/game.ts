@@ -175,9 +175,9 @@ class Game
 
 			case 5:
 				// meat, shroom, carrot, pan, pot
-				stock = [ 0, 4, 0, 3, 3 ];
+				stock = [ 0, 2, 0, 4, 3 ];
 				recipes = [
-					[ "Fred and vegs", OBJ_PAN, [ 0, 1, 0, 2 ], [ 10, 0 ] ],
+					[ "Fred and vegs", OBJ_PAN, [ 0, 1, 0, 2 ], [ 0, 5 ] ],
 				];
 
 				this.dialogOnStart = [
@@ -189,9 +189,57 @@ class Game
 
 			case 6:
 				// meat, shroom, carrot, pan, pot
+				stock = [ 0, 2, 0, 3, 3, 3 ];
+				recipes = [
+					[ "Carrot soup", OBJ_POT, [ 0, 0, 0, 3 ], [ 0, 5 ] ],
+					[ "Fried foe",   OBJ_PAN, [ 0, 1       ], [ 0, 0 ] ]
+				];
+
+				this.dialogOnStart = [
+					[ 3, 1, "Hey Boss!" ],
+					[ 3, 1, "I just got our pot back." ],
+				];
+			break;
+
+			case 7:
+				// meat, shroom, carrot, pan, pot
+				stock = [ 0, 1, 3, 3, 3, 3 ];
+				recipes = [
+					[ "Super soupper", OBJ_POT, [ 0, 0, 2, 2 ], [ 5, 15 ] ],
+					[ "Fried foe",     OBJ_PAN, [ 0, 1       ], [ 0,  0 ] ]
+				];
+
+				this.dialogOnStart = [
+					[ 3, 1, "Hey Boss!" ],
+					[ 3, 1, "Another dinner for two?" ],
+					[ 3, 1, "Erm... not us. Of course.", 1 ],
+				];
+			break;
+
+			case 8:
+				// meat, shroom, carrot, pan, pot
+				stock = [ 0, 4, 3, 3, 3, 3 ];
+				recipes = [
+					[ "Fred and vegs",       OBJ_PAN, [ 0, 1, 0, 2 ], [ 0,  5 ] ],
+					[ "Spicy fried friends", OBJ_PAN, [ 0, 2       ], [ 10, 0 ] ],
+					[ "All in!",             OBJ_POT, [ 0, 1, 1, 1 ], [ 10, 5 ] ],
+				];
+
+				this.dialogOnStart = [
+					[ 3, 1, "Hey Boss!" ],
+					[ 3, 1, "Skully called and..." ],
+				];
+			break;
+
+			case 9:
+				// meat, shroom, carrot, pan, pot
 				stock = [ 0, 3, 3, 3, 4, 4 ];
 				recipes = [
 					[ "Spicy fried friends", OBJ_PAN, [ 0, 2 ], [ 10, 0 ] ],
+				];
+				this.dialogOnStart = [
+					[ 3, 1, "Hey Boss!" ],
+					[ 3, 1, "(last level)" ],
 				];
 			break;
 		
