@@ -324,11 +324,6 @@ class Game
 		}
 	}
 
-	tick()
-	{
-
-	}
-
 	destroyObjectRecursively(obj: GameObject)
 	{
 		obj.childObjects.forEach((element: GameObject) => {
