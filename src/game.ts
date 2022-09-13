@@ -27,6 +27,10 @@ class Game
 		let stock: Array<number> = [];
 		let recipes: Array<any> = [];
 
+		// end the transition effect
+		getDomElement("f1").classList.remove("w");
+		getDomElement("f2").classList.remove("w");
+
 		this.lastLevelNumber = n;
 		if (n > 1)
 		{
@@ -265,7 +269,7 @@ class Game
 
 		if (this.dialogOnStart)
 		{
-			window.setTimeout(dialogStart.bind(null, this.dialogOnStart), 300);
+			window.setTimeout(dialogStart.bind(null, this.dialogOnStart), 1000);
 		}
 
 		if (n >= FIRST_LEVEL_NUMBER)
@@ -276,7 +280,9 @@ class Game
 
 	loadNextLevel()
 	{
-		this.loadLevel(this.lastLevelNumber + 1);
+		getDomElement("f1").classList.add("w");
+		getDomElement("f2").classList.add("w");
+		window.setTimeout(this.loadLevel.bind(this, this.lastLevelNumber + 1), 500);
 	}
 
 	loadNextLevelDelayed()

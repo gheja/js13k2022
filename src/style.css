@@ -51,6 +51,12 @@ b
 	height: 20vh;
 }
 
+#f1.w,
+#f2.w
+{
+	height: 50vh;
+}
+
 /* .speak */
 .s
 {

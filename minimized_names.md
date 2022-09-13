@@ -33,6 +33,7 @@ m - message
 n - name
 t - text
 v - visible
+w - level transition
 box
 box2
 
