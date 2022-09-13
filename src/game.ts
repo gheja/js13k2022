@@ -121,7 +121,7 @@ class Game
 					[ 1, 1, "Great, great. Listen. By any chance..." ],
 					[ 1, 1, "Is that restaurant of yours still around?" ],
 					[ 0, 2, "Yeah, it is. But--" ],
-					[ 1, 1, "Great! So I'll have a party tonight with friends and we want to have something delicious and thought you could help out!" ],
+					[ 1, 1, "Great! So I'll have a party tonight with friends and we want to have something delicious and thought you could help us out!" ],
 					[ 0, 2, "Sure, but--" ],
 					[ 1, 1, "Thanks, I'll send some meat over, you're the best!" ],
 					[ 2, 2, "*click*" ],
@@ -199,7 +199,7 @@ class Game
 
 				this.dialogOnStart = [
 					[ 3, 1, "Hey Boss!" ],
-					[ 3, 1, "I just got our pot back." ],
+					[ 3, 1, "Look! Pots!" ],
 				];
 			break;
 

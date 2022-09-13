@@ -7,7 +7,7 @@ class GameObjectSlotChute extends GameObjectSlot
     {
         super(position);
         this.name = "Chute";
-        this.description = "Place the finished food here.";
+        this.description = "Place the finished food here";
         this.domObjectLabel.innerHTML = "Ready!";
     }
 

@@ -9,7 +9,7 @@ class GameObjectSlot extends GameObject
 
     constructor(position: Vec2D)
     {
-        super(position, 10, 10, "Slot", "A place where you can place stuffs.");
+        super(position, 10, 10, "Slot", "Place stuff here");
         this.domObject2 = newSpriteDomObject(this.domObject, 10, 60, 10, 10);
 		this.domObject2.style.transform = "translateY(" + _z(10) + "px) rotateX(90deg)";
 
