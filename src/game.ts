@@ -16,6 +16,7 @@ class Game
 	welcomePaused: boolean = false;
 	levelFinished: boolean;
 	levelFinishSaid: boolean = false;
+	pats: number = 0;
 
 	constructor()
 	{
@@ -723,6 +724,22 @@ class Game
 		playSound(SOUND_SEASONING);
 	}
 
+	onPetCerberus()
+	{
+		this.pats++;
+
+		if (this.pats % 3 == 0)
+		{
+			emitParticle(this.playerObject.position.x, this.playerObject.position.y, 30, 50, 10, 10, "a3", 3000);
+			playSound(SOUND_BLIP);
+		}
+		else
+		{
+			playSound(SOUND_STEP_2);
+		}
+		statsIncrease(STATS_PATS, 1);
+	}
+
 	updateActions()
 	{
 		_input.deregisterAction(0);
@@ -756,7 +773,11 @@ class Game
 			}
 			else // !this.grabbedObject
 			{
-				if (this.nearestGrabTarget)
+				if (this.nearestDropTarget && this.nearestDropTarget instanceof GameObjectSlotTrash)
+				{
+					_input.registerAction(0, 'Pet', this.onPetCerberus.bind(this));
+				}
+				else if (this.nearestGrabTarget)
 				{
 					_input.registerAction(0, 'Grab', this.onGrabObject.bind(this));
 					if (this.nearestGrabTarget.childObjects.length != 0 && this.nearestGrabTarget.childObjects[0] instanceof GameObjectContainer && !(this.nearestGrabTarget.childObjects[0] as GameObjectContainer).isOnFire)
