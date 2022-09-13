@@ -158,7 +158,9 @@ class Game
 
 				this.dialogOnStart = [
 					[ 3, 1, "Hey Boss!" ],
-					[ 3, 1, "Skully called and wants more of those." ],
+					[ 3, 1, "Look who came by! Your favorite three-in-one pup, Cerberos!" ],
+					[ 3, 1, "I guess he can help you out with leftovers." ],
+					[ 3, 1, "Also, skully asked for two more." ],
 				];
 			break;
 
@@ -171,9 +173,7 @@ class Game
 
 				this.dialogOnStart = [
 					[ 3, 1, "Hey Boss!" ],
-					[ 3, 1, "Look who came by! Your favorite three-in-one pup, Cerberos!" ],
-					[ 3, 1, "He looks hungry, I guess he can help you out with leftovers." ],
-					[ 3, 1, "I also got a bit of chili and pepper." ],
+					[ 3, 1, "I just found some spices." ],
 				];
 			break;
 
@@ -216,7 +216,7 @@ class Game
 				this.dialogOnStart = [
 					[ 3, 1, "Hey Boss!" ],
 					[ 3, 1, "Another dinner for two?" ],
-					[ 3, 1, "Erm... not us. Of course.", 1 ],
+					[ 3, 1, "Erm... not for us. Of course.", 1 ],
 				];
 			break;
 
