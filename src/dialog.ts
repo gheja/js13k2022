@@ -62,10 +62,10 @@ function dialogStep()
 	
 	let line = _dialog[_dialogIndex];
 	let obj = getDomElement("s" + line[1]); // speak1/speak2
-	let delay = line[3] ? line[3] : 0;
+	let delay = line[3];
 	
 	removeClass(obj, "u"); // speak-visible
-	_dialogTimeout = window.setTimeout(dialogShowLine.bind(this, obj, line), delay + 200);
+	_dialogTimeout = window.setTimeout(dialogShowLine.bind(this, obj, line), delay ? 1200 : 200);
 	
 	_dialogIndex++;
 }
