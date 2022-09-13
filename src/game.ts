@@ -235,14 +235,13 @@ class Game
 
 			case 9:
 				// meat, shroom, carrot, pan, pot
-				stock = [ 0, 3, 3, 3, 4, 4 ];
-				recipes = [
-					[ "Spicy fried friends", OBJ_PAN, [ 0, 2 ], [ 10, 0 ] ],
-				];
+				stock = [ 0, 4, 3, 3, 3, 3 ];
 				this.dialogOnStart = [
 					[ 3, 1, "Hey Boss!" ],
-					[ 3, 1, "(last level)" ],
+					[ 3, 1, "No orders for today, but--" ],
+					[ 0, 2, "Say no more! I take the week off!" ],
 				];
+				this.onDialogEnd = this.finishGame.bind(this);
 			break;
 		
 			default:
@@ -275,6 +274,13 @@ class Game
 		{
 			statsIncrease(STATS_LEVELS_STARTED, 1);
 		}
+	}
+
+	finishGame()
+	{
+		getDomElement("f1").classList.add("w");
+		getDomElement("f2").classList.add("w");
+		window.setTimeout(this.setPause.bind(this, true, true), 1500);
 	}
 
 	loadNextLevel()
@@ -475,7 +481,7 @@ class Game
 			status += statsLine("Total pats", STATS_PATS);
 		}
 
-		let newLevelFinished: boolean = (this.lastLevelNumber > 1 && starsLeft <= 0);
+		let newLevelFinished: boolean = (this.lastLevelNumber > 1 && this.lastLevelNumber != 9 && starsLeft <= 0);
 
 		if (!this.levelFinished && newLevelFinished)
 		{
