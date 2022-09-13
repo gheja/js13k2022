@@ -136,7 +136,7 @@ class GameObject
 
 		if (this.childObjects.length != 0)
 		{
-			s += "<div class=\"box\">Contains:<br/>";
+			s += "<div class=\"b\">Contains:<br/>";
 
 			this.childObjects.forEach(element => {
 				s += "&nbsp;- " + element.name;

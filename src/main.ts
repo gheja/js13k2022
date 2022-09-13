@@ -46,9 +46,9 @@ function onSpritesLoaded()
 
 function updateBonuses()
 {
-	setInnerHTML("wc", _coilActive ? "Unlocked - Coil is active, thank you!" : "<span onclick=\"b(5);\" class=\"link\">Activate Coil to unlock.</span>");
+	setInnerHTML("wc", _coilActive ? "Unlocked - Coil is active, thank you!" : "<span onclick=\"b(5);\" class=\"l\">Activate Coil to unlock.</span>");
 	setInnerHTML("wn",
-		(na() ? "Unlocked - NEAR is active!" : "<span onclick=\"b(3);\" class=\"link\">Log in to NEAR " + nn + " here to unlock.</span>") +
+		(na() ? "Unlocked - NEAR is active!" : "<span onclick=\"b(3);\" class=\"l\">Log in to NEAR " + nn + " here to unlock.</span>") +
 		(window.location.search.indexOf("nHa") > 0 ? "<br/><br/>Thank you very much for your tip!" : "") // "nHa" = "transactionHashes"
 	);
 	getDomElement("mn").style.display = (na() ? "" : "none");

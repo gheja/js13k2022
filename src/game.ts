@@ -363,7 +363,7 @@ class Game
 		if (this.grabbedObject)
 		{
 			description += "Carrying:<br/>";
-			description += "<div class=\"box\">";
+			description += "<div class=\"b\">";
 			description += this.grabbedObject.getDescription();
 			description += "</div>";
 		}
@@ -372,7 +372,7 @@ class Game
 		if (this.nearestDropTarget)
 		{
 			description += "Drop target:";
-			description += "<div class=\"box\">";
+			description += "<div class=\"b\">";
 			if (this.nearestDropTarget.childObjects.length != 0)
 			{
 				description += this.nearestDropTarget.childObjects[0].getDescription();
@@ -386,7 +386,7 @@ class Game
 		else if (this.nearestGrabTarget)
 		{
 			description += "In front of you:";
-			description += "<div class=\"box\">";
+			description += "<div class=\"b\">";
 			if (this.nearestGrabTarget.childObjects.length != 0)
 			{
 				description += this.nearestGrabTarget.childObjects[0].getDescription();
@@ -400,7 +400,7 @@ class Game
 		else if (this.nearestObject)
 		{
 			description += "In front of you:";
-			description += "<div class=\"box\">";
+			description += "<div class=\"b\">";
 			description += this.nearestObject.getDescription();
 			description += "</div>";
 		}
@@ -426,7 +426,7 @@ class Game
 		else if (this.recipeToCook)
 		{
 			a = this.recipeToCook;
-			description += "<div class=\"box2\">";
+			description += "<div class=\"c\">";
 			description += "Pick up a pan or pot to start the recipe.";
 			description += "</div>";
 		}

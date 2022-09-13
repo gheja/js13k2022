@@ -34,8 +34,9 @@ n - name
 t - text
 v - visible
 w - level transition
-box
-box2
+b - box
+c - box2
+l - link
 
 set on body:
 w - welcome screen is active
@@ -47,6 +48,8 @@ more:
 g g0 g1 - xbox buttons
 h h0 h1 - playstation buttons
 k - keyboard keys
+c1 - label for slots
+bl bt br bf - box left, top, right front
 
 --- css keyframes ---
 a2 - dust2

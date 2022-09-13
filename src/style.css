@@ -263,8 +263,8 @@ body.ak .k
 	color: #f66;
 }
 
-.box,
-.box2
+.b, /* box inside description */
+.c /* box inside description, in yellow */
 {
 	background: #fff1;
 	padding: 0.1rem 0.25rem;
@@ -272,13 +272,13 @@ body.ak .k
 	border-left: 0.2rem solid #fff4;
 }
 
-.box2
+.c
 {
 	color: #ff0;
 	border-left-color: #ff04;
 }
 
-.c1
+.c1 /* label for slots */
 {
 	position: relative;
 	top: -25px;
@@ -394,7 +394,7 @@ body.w #e2
 	display: none;
 }
 
-.link
+.l /* link */
 {
 	cursor: pointer;
 	text-decoration: underline;
