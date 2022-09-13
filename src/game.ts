@@ -15,7 +15,6 @@ class Game
 	recipeToCook: GameObjectRecipe;
 	welcomePaused: boolean = false;
 	levelFinished: boolean;
-	levelFinishSaid: boolean = false;
 	pats: number = 0;
 
 	constructor()
@@ -482,6 +481,7 @@ class Game
 		if (!this.levelFinished && newLevelFinished)
 		{
 			// just finished the level
+			window.setTimeout(dialogStart.bind(null, [[ 3, 1, (this.lastLevelNumber == 2 ? "Wow! " : "") + "You completed all orders!<br/>Check your action buttons to proceed to the next level." ]]), 1000);
 			statsIncrease(STATS_LEVELS_FINISHED, 1);
 		}
 
@@ -588,15 +588,6 @@ class Game
 		}
 	}
 
-	sayHelpTexts()
-	{
-		if (this.levelFinished && !this.levelFinishSaid)
-		{
-			window.setTimeout(dialogStart.bind(null, [[ 3, 1, "Wow, you just completed all orders!<br/>Check your action buttons to proceed to the next level." ]]), 1000);
-			this.levelFinishSaid = true;
-		}
-	}
-
 	onFrame()
 	{
 		let delta = 1000/60;
@@ -620,7 +611,6 @@ class Game
 			this.updateGrabDropTargets();
 			this.updateActions();
 			this.updateDescription();
-			this.sayHelpTexts();
 			this.cleanupDestroyedObjects();
 		}
 
