@@ -470,13 +470,11 @@ class Game
 			status += "<br/>";
 			status += "<br/>";
 			status += "<b>Global stats:</b><br/>";
-			status += statsLine("Levels started", STATS_LEVELS_STARTED);
-			status += statsLine("Levels finished", STATS_LEVELS_FINISHED);
-			status += statsLine("Fires started", STATS_FIRES_STARTED);
-			status += statsLine("Foods started", STATS_FOODS_STARTED);
 			status += statsLine("Foods served", STATS_FOODS_SERVED);
+			status += statsLine("Fires started", STATS_FIRES_STARTED);
 			status += statsLine("Stars collected", STATS_STARS_COLLECTED);
 			status += statsLine("Perfect foods", STATS_FOODS_PERFECT);
+			status += statsLine("Total pats", STATS_PATS);
 		}
 
 		let newLevelFinished: boolean = (this.lastLevelNumber > 1 && starsLeft <= 0);
