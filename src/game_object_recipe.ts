@@ -38,17 +38,17 @@ class GameObjectRecipe extends GameObject
         {
             s += "- add <b>" + this.ingredients[OBJ_MEAT] + " pcs Carrot</b><br/>";
 
-            if (!this.ingredients[OBJ_MEAT] && !this.ingredients[OBJ_SHROOM])
-            {
-                a = 30;
-            }
-            else if (this.ingredients[OBJ_MEAT])
+            if (this.ingredients[OBJ_MEAT])
             {
                 a = 10;
             }
-            else (this.ingredients[OBJ_SHROOM])
+            else if (this.ingredients[OBJ_SHROOM])
             {
                 a = 23;
+            }
+            else
+            {
+                a = 30;
             }
             s += "- cook for <b>" + a + " seconds</b><br/>";
         }
@@ -57,13 +57,13 @@ class GameObjectRecipe extends GameObject
         {
             s += "- add <b>" + this.ingredients[OBJ_MEAT] + " pcs Meat</b><br/>";
 
-            if (!this.ingredients[OBJ_SHROOM])
+            if (this.ingredients[OBJ_SHROOM])
             {
-                a = 20;
+                a = 13;
             }
             else
             {
-                a = 13;
+                a = 20;
             }
             s += "- cook for <b>" + a + " seconds</b><br/>";
         }
