@@ -75,6 +75,7 @@ class GameObjectContainer extends GameObject
 
         let alreadyDone = false;
         let emptyDish = false;
+        let wrongContainer = false;
         let countMissing = 0;
         let countExtra = 0;
         let countRaw = 0;
@@ -90,6 +91,7 @@ class GameObjectContainer extends GameObject
         // (the rest of this will be optimized out as this is always false)
         alreadyDone = false;
         emptyDish = (this.childObjects.length == 0);
+        wrongContainer = (this.recipe.containerType != this.objectType);
 
         for (i=OBJ_INGREDIENT_FIRST; i<OBJ_INGREDIENT_LAST + 1; i++)
         {
@@ -151,7 +153,7 @@ class GameObjectContainer extends GameObject
         }
         else
         {
-            stars = 5 - countMissing * 2 - countExtra * 1 - countRaw * 2 - countUndercooked * 0.5 - countOvercooked * 0.5 + countPerfect * 1 - (seasoningOff ? 0.5 : 0);
+            stars = 5 - countMissing * 2 - countExtra * 1 - countRaw * 2 - countUndercooked * 0.5 - countOvercooked * 0.5 + countPerfect * 1 - (seasoningOff ? 0.5 : 0) - (wrongContainer ? 2 : 0);
         }
 
         // console.log([ emptyDish, countMissing, countExtra, countRaw, countUndercooked, countOvercooked, countPerfect ]);
@@ -170,6 +172,11 @@ class GameObjectContainer extends GameObject
         }
         else
         {
+            if (wrongContainer)
+            {
+                problems.push("cooked in the wrong cookware"); // TODO: meh... revisit this
+            }
+
             if (countRaw > 0)
             {
                 problems.push("something was raw");
