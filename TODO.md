@@ -4,7 +4,7 @@
 - If you mess up but have the ingredients you can try to cook it again. (skipping alreadyDone)
 
 ## general
-- [ ] find a name
+- [x] find a name
 - [ ] handle ticks separately from frames (skip frames instead of slowing down)
 - [ ] reduce running speed
 - [x] cooking individual ingredients
@@ -19,7 +19,7 @@
 - [x] play area boundaries
 - [x] add status - score display, recipe+stars, total points
 - [x] common way to update the contents of recipe, description, status divs
-- [ ] head pats for Cerberos
+- [x] head pats for Cerberos
 - [ ] ~About page~
 
 
@@ -39,12 +39,12 @@
 ## ui
 - [x] menu
 - [x] welcome screen
-- [ ] level transition effect
+- [x] level transition effect
 
 
 ## graphics
 - [x] wall
-- [ ] cutting board
+- [x] cutting board
 - [ ] firewood/place
 
 
@@ -72,14 +72,14 @@
 - [x] total pans and pots used
 - [ ] total seasoning used
 - [x] total stars collected
-- [ ] total pats for Cerberos
+- [x] total pats for Cerberos
 
 
 ## content
 
 ### ingredients
 - [x] fire fungi
-- [ ] some vegetables
+- [x] some vegetables
 
 ### seasoning
 - [x] black pepper
@@ -92,6 +92,7 @@
 - [x] "in front of you" checks the grabbed object and its children as well
 - [ ] jagged/buggy edges of transformed divs (Chrome only)
 - [x] "d" div has background color
+- [ ] stats are off when in transit (see code)
 
 ## severe bugs
 
@@ -102,7 +103,7 @@
 ## optimizations
 - [x] cache the sprites in getSprite()
 - [x] rename css classes, ids, etc.
-- [ ] remove newlines from minimized html
+- [x] remove newlines from minimized html
 - [x] use integers instead of strings for object types
 - [x] remove css comments
 - [x] AdvZIP
@@ -113,8 +114,10 @@
 - [x] remove console.log() calls
 - [x] trash icon in sprites is unused
 - [x] reduce sprites.png palette
+- [x] remove chute sprite
 - [ ] remove additional delay handling in dialog
 - [ ] remove quotes from some attributes (i.e. onclick)
+- [ ] Google Closure Compiler does not rename ".position", ".name", ".description", ".status"
 
 
 ## nice to have
