@@ -23,6 +23,7 @@ class GameObjectRecipe extends GameObject
     getDescriptionExtra()
     {
         let s: string = "";
+        let a: number;
 
         s += "<br/>";
         s += "- grab a <b>" + (this.containerType == OBJ_PAN ? "Pan" : "Small Pot") + "</b><br/>";
@@ -39,16 +40,17 @@ class GameObjectRecipe extends GameObject
 
             if (!this.ingredients[OBJ_MEAT] && !this.ingredients[OBJ_SHROOM])
             {
-                s += "- cook for <b>30 seconds</b><br/>";
+                a = 30;
             }
             else if (this.ingredients[OBJ_MEAT])
             {
-                s += "- cook for <b>10 seconds</b><br/>";
+                a = 10;
             }
             else (this.ingredients[OBJ_SHROOM])
             {
-                s += "- cook for <b>23 seconds</b><br/>";
+                a = 23;
             }
+            s += "- cook for <b>" + a + " seconds</b><br/>";
         }
 
         if (this.ingredients[OBJ_MEAT])
@@ -57,12 +59,13 @@ class GameObjectRecipe extends GameObject
 
             if (!this.ingredients[OBJ_SHROOM])
             {
-                s += "- cook for <b>20 seconds</b><br/>";
+                a = 20;
             }
             else
             {
-                s += "- cook for <b>13 seconds</b><br/>";
+                a = 13;
             }
+            s += "- cook for <b>" + a + " seconds</b><br/>";
         }
 
         if (this.seasoning[0])
@@ -77,7 +80,7 @@ class GameObjectRecipe extends GameObject
 
         if (this.ingredients[OBJ_SHROOM])
         {
-            s += "- add <b>" + this.ingredients[OBJ_SHROOM] + " pcs Fire shroom</b><br/>";
+            s += "- add <b>" + this.ingredients[OBJ_SHROOM] + " pcs of Fire shroom</b><br/>";
             s += "- cook for <b>7 seconds</b><br/>";
         }
 
