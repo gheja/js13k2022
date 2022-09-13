@@ -130,7 +130,7 @@ class Game
 			case 2:
 				stock = [0,2,0,0,3];
 				recipes = [
-					[ "Fried foe", "pan", [ 0, 1 ], [] ]
+					[ "Fried foe", OBJ_PAN, [ 0, 1 ], [] ]
 				];
 
 				this.dialogOnStart = [
@@ -146,7 +146,7 @@ class Game
 			case 3:
 				stock = [0,3,3,3,4,4];
 				recipes = [
-					[ "Spicy fried friends", "pan", [ 0, 2 ], [10,0] ],
+					[ "Spicy fried friends", OBJ_PAN, [ 0, 2 ], [10,0] ],
 				];
 
 				this.dialogOnStart = [

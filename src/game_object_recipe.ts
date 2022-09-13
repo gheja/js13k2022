@@ -1,13 +1,13 @@
 class GameObjectRecipe extends GameObject
 {
     name: string;
-    containerType: string;
+    containerType: number;
     ingredients: any;
     seasoning: any;
     status: number;
     stars: number;
 
-    constructor(position: Vec2D, name: string, containerType: string, ingredients: any, seasoning: any)
+    constructor(position: Vec2D, name: string, containerType: number, ingredients: any, seasoning: any)
     {
         super(position, 10, 10, name, "A recipe to cook.");
 
@@ -25,7 +25,7 @@ class GameObjectRecipe extends GameObject
         let s: string = "";
 
         s += "<br/>";
-        s += "- grab a <b>" + (this.containerType == "pan" ? "Pan" : "Small Pot") + "</b><br/>";
+        s += "- grab a <b>" + (this.containerType == OBJ_PAN ? "Pan" : "Small Pot") + "</b><br/>";
 
         // carrot: 30 sec
         // meat: 20 sec
