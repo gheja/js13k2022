@@ -9,7 +9,7 @@ class GameObjectRecipe extends GameObject
 
     constructor(position: Vec2D, name: string, containerType: number, ingredients: any, seasoning: any)
     {
-        super(position, 10, 10, name, "A recipe to cook.");
+        super(position, 10, 10, name, "");
 
         this.containerType = containerType;
         this.ingredients = ingredients;

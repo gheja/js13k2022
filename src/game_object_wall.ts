@@ -9,7 +9,7 @@ class GameObjectWall extends GameObject
 
     constructor(position: Vec2D, width: number=1, height: number=1, zHeight: number=1)
     {
-        super(position, 10, 10, "e", "e");
+        super(position, 10, 10, "", "");
 
         this.collidable = true;
 
