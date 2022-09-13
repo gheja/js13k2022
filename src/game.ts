@@ -733,27 +733,30 @@ class Game
 		}
 		else
 		{
-			if (
-				this.grabbedObject &&
-				this.grabbedObject instanceof GameObjectSeasoning &&
-				this.nearestDropTarget &&
-				this.nearestDropTarget.childObjects.length != 0 &&
-				this.nearestDropTarget.childObjects[0] instanceof GameObjectContainer
-			)
+			if (this.grabbedObject)
 			{
-				_input.registerAction(0, 'Add chili', this.onAddSeasoning.bind(this, 0));
-				_input.registerAction(1, 'Add pepper', this.onAddSeasoning.bind(this, 1));
-			}
-			else if (this.grabbedObject && this.nearestDropTarget)
-			{
-				_input.registerAction(0, 'Drop', this.onDropGrabbedObject.bind(this));
-			}
-			else if (!this.grabbedObject && this.nearestGrabTarget)
-			{
-				_input.registerAction(0, 'Grab', this.onGrabObject.bind(this));
-				if (this.nearestGrabTarget.childObjects.length != 0 && this.nearestGrabTarget.childObjects[0] instanceof GameObjectContainer && !(this.nearestGrabTarget.childObjects[0] as GameObjectContainer).isOnFire)
+				if (this.nearestDropTarget)
 				{
-					_input.registerAction(1, 'Light it', this.onLightObject.bind(this));
+					if (this.grabbedObject instanceof GameObjectSeasoning && this.nearestDropTarget.childObjects.length != 0 && this.nearestDropTarget.childObjects[0] instanceof GameObjectContainer)
+					{
+						_input.registerAction(0, 'Add chili', this.onAddSeasoning.bind(this, 0));
+						_input.registerAction(1, 'Add pepper', this.onAddSeasoning.bind(this, 1));
+					}
+					else
+					{
+						_input.registerAction(0, 'Drop', this.onDropGrabbedObject.bind(this));
+					}
+				}
+			}
+			else // !this.grabbedObject
+			{
+				if (this.nearestGrabTarget)
+				{
+					_input.registerAction(0, 'Grab', this.onGrabObject.bind(this));
+					if (this.nearestGrabTarget.childObjects.length != 0 && this.nearestGrabTarget.childObjects[0] instanceof GameObjectContainer && !(this.nearestGrabTarget.childObjects[0] as GameObjectContainer).isOnFire)
+					{
+						_input.registerAction(1, 'Light it', this.onLightObject.bind(this));
+					}
 				}
 			}
 		}
