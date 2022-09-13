@@ -6,6 +6,7 @@
 ## general
 - [ ] find a name
 - [ ] handle ticks separately from frames (skip frames instead of slowing down)
+- [ ] reduce running speed
 - [x] cooking individual ingredients
 - [x] text progressbar for cooking
 - [x] level loading
@@ -25,9 +26,10 @@
 ## sounds
 - [x] steps x2
 - [x] cooking
-- [ ] dialog x3
+- [/] dialog x3
 - [ ] level load
 - [ ] level win
+- [x] seasoning
 
 
 ## input
@@ -70,6 +72,7 @@
 - [x] total pans and pots used
 - [ ] total seasoning used
 - [x] total stars collected
+- [ ] total pats for Cerberos
 
 
 ## content
@@ -79,9 +82,9 @@
 - [ ] some vegetables
 
 ### seasoning
-- [ ] black pepper
+- [x] black pepper
 - [ ] garlic
-- [ ] green chili
+- [x] green chili
 - [ ] red habanero
 
 
@@ -110,6 +113,7 @@
 - [x] remove console.log() calls
 - [x] trash icon in sprites is unused
 - [x] reduce sprites.png palette
+- [ ] remove additional delay handling in dialog
 - [ ] remove quotes from some attributes (i.e. onclick)
 
 
