@@ -75,14 +75,14 @@ class GameObjectContainer extends GameObject
 
         let alreadyDone = false;
         let emptyDish = false;
-        let wrongContainer = false;
+        let wrongContainer = 0;
         let countMissing = 0;
         let countExtra = 0;
         let countRaw = 0;
         let countUndercooked = 0;
         let countOvercooked = 0;
         let countPerfect = 0;
-        let seasoningOff = false;
+        let seasoningOff = 0;
 
         // // TODO: fix this! status is reset to ACCEPTED on grab
         // alreadyDone = (this.recipe.status == RECIPE_STATUS_DONE);
@@ -91,37 +91,39 @@ class GameObjectContainer extends GameObject
         // (the rest of this will be optimized out as this is always false)
         alreadyDone = false;
         emptyDish = (this.childObjects.length == 0);
-        wrongContainer = (this.recipe.containerType != this.objectType);
+        wrongContainer = (this.recipe.containerType != this.objectType) ? 1 : 0;
 
-        for (i=OBJ_INGREDIENT_FIRST; i<OBJ_INGREDIENT_LAST + 1; i++)
+        for (j=OBJ_INGREDIENT_FIRST; j<OBJ_INGREDIENT_LAST + 1; j++)
         {
             n = 0;
-            this.childObjects.forEach(element => {
-                if (element.objectType == i)
+            for (i=0;i<this.childObjects.length;i++)
+            {
+                if (this.childObjects[i].objectType == j)
                 {
                     n++;
                 }
-            });
+            }
 
-            if (this.recipe.ingredients[i] > n)
+            if (this.recipe.ingredients[j] > n)
             {
                 // was missing at least one of this type of ingredient
                 countMissing++;
             }
 
-            if (this.recipe.ingredients[i] < n)
+            if (this.recipe.ingredients[j] < n)
             {
                 // was more than expected at least one of this type of ingredient
                 countExtra++;
             }
         }
 
-        this.childObjects.forEach(element => {
-            let cookPercent: number;
+        let cookPercent: number;
 
-            _assert(element.cookedForTarget != 0);
+        for (j=0;i<this.childObjects.length;i++)
+        {
+            _assert(this.childObjects[i].cookedForTarget != 0);
 
-            cookPercent = element.cookedForTicks / element.cookedForTarget;
+            cookPercent = this.childObjects[i].cookedForTicks / this.childObjects[i].cookedForTarget;
 
             if (cookPercent < 0.5)
             {
@@ -139,11 +141,11 @@ class GameObjectContainer extends GameObject
             {
                 countOvercooked++;
             }
-        });
+        };
 
         if (this.seasoning[0] != this.recipe.seasoning[0] || this.seasoning[1] != this.recipe.seasoning[1])
         {
-            seasoningOff = true;
+            seasoningOff = 1;
         }
 
 
@@ -153,7 +155,7 @@ class GameObjectContainer extends GameObject
         }
         else
         {
-            stars = 5 - countMissing * 2 - countExtra * 1 - countRaw * 2 - countUndercooked * 0.5 - countOvercooked * 0.5 + countPerfect * 1 - (seasoningOff ? 0.5 : 0) - (wrongContainer ? 2 : 0);
+            stars = 5 - countMissing * 2 - countExtra * 1 - countRaw * 2 - countUndercooked * 0.5 - countOvercooked * 0.5 + countPerfect * 1 - seasoningOff * 0.5 - wrongContainer * 2;
         }
 
         // console.log([ emptyDish, countMissing, countExtra, countRaw, countUndercooked, countOvercooked, countPerfect ]);
