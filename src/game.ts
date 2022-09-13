@@ -314,13 +314,6 @@ class Game
 		}
 	}
 
-	sortObjects()
-	{
-		(_divLayer.querySelectorAll("div") as any as Array<HTMLElement>).forEach((element: HTMLElement) => {
-			element.style.zIndex = Math.floor(element.offsetTop).toString();
-		})
-	}
-
 	tick()
 	{
 
