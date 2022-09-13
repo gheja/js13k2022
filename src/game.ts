@@ -141,7 +141,7 @@ class Game
 					[ 3, 1, "Hey Boss!" ],
 					[ 3, 1, "It's been a while. How do you do?" ],
 					[ 0, 2, "Hey Goblin! All fine, thanks. I need to cook for Skully, do we have pans around?" ],
-					[ 3, 1, "Sure we have! Just pick up the recipe first." ],
+					[ 3, 1, "Sure we have! Just pick the recipe first." ],
 					[ 3, 1, "And don't worry they still love to be cooked." ],
 					[ 3, 1, "Just don't burn them....", 1 ],
 				];
@@ -159,7 +159,7 @@ class Game
 					[ 3, 1, "Hey Boss!" ],
 					[ 3, 1, "Look who came by! Your favorite three-in-one pup, Cerberos!" ],
 					[ 3, 1, "I guess he can help you out with leftovers." ],
-					[ 3, 1, "Also, skully asked for two more." ],
+					[ 3, 1, "Also, Skully asked for two more." ],
 				];
 			break;
 
@@ -185,8 +185,7 @@ class Game
 
 				this.dialogOnStart = [
 					[ 3, 1, "Hey Boss!" ],
-					[ 3, 1, "I found some stuff in the fridge." ],
-					[ 3, 1, "Might come handy." ],
+					[ 3, 1, "I found some stuff in the fridge.<br/>Might come handy." ],
 				];
 			break;
 
