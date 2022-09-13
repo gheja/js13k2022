@@ -1,4 +1,4 @@
-![Cooking for Skully](preview_400x250.jpg)
+![Cooking for Skully](preview_v1_400x250.jpg)
 
 # Cooking for Skully
 
