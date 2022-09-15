@@ -191,7 +191,11 @@ cat $files_css | \
 	sed -r 's/^\s+//g' | \
 	sed -r 's/\s+$//g' | \
 	tr -d '\r\n' | \
-	sed -r 's/}/}\n/g' \
+	sed -r 's/}/}\n/g' | \
+	sed -r 's/ *\{ */{/g' | \
+	sed -r 's/; *}/}/g' | \
+	sed -r 's/ *, */,/g' | \
+	sed -r 's/ *: */:/g' \
 	> min.css
 
 cd ..
