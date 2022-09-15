@@ -1,6 +1,7 @@
 class Game
 {
 	ticks: number;
+	lastFrameTime: number;
 	maxSpeed: number = 100;
 	playerObject: GameObjectPlayer;
 	paused: boolean = false;
@@ -20,6 +21,7 @@ class Game
 	constructor()
 	{
 		this.ticks = 0;
+		this.lastFrameTime = performance.now();
 	}
 
 	loadLevel(n: number)
@@ -592,20 +594,24 @@ class Game
 	{
 		let delta = 1000/60;
 
-		this.ticks += 1;
-		
-		let scale = (window.innerHeight / 1080) * 1.2;
+		let now = performance.now();
 
 		this.handleInput();
+
 		if (!this.paused && !this.welcomePaused)
 		{
-			this.objects.forEach((element) => { element.update(); element.moveAndSlide(delta); element.updateChildObjectsPosition(); });
-			// this.sortObjects();
+			let scale = (window.innerHeight / 1080) * 1.2;
+
+			while (this.lastFrameTime < now)
+			{
+				this.ticks += 1;
+				this.objects.forEach((element) => { element.update(); element.moveAndSlide(delta); element.updateChildObjectsPosition(); });
+				this.lastFrameTime += delta;
+			}
 
 			// TODO: check this alignment
 			_divLayer.style.transform = "scale(" + scale + ") perspective(800px) translateY(200px)";
 			_divLayer.style.left = (window.innerWidth / 2 - _z(_floorWidth) / 2) + "px";
-
 			_divLayer.style.transformOrigin = (_floorWidth * 0.5 + this.playerObject.position.x) + "px " + (this.playerObject.position.y * 0.5) + "px";
 
 			this.updateGrabDropTargets();
