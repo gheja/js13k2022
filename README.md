@@ -7,6 +7,10 @@ An entry for the [js13kgames](https://js13kgames.com/) [2022](http://2022.js13kg
 
 Entry: https://js13kgames.com/entries/cooking-for-skully
 
+Branch for the jam version: [js13k2022-entry](https://github.com/gheja/js13k2022/tree/js13k2022-entry)
+
+The main branch contains some further developments.
+
 
 # Details
 
