@@ -1,6 +1,6 @@
 function destroyThis()
 {
-	this.parentNode.removeChild(this);
+	removeDomElement(this);
 }
 
 function emitParticle(x: number, y: number, spriteX: number, spriteY: number, width: number, height: number, animation: string, duration: number)

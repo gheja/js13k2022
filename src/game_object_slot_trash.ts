@@ -12,7 +12,7 @@ class GameObjectSlotTrash extends GameObjectSlot
         this.name = "Cerberos";
         this.description = "A sweet pup with three heads and a few endless stomachs";
         // this.domObjectLabel.innerHTML = "Trash";
-        this.domObject2.parentNode.removeChild(this.domObject2);
+        removeDomElement(this.domObject2);
         this.width = 20;
         this.height = 20;
         this.domObject.style.width = _z(this.width) + "px";

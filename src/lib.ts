@@ -96,6 +96,11 @@ function getDomElement(name: string)
 	return document.getElementById(name);
 }
 
+function removeDomElement(obj: HTMLElement)
+{
+	obj.parentNode.removeChild(obj);
+}
+
 function lerp(a: number, b: number, ratio: number)
 {
 	return a + (b - a) * ratio;

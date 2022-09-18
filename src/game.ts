@@ -344,7 +344,7 @@ class Game
 		{
 			if (this.objects[i].destroyed)
 			{
-				this.objects[i].domObject.parentNode.removeChild(this.objects[i].domObject);
+				removeDomElement(this.objects[i].domObject);
 				this.objects.splice(i, 1);
 			}
 		}
