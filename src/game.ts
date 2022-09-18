@@ -1,6 +1,7 @@
 class Game
 {
 	ticks: number;
+	frames: number;
 	lastFrameTime: number;
 	maxSpeed: number = 100;
 	playerObject: GameObjectPlayer;
@@ -20,6 +21,7 @@ class Game
 
 	constructor()
 	{
+		this.frames = 0;
 		this.ticks = 0;
 		this.lastFrameTime = performance.now();
 	}
@@ -595,6 +597,8 @@ class Game
 		let delta = 1000/60;
 
 		let now = performance.now();
+
+		this.frames++;
 
 		this.handleInput();
 
