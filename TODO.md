@@ -4,11 +4,11 @@
 - If you mess up but have the ingredients you can try to cook it again. (skipping alreadyDone)
 
 ## general
-- [ ] optimize performance (auto-reduce effects if runing with low FPS)
-- [ ] set colors for dialog boxes based on speakers
+- [x] optimize performance (auto-reduce effects if runing with low FPS)
+- [x] set colors for dialog boxes based on speakers
 - [x] find a name
 - [x] handle ticks separately from frames (skip frames instead of slowing down)
-- [ ] reduce running speed
+- [ ] ~reduce running speed~
 - [x] cooking individual ingredients
 - [x] text progressbar for cooking
 - [x] level loading
@@ -28,9 +28,9 @@
 ## sounds
 - [x] steps x2
 - [x] cooking
-- [/] dialog x3
-- [ ] level load
-- [ ] level win
+- [/] ~dialog x3~
+- [ ] ~level load~
+- [ ] ~level win~
 - [x] seasoning
 
 
@@ -47,7 +47,7 @@
 ## graphics
 - [x] wall
 - [x] cutting board
-- [ ] firewood/place
+- [ ] ~firewood/place~
 
 
 ## extras/bonuses
@@ -85,9 +85,9 @@
 
 ### seasoning
 - [x] black pepper
-- [ ] garlic
+- [ ] ~garlic~
 - [x] green chili
-- [ ] red habanero
+- [ ] ~red habanero~
 
 
 ## annoying bugs
@@ -125,8 +125,8 @@
 ## nice to have
 - [ ] some transition from the welcome screen
 - [ ] Find a name for Goblin
-- [ ] green dialog box for Goblin
-- [ ] Goblin shuold walk around
+- [x] green dialog box for Goblin
+- [ ] Goblin should walk around
 - [ ] proper move and slide
 - [ ] GameObject is interactable?
 - [ ] proper 3rd axis handling (z-height?)
