@@ -4,8 +4,10 @@
 - If you mess up but have the ingredients you can try to cook it again. (skipping alreadyDone)
 
 ## general
+- [ ] optimize performance (auto-reduce effects if runing with low FPS)
+- [ ] set colors for dialog boxes based on speakers
 - [x] find a name
-- [ ] handle ticks separately from frames (skip frames instead of slowing down)
+- [x] handle ticks separately from frames (skip frames instead of slowing down)
 - [ ] reduce running speed
 - [x] cooking individual ingredients
 - [x] text progressbar for cooking
