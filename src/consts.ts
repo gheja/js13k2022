@@ -34,3 +34,6 @@ const STATS_PATS = 6;
 const STATS_FOODS_PERFECT = 7;
 
 const LOCALSTORAGE_PREFIX = "hg22:";
+
+// minimum frames per second before attempting to remove effects
+const PERF_MIN_FPS = 30;

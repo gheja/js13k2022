@@ -18,6 +18,9 @@ class Game
 	welcomePaused: boolean = false;
 	levelFinished: boolean;
 	pats: number = 0;
+	perfLastFrames: number = 0;
+	perfLevel: number = 3;
+	perfCheckFails: number = 0;
 
 	constructor()
 	{
@@ -47,7 +50,7 @@ class Game
 		// #l1 - layer 1 - lava
 		// #l2 - layer 2 - rocks
 		// #l3 - layer 3 - fog
-		_divLayer.innerHTML = "<div id=\"l0\">" + (_isMobile ? "" : "<div id=\"l1\"></div>") + "<div id=\"l2\"></div><div id=\"l3\"></div>" + (n > 1 ? "<div id=\"l4\"></div>" : "") + "</div>";
+		_divLayer.innerHTML = "<div id=\"l0\">" + (this.perfLevel > 2 ? "<div id=\"l1\"></div>" : "") + (this.perfLevel > 1 ? "<div id=\"l2\"></div>" : "") + "<div id=\"l3\"></div>" + (n > 1 ? "<div id=\"l4\"></div>" : "") + "</div>";
 		this.objects = [];
 		this.grabbedObject = null;
 		this.dialogOnStart = null;
@@ -278,6 +281,51 @@ class Game
 		{
 			statsIncrease(STATS_LEVELS_STARTED, 1);
 		}
+	}
+
+	checkAndFixPerformance()
+	{
+		let fps: number;
+		let b: HTMLElement;
+
+		fps = this.frames - this.perfLastFrames;
+
+		if (fps < PERF_MIN_FPS)
+		{
+			this.perfCheckFails++;
+		}
+
+		if (this.perfCheckFails > 3)
+		{
+			// reduce performance if we can
+			this.perfLevel--;
+			this.perfCheckFails = 0;
+
+			console.log("Performance is too low (~" + fps + " FPS), trying to remove elements to increase it.");
+
+			if (this.perfLevel == 2)
+			{
+				b = getDomElement("l1");
+
+				if (b)
+				{
+					removeDomElement(b);
+				}
+			}
+
+			if (this.perfLevel == 1)
+			{
+				b = getDomElement("l2");
+
+				if (b)
+				{
+					removeDomElement(b);
+				}
+			}
+			
+		}
+
+		this.perfLastFrames = this.frames;
 	}
 
 	finishGame()
@@ -805,5 +853,6 @@ class Game
 	{
 		this.loadLevel(0);
 		this.onFrame();
+		window.setInterval(this.checkAndFixPerformance.bind(this), 1000);
 	}
 }
