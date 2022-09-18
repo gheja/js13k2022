@@ -67,7 +67,7 @@ b
 	background: #000e;
 	color: #fff;
 	opacity: 0;
-	border: 0.5rem solid #24c;
+	border: 0.5rem solid #f0f;
 	font-size: 1rem;
 	transition: opacity 0.15s;
 }
@@ -87,7 +87,6 @@ b
 /* .name */
 .n
 {
-	color: #24c;
 	font-weight: bold;
 }
 
@@ -101,12 +100,50 @@ b
 {
 	bottom: 5rem;
 	left: 30vw;
+}
+
+/* Devil */
+.actor0
+{
 	border-color: #eb2436;
 }
 
-#s2 .n
+.actor0 .n
 {
 	color: #eb2436;
+}
+
+/* Skully */
+.actor1
+{
+	border-color: #24c;
+}
+
+.actor1 .n
+{
+	color: #24c;
+}
+
+/* phone */
+.actor2
+{
+	border-color: #bbb;
+}
+
+.actor2 .n
+{
+	color: #bbb;
+}
+
+/* Goblin */
+.actor3
+{
+	border-color: #23a800;
+}
+
+.actor3 .n
+{
+	color: #23a800;
 }
 
 #a0,

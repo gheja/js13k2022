@@ -126,7 +126,7 @@ class Game
 					[ 1, 1, "Great! So I'll have a party tonight with friends and we want to have something delicious and thought you could help us out!" ],
 					[ 0, 2, "Sure, but--" ],
 					[ 1, 1, "Thanks, I'll send some meat over, you're the best!" ],
-					[ 2, 2, "*click*" ],
+					[ 2, 1, "*click*" ],
 					[ 0, 2, "I better get going...", 1 ],
 				];
 				this.onDialogEnd = this.loadNextLevelDelayed.bind(this);

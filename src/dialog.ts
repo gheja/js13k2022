@@ -7,8 +7,13 @@ function dialogShowLine(obj, line)
 {
 	let name = obj.getElementsByClassName("n")[0]; // name
 	let text = obj.getElementsByClassName("t")[0]; // text
-	
+
+	removeClass(obj, "actor0");
+	removeClass(obj, "actor1");
+	removeClass(obj, "actor2");
+	removeClass(obj, "actor3");
 	addClass(obj, "u"); // speak-visible
+	addClass(obj, "actor" + line[0]); // speak-visible
 	
 	name.innerHTML = _names[line[0]];
 	text.innerHTML = line[2];
