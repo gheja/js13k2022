@@ -23,15 +23,19 @@
 - [x] common way to update the contents of recipe, description, status divs
 - [x] head pats for Cerberos
 - [ ] ~About page~
+- [ ] add a highlight to action buttons before they are used
+- [ ] Goblin should remind to attach the recipe
 
 
 ## sounds
 - [x] steps x2
 - [x] cooking
+- [x] different sound for petting
 - [/] ~dialog x3~
 - [ ] ~level load~
 - [ ] ~level win~
 - [x] seasoning
+- [x] steps sound should be quieter
 
 
 ## input
