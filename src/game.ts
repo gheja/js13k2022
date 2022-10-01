@@ -779,9 +779,13 @@ class Game
 			emitParticle(this.playerObject.position.x, this.playerObject.position.y, 30, 50, 10, 10, "a3", 3000);
 			playSound(SOUND_BLIP);
 		}
+		else if (this.pats % 3 == 1)
+		{
+			playSound(SOUND_PET_1);
+		}
 		else
 		{
-			playSound(SOUND_STEP_2);
+			playSound(SOUND_PET_2);
 		}
 		statsIncrease(STATS_PATS, 1);
 	}
