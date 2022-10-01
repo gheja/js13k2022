@@ -7,10 +7,12 @@ const SOUND_BLIP = 5;
 const SOUND_SPEAK_1 = 6;
 const SOUND_SPEAK_2 = 7;
 const SOUND_SEASONING = 8;
+const SOUND_PET_1 = 9;
+const SOUND_PET_2 = 10;
 
 let _sounds = [
-    [.6,0,392,.01,,.03,2,.8,,,,,,5,,,,.3], // SOUND_STEP_1
-    [.6,0,440,.01,,.03,2,.8,,,,,,5,,,,.3], // SOUND_STEP_2
+    [.2,0,392,.01,,.03,2,.8,,,,,,5,,,,.3], // SOUND_STEP_1
+    [.2,0,440,.01,,.03,2,.8,,,,,,5,,,,.3], // SOUND_STEP_2
     [.3,0,,.5,,2,4,,,,550,,,3.6], // SOUND_FRYING
     [,,40,.02,.02,,,.4,3.2,,,,,.8,,,,.7,.02], // SOUND_PICK_UP
     [,0,170,.02,.02,,,.3,-4,,,,,,,,,.7,.03], // SOUND_DROP
